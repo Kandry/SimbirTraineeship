@@ -4,15 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Abiturient {
-    private String lastName, firstName, patronymic;
+public class Abiturient extends Human{
     private boolean isReg = false;
     private Map<String, Exam> exams;
 
     public Abiturient(String lastName, String firstName, String patronymic, List<String> examNames){
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.patronymic = patronymic;
+        super(lastName, firstName , patronymic);
         this.exams = new HashMap<>();
         for (String examName : examNames){
             exams.put(examName, new Exam(examName));
@@ -21,7 +18,6 @@ public class Abiturient {
 
     public void examIsDone(String examName){
         exams.get(examName).setDone(true);
-
         System.out.println(this.toString() + " сдал экзамен " + examName);
     }
 
@@ -47,10 +43,5 @@ public class Abiturient {
 
     public boolean isReg() {
         return isReg;
-    }
-
-    @Override
-    public String toString() {
-        return lastName + " " + firstName + " " + patronymic;
     }
 }
