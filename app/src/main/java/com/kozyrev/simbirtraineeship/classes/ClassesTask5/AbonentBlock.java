@@ -22,7 +22,7 @@ public class AbonentBlock {
         for (Abonent abonent: abonents) {
             if (abonent.getInCityTimeSpeak() > time) speakers.add(abonent);
         }
-        System.out.println(speakers.toString());
+        System.out.println("Абоненты, у которых время городских переговоров превышает заданное: " + speakers.toString());
     }
 
     public void getAbonentsOutCitySpeaked(){
@@ -30,7 +30,7 @@ public class AbonentBlock {
         for (Abonent abonent: abonents) {
             if (abonent.getOutCityTimeSpeak() > 0) speakers.add(abonent);
         }
-        System.out.println(speakers.toString());
+        System.out.println("Абоненты, которые пользовались междугородней связью: " + speakers.toString());
     }
 
     public void sortAbonents(){
@@ -41,6 +41,6 @@ public class AbonentBlock {
             }
         });
 
-        System.out.println(abonents.toString());
+        System.out.println("Абоненты в алфавитном порядке: " + abonents.toString());
     }
 }

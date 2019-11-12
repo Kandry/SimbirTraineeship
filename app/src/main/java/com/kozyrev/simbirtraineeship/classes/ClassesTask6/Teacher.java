@@ -11,6 +11,9 @@ public class Teacher extends Human{
     public void setExamMark(Abiturient abiturient, String examName, int mark){
         Map<String, Exam> exams = abiturient.getExams();
         exams.get(examName).setMark(mark);
-        System.out.println(this.toString() + " поставил абитуриенту " + abiturient.toString() + " оценку " + mark + " за экзамен " + examName);
+        System.out.println(this.toString() +
+                " поставил абитуриенту " + abiturient.toString() +
+                " оценку " + mark +
+                " за экзамен " + examName);
     }
 }
