@@ -27,7 +27,6 @@ public class ClassesTrainingTest {
         classesTask1.changeVariables(7, -68);
         classesTask1.printVariables();
         System.out.println("Сумма переменных = " + classesTask1.sumVariables() + ", максимальное значение перенных = " + classesTask1.maxVariable());
-        assertEquals(0, 0);
     }
 
     @Test
@@ -42,7 +41,6 @@ public class ClassesTrainingTest {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        assertEquals(0, 0);
     }
 
     @Test
@@ -53,7 +51,6 @@ public class ClassesTrainingTest {
         } catch (Exception ex){
             ex.printStackTrace();
         }
-        assertEquals(0, 0);
     }
 
     @Test
@@ -65,7 +62,6 @@ public class ClassesTrainingTest {
         } catch (Exception ex){
             ex.printStackTrace();
         }
-        assertEquals(0, 0);
     }
 
     @Test
@@ -74,20 +70,18 @@ public class ClassesTrainingTest {
         abonentBlock.getAbonentsManyInCityTimeSpeak(100);
         abonentBlock.getAbonentsOutCitySpeaked();
         abonentBlock.sortAbonents();
-        assertEquals(0, 0);
     }
 
     @Test
     public void classesTask6() {
         University university = new University();
         university.init();
-        assertEquals(0, 0);
     }
 
     @Test
     public void classesTask7() {
         Shop shop = new Shop();
         shop.init();
-        assertEquals(0, 0);
     }
+
 }
