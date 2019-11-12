@@ -52,10 +52,9 @@ public class CollectionsBlock<T extends Comparable> {
     public List<String> collectionTask4(@NonNull List<String> inputList, @NonNull String a, @NonNull String b) throws NullPointerException{
         if ((inputList == null) || (a == null) || (b == null)) throw new NullPointerException(ERROR_MESSAGE);
 
-        for (int i = 0; i < inputList.size(); i++) {
+        for (int i = 0; i < inputList.size(); i++){
             if (inputList.get(i).equals(a)) inputList.set(i, b);
         }
-
         return inputList;
     }
 }

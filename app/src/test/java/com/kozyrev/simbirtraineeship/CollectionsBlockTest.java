@@ -1,29 +1,23 @@
 package com.kozyrev.simbirtraineeship;
 
 import com.kozyrev.simbirtraineeship.collections.CollectionsBlock;
-import com.kozyrev.simbirtraineeship.collections.Student;
-import com.kozyrev.simbirtraineeship.collections.StudentsBlock;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class CollectionsBlockTest {
 
     private static CollectionsBlock<Integer> collectionsBlock;
-    private static StudentsBlock studentsBlock;
 
     @BeforeClass
     public static void init() {
         collectionsBlock = new CollectionsBlock<>();
-        studentsBlock = new StudentsBlock(100);
     }
 
     @Test
@@ -170,65 +164,5 @@ public class CollectionsBlockTest {
         List<String> averageValue = collectionsBlock.collectionTask4(inputList, a, b);
         List<String> expectedValue = Arrays.asList("Hi", ",", " ", "world");
         assertEquals(expectedValue, averageValue);
-    }
-
-    @Test
-    public void studentTask0_emptyList(){
-        StudentsBlock studentsBlock1 = new StudentsBlock(0);
-        List<Student> averageValue = studentsBlock1.sortStudents();
-        List<Student> expectedValue = Collections.emptyList();
-        assertEquals(expectedValue, averageValue);
-    }
-
-    @Test
-    public void studentTask0_notEmptyList(){
-        List<Student> averageValue = studentsBlock.sortStudents();
-        List<Student> expectedValue = Collections.emptyList();
-        assertNotEquals(expectedValue, averageValue);
-    }
-
-    @Test
-    public void studentTask1_emptyList(){
-        StudentsBlock studentsBlock1 = new StudentsBlock(0);
-        Map<Integer, Map<String, Double>> averageValue = studentsBlock1.averageMarksByGroup();
-        Map<Integer, Map<String, Double>> expectedValue = new HashMap<>();
-        assertEquals(expectedValue, averageValue);
-    }
-
-    @Test
-    public void studentTask1_notEmptyList(){
-        Map<Integer, Map<String, Double>> averageValue = studentsBlock.averageMarksByGroup();
-        Map<Integer, Map<String, Double>> expectedValue = new HashMap<>();
-        assertNotEquals(expectedValue, averageValue);
-    }
-
-    @Test
-    public void studentTask2_emptyList() {
-        StudentsBlock studentsBlock1 = new StudentsBlock(0);
-        List<Student> averageValue = studentsBlock1.minMaxAgeStudents();
-        List<Student> expectedValue = Collections.emptyList();
-        assertEquals(expectedValue, averageValue);
-    }
-
-    @Test
-    public void studentTask2_notEmptyList() {
-        List<Student> averageValue = studentsBlock.minMaxAgeStudents();
-        List<Student> expectedValue = Collections.emptyList();
-        assertNotEquals(expectedValue, averageValue);
-    }
-
-    @Test
-    public void studentTask3_emptyList() {
-        StudentsBlock studentsBlock1 = new StudentsBlock(0);
-        Map<Integer, Student> averageValue = studentsBlock1.bestMarksStudents();
-        Map<Integer, Student> expectedValue = new HashMap<>();
-        assertEquals(expectedValue, averageValue);
-    }
-
-    @Test
-    public void studentTask3_notEmptyList() {
-        Map<Integer, Student> averageValue = studentsBlock.bestMarksStudents();
-        Map<Integer, Student> expectedValue = new HashMap<>();
-        assertNotEquals(expectedValue, averageValue);
     }
 }
