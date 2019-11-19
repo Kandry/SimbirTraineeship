@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_icon_logo" />
 
     <TextView
-        android:id="@+id/tv_country_name"
+        android:id="@+id/tv_loading"
         style="@style/TextStyle3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
