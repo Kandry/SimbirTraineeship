@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreen">
+
+    <ImageView
+        android:id="@+id/iv_icon_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="@dimen/iv_icon_logo_vertical_bias" />
+
+    <ProgressBar
+        android:id="@+id/pb_load_app"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pb_height"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/pb_top_margin"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/iv_icon_logo" />
+
+    <TextView
+        android:id="@+id/tv_country_name"
+        style="@style/TextStyle3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/tv_loading_padding"
+        android:text="@string/app_load_text"
+
+        app:layout_constraintTop_toBottomOf="@+id/pb_load_app" />
+
+    <ImageView
+        android:id="@+id/im_logo_mss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/iv_logo_mss_bottom_margin"
+        android:src="@drawable/logo_mss"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

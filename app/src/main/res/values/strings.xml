@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">SimbirTraineeship</string>
+    <string name="app_name">Хочу помочь</string>
+    <string name="app_load_text">Загрузка…</string>
+
+    <string name="nav_news">Новости</string>
+    <string name="nav_search">Поиск</string>
+    <string name="nav_help">Помочь</string>
+    <string name="nav_history">История</string>
+    <string name="nav_profile">Профиль</string>
 </resources>
