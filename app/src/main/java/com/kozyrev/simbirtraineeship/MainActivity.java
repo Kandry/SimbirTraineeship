@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupToolbar();
-        loadFragment(new ProfileFragment());
+        //loadFragment(new ProfileFragment());
+        loadFragment(new HelpsFragment());
         setupBottomNavigationView();
     }
 
@@ -28,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
         TextView toolbar_title = findViewById(R.id.toolbar_title);
 
         setSupportActionBar(toolbar);
-        toolbar_title.setText(R.string.nav_profile);
+        toolbar_title.setText("Помочь");
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void setupBottomNavigationView(){
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_help);
     }
 
     private void loadFragment(Fragment fragment) {

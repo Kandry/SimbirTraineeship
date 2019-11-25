@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +19,6 @@ import com.kozyrev.simbirtraineeship.model.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -62,12 +62,12 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageView ivProfilePhoto = (ImageView) getView().findViewById(R.id.iv_profile_photo);
-        TextView tvName = (TextView) getView().findViewById(R.id.tv_name);
-        TextView tvDateBirth = (TextView) getView().findViewById(R.id.tv_date_birth_value);
-        TextView tvWork = (TextView) getView().findViewById(R.id.tv_work_value);
-        SwitchCompat switchCompat = (SwitchCompat) getView().findViewById(R.id.switchCompat);
-        RecyclerView rvFriends = (RecyclerView) getView().findViewById(R.id.rv_friends);
+        ImageView ivProfilePhoto = getView().findViewById(R.id.iv_profile_photo);
+        TextView tvName = getView().findViewById(R.id.tv_name);
+        TextView tvDateBirth = getView().findViewById(R.id.tv_date_birth_value);
+        TextView tvWork = getView().findViewById(R.id.tv_work_value);
+        SwitchCompat switchCompat = getView().findViewById(R.id.switchCompat);
+        RecyclerView rvFriends = getView().findViewById(R.id.rv_friends);
 
         ivProfilePhoto.setImageResource(user.getPhotoId());
         tvName.setText(user.getName());
@@ -77,5 +77,15 @@ public class ProfileFragment extends Fragment {
 
         UsersAdapter usersAdapter = new UsersAdapter(user.getFriends());
         rvFriends.setAdapter(usersAdapter);
+
+        ivProfilePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment photoDialog = new PhotoProfileDialogFragment();
+                photoDialog.show(getFragmentManager(), "dialog");
+            }
+        });
     }
+
+
 }

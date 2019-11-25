@@ -7,4 +7,5 @@
     <dimen name="iv_logo_mss_bottom_margin">16dp</dimen>
 
     <dimen name="icon_bottom_menu_size">24dp</dimen>
+    <dimen name="grid_space_beetween">8dp</dimen>
 </resources>
