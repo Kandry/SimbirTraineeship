@@ -2,6 +2,8 @@ package com.kozyrev.simbirtraineeship;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -29,34 +31,11 @@ public class ProfileFragment extends Fragment {
 
     public ProfileFragment() {}
 
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        initToolbar();
         initProfile();
         return view;
-    }
-
-    private void initProfile() {
-        user = new User(R.drawable.image_man, "Константинов Денис");
-        SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-        try {
-            user.setDateBirth(format.parse("1-Feb-1990"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        user.setProfession("Хирургия, травмотология");
-        user.setPush(true);
-        List<User> friends = new LinkedList<>();
-        friends.add(new User(R.drawable.avatar_3, "Дмитрий Валерьевич"));
-        friends.add(new User(R.drawable.avatar_2, "Евгений Александров"));
-        friends.add(new User(R.drawable.avatar_1, "Виктор Кузнецов"));
-        user.setFriends(friends);
     }
 
     @Override
@@ -87,5 +66,31 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.top_menu_profile, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
+    private void initToolbar(){
+        ((TextView) getActivity().findViewById(R.id.toolbar_title)).setText(R.string.nav_profile);
+        setHasOptionsMenu(true);
+    }
+
+    private void initProfile() {
+        user = new User(R.drawable.image_man, "Константинов Денис");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+        try {
+            user.setDateBirth(format.parse("1-Feb-1990"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        user.setProfession("Хирургия, травмотология");
+        user.setPush(true);
+        List<User> friends = new LinkedList<>();
+        friends.add(new User(R.drawable.avatar_3, "Дмитрий Валерьевич"));
+        friends.add(new User(R.drawable.avatar_2, "Евгений Александров"));
+        friends.add(new User(R.drawable.avatar_1, "Виктор Кузнецов"));
+        user.setFriends(friends);
+    }
 }

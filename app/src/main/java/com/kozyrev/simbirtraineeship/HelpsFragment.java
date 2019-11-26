@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,15 +30,9 @@ public class HelpsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_help, container, false);
+        initToolbar();
         initHelps();
         return view;
-    }
-
-    public static HelpsFragment newInstance(String param1, String param2) {
-        HelpsFragment fragment = new HelpsFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -48,6 +44,10 @@ public class HelpsFragment extends Fragment {
 
         HelpsAdapter helpsAdapter = new HelpsAdapter(helps);
         rvHelps.setAdapter(helpsAdapter);
+    }
+
+    private void initToolbar(){
+        ((TextView) getActivity().findViewById(R.id.toolbar_title)).setText(R.string.nav_help);
     }
 
     private void initHelps(){
