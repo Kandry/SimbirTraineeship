@@ -73,7 +73,9 @@ public class ProfileFragment extends Fragment {
     }
 
     private void initToolbar(){
-        ((TextView) getActivity().findViewById(R.id.toolbar_title)).setText(R.string.nav_profile);
+        TextView toolbarTitle = getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setVisibility(View.VISIBLE);
+        toolbarTitle.setText(R.string.nav_profile);
         setHasOptionsMenu(true);
     }
 

@@ -15,30 +15,6 @@
         android:dividerPadding="1dp"
         android:showDividers="middle">
 
-<!--        <com.google.android.material.appbar.AppBarLayout-->
-<!--            android:id="@+id/appBarLayout_profile"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent">-->
-
-<!--            <androidx.appcompat.widget.Toolbar-->
-<!--                android:id="@+id/toolbar_profile"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="?attr/actionBarSize"-->
-<!--                android:background="?attr/colorPrimary">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/toolbar_profile_title"-->
-<!--                    style="@style/TextStyle2"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center" />-->
-
-<!--            </androidx.appcompat.widget.Toolbar>-->
-<!--        </com.google.android.material.appbar.AppBarLayout>-->
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_profile_details"
             android:layout_width="match_parent"
