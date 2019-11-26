@@ -43,7 +43,11 @@ public class SearchFragment extends Fragment {
         searchView.setIconifiedByDefault(false);
         searchView.clearFocus();
         searchView.setQueryHint("Введите название организации");
-        searchView.setBackgroundColor(Color.WHITE);
+        searchView.setBackgroundResource(R.drawable.search_bg);
+
+        View v = searchView.findViewById(androidx.appcompat.R.id.search_plate);
+        v.setBackgroundColor(Color.WHITE);
+        //searchView.setBackgroundColor(Color.WHITE);
         /*
         int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
         View searchPlate = searchView.findViewById(searchPlateId);
@@ -58,12 +62,23 @@ public class SearchFragment extends Fragment {
         }*/
 
 
-        //EditText searchBox = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+        EditText searchBox = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+        searchBox.setBackgroundColor(Color.WHITE);
        // searchBox.setBackgroundColor(Color.WHITE);
     }
 
     private void initToolbar(){
-        getActivity().findViewById(R.id.toolbar_title).setVisibility(View.GONE);
-        setHasOptionsMenu(true);
+        TextView toolbarTitle = getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("");
+        toolbarTitle.setVisibility(View.GONE);
+        //setHasOptionsMenu(true);
+
+        SearchView searchView = getActivity().findViewById(R.id.toolbar_search);
+        searchView.setVisibility(View.VISIBLE);
+        searchView.setIconifiedByDefault(false);
+        searchView.clearFocus();
+        searchView.setQueryHint("Введите название организации");
+        View v = searchView.findViewById(androidx.appcompat.R.id.search_plate);
+        v.setBackgroundColor(Color.WHITE);
     }
 }
