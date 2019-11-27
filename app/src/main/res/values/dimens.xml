@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="iv_icon_logo_vertical_bias">0.3</dimen>
+    <dimen name="pb_height">40dp</dimen>
+    <dimen name="pb_top_margin">128dp</dimen>
+    <dimen name="tv_loading_padding">4dp</dimen>
+    <dimen name="iv_logo_mss_bottom_margin">16dp</dimen>
+
+    <dimen name="icon_bottom_menu_size">24dp</dimen>
+</resources>
