@@ -33,39 +33,39 @@ public class SearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.top_menu_search, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-
-        MenuItem menuItem = menu.findItem(R.id.top_nav_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setIconifiedByDefault(false);
-        searchView.clearFocus();
-        searchView.setQueryHint("Введите название организации");
-        searchView.setBackgroundResource(R.drawable.search_bg);
-
-        View v = searchView.findViewById(androidx.appcompat.R.id.search_plate);
-        v.setBackgroundColor(Color.WHITE);
-        //searchView.setBackgroundColor(Color.WHITE);
-        /*
-        int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
-        View searchPlate = searchView.findViewById(searchPlateId);
-        if (searchPlate!=null) {
-            searchPlate.setBackgroundColor(Color.DKGRAY);
-            int searchTextId = searchPlate.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-            TextView searchText = (TextView) searchPlate.findViewById(searchTextId);
-            if (searchText!=null) {
-                searchText.setTextColor(Color.WHITE);
-                searchText.setHintTextColor(Color.WHITE);
-            }
-        }*/
-
-
-        EditText searchBox = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
-        searchBox.setBackgroundColor(Color.WHITE);
-       // searchBox.setBackgroundColor(Color.WHITE);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        inflater.inflate(R.menu.top_menu_search, menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+//
+//        MenuItem menuItem = menu.findItem(R.id.top_nav_search);
+//        SearchView searchView = (SearchView) menuItem.getActionView();
+//        searchView.setIconifiedByDefault(false);
+//        searchView.clearFocus();
+//        searchView.setQueryHint("Введите название организации");
+//        searchView.setBackgroundResource(R.drawable.search_bg);
+//
+//        View v = searchView.findViewById(androidx.appcompat.R.id.search_plate);
+//        v.setBackgroundColor(Color.WHITE);
+//        //searchView.setBackgroundColor(Color.WHITE);
+//        /*
+//        int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
+//        View searchPlate = searchView.findViewById(searchPlateId);
+//        if (searchPlate!=null) {
+//            searchPlate.setBackgroundColor(Color.DKGRAY);
+//            int searchTextId = searchPlate.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+//            TextView searchText = (TextView) searchPlate.findViewById(searchTextId);
+//            if (searchText!=null) {
+//                searchText.setTextColor(Color.WHITE);
+//                searchText.setHintTextColor(Color.WHITE);
+//            }
+//        }*/
+//
+//
+//        EditText searchBox = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+//        searchBox.setBackgroundColor(Color.WHITE);
+//       // searchBox.setBackgroundColor(Color.WHITE);
+//    }
 
     private void initToolbar(){
         TextView toolbarTitle = getActivity().findViewById(R.id.toolbar_title);
