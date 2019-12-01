@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.kozyrev.simbirtraineeship.SearchFragment"
+        android:name="com.kozyrev.simbirtraineeship.search_fragment.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
 </navigation>

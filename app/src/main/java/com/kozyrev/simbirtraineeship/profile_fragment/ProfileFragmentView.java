@@ -23,7 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.UsersAdapter;
 import com.kozyrev.simbirtraineeship.model.User;
-import com.kozyrev.simbirtraineeship.utils.CropSquareTransformation;
 import com.squareup.picasso.Picasso;
 
 import java.util.LinkedList;
@@ -131,19 +130,18 @@ public class ProfileFragmentView extends Fragment implements ProfileFragmentCont
     }
 
     void updatePhoto(String photoUriStr, int imageResId){
-        int targetWidth = (int) getResources().getDimension(R.dimen.iv_profile_photo_width); //ivProfilePhoto.getLayoutParams().width;//tvName.getLayoutParams().width;
+        int targetWidth = (int) getResources().getDimension(R.dimen.iv_profile_photo_width);
         int targetHeight = (int) getResources().getDimension(R.dimen.iv_profile_photo_height);
 
         if (photoUriStr != null) {
             ivProfilePhoto.getLayoutParams().height = targetHeight;
+            ivProfilePhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
             Uri photoUri = Uri.parse(photoUriStr);
             Picasso.get()
                     .load(photoUri)
-                    //.resizeDimen(R.dimen.iv_profile_photo_width, R.dimen.iv_profile_photo_height)
-                    //.centerCrop()
-                    .transform(new CropSquareTransformation())
-                    .into(ivProfilePhoto); //.resize(targetWidth, targetHeight) .centerCrop()
+                    .into(ivProfilePhoto);
         } else {
+            ivProfilePhoto.setScaleType(ImageView.ScaleType.CENTER);
             ivProfilePhoto.getLayoutParams().height = targetWidth;
             ivProfilePhoto.setImageResource(imageResId);
         }
