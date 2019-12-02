@@ -7,4 +7,8 @@
     <dimen name="iv_logo_mss_bottom_margin">16dp</dimen>
 
     <dimen name="icon_bottom_menu_size">24dp</dimen>
+    <dimen name="grid_space_beetween">8dp</dimen>
+
+    <dimen name="iv_profile_photo_height">300dp</dimen>
+    <dimen name="iv_profile_photo_width">0dp</dimen>
 </resources>

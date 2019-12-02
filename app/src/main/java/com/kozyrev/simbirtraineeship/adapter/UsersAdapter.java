@@ -42,6 +42,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         return friends.size();
     }
 
+    public void dataSetChanged(List<User> friends){
+        this.friends = friends;
+        this.notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivFriendPhoto;
