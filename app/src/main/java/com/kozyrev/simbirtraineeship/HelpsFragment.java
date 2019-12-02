@@ -50,8 +50,8 @@ public class HelpsFragment extends Fragment {
         TextView toolbarTitle = getActivity().findViewById(R.id.toolbar_title);
         toolbarTitle.setVisibility(View.VISIBLE);
         toolbarTitle.setText(R.string.nav_help);
-        SearchView searchView = getActivity().findViewById(R.id.toolbar_search);
-        searchView.setVisibility(View.GONE);
+       /* SearchView searchView = getActivity().findViewById(R.id.toolbar_search);
+        searchView.setVisibility(View.GONE);*/
     }
 
     private void initHelps(){

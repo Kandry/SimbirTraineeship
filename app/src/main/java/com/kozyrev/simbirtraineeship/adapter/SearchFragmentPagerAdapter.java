@@ -11,7 +11,7 @@ import com.kozyrev.simbirtraineeship.search_fragment.NCOsFragment;
 
 public class SearchFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private String tabTitles[] = new String[] { "По мероприятиям", "По НКО"};
+    private String[] tabTitles = new String[]{"По мероприятиям", "По НКО"};
 
     public SearchFragmentPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
@@ -32,7 +32,7 @@ public class SearchFragmentPagerAdapter extends FragmentPagerAdapter {
                 return new NCOsFragment();
 
             default:
-                return new EventsFragment();
+                return null;
         }
     }
 

@@ -11,12 +11,16 @@
         android:layout_height="wrap_content"
         app:tabMode="fixed"
         android:background="@color/leaf"
+        app:tabTextAppearance="@style/TextStyle6"
+        app:tabSelectedTextColor="@color/white"
+        app:tabIndicatorColor="@color/macaroni_and_cheese"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_search"
+        android:background="@color/light_grey_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

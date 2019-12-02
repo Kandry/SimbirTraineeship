@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kozyrev.simbirtraineeship.R;
@@ -20,24 +24,22 @@ import java.util.List;
 
 public class EventsFragment extends Fragment {
 
-    List<Event> randomEvents = new ArrayList<>();
+    private List<Event> randomEvents = new ArrayList<>();
+    private List<Event> events;
 
-    EventsAdapter eventsAdapter;
+    private EventsAdapter eventsAdapter;
 
-    List<Event> events;
+    private TextView tvEventsResult;
 
     public EventsFragment(){}
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_events, container, false);
-    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initViews(view);
+        View rootView = inflater.inflate(R.layout.fragment_events, container, false);
+        initViews(rootView);
+        return rootView;
     }
 
     private void initViews(View view){
@@ -49,11 +51,19 @@ public class EventsFragment extends Fragment {
         randomEvents.add(new Event("Слёт волонтёров серебрянного возраста"));
         randomEvents.add(new Event("Соц. исследование: Ты доволен своей жизнью?"));
 
-        int eventsCount = (int) Math.random() * 7;
+        int eventsCount = (int) (Math.random() * 7);
         events = new LinkedList<>();
         for (int i = 0; i < eventsCount; i++) events.add(randomEvents.get(i));
 
+        tvEventsResult = view.findViewById(R.id.tv_events_result);
+        tvEventsResult.setText("Ключевые слова: мастер-класс, помощь\nРезультаты поиска: " + events.size() + " результатов");
+
         RecyclerView recyclerView = view.findViewById(R.id.rv_events);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setHasFixedSize(false);
+        DividerItemDecoration horizontalDecorator = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        horizontalDecorator.setDrawable(getResources().getDrawable(R.drawable.horizontal_divider));
+        recyclerView.addItemDecoration(horizontalDecorator);
 
         eventsAdapter = new EventsAdapter(events);
         recyclerView.setAdapter(eventsAdapter);
