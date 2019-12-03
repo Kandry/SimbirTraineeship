@@ -16,7 +16,7 @@ public class ProfileFragmentModel implements ProfileFragmentContract.Model {
         User user = new User(0, R.drawable.image_man, "Константинов Денис");
         SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
         try {
-            user.setDateBirth(format.parse("1-Feb-1990"));
+            user.setDateBirthTime(format.parse("1-Feb-1990").getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }
