@@ -74,7 +74,7 @@ public class ProfileFragmentView extends Fragment implements ProfileFragmentCont
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
 
-        int id = 1;
+        int id = 100000;
 
         profileFragmentPresenter = new ProfileFragmentPresenter(this);
         profileFragmentPresenter.requestUserData(id);
