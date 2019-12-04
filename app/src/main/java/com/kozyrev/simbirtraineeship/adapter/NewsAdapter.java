@@ -1,5 +1,6 @@
 package com.kozyrev.simbirtraineeship.adapter;
 
+import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.model.Event;
 import com.squareup.picasso.Picasso;
@@ -21,6 +23,7 @@ import org.threeten.bp.Instant;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.temporal.ChronoUnit;
 
 import java.net.URI;
 import java.util.List;
@@ -28,8 +31,8 @@ import java.util.List;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     private List<Event> news;
-
-    public NewsAdapter(List<Event> news){
+    public NewsAdapter(List<Event> news, Context context){
+        AndroidThreeTen.init(context);
         this.news = news;
     }
 
@@ -55,7 +58,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.tvNewsName.setText(event.getName());
         holder.tvNewsDescription.setText(event.getDescription());
         String date = "";
-/*
+
         if (event.getEndDate() > -1){
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM");
 
@@ -65,13 +68,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             LocalDate endLocalDate = Instant.ofEpochMilli(event.getEndDate()).atZone(ZoneId.systemDefault()).toLocalDate();
             String endDate = formatter.format(endLocalDate);
 
-            date = "(" + startDate + " - " + endDate + ")";
+            LocalDate localDate = LocalDate.now();
+            long diffDays = ChronoUnit.DAYS.between(localDate, startLocalDate);
+            if (diffDays > 0) date = "Осталось " + diffDays + " дней ";
+
+            date += "(" + startDate + " - " + endDate + ")";
         } else{
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
             LocalDate localDate = Instant.ofEpochMilli(event.getStartDate()).atZone(ZoneId.systemDefault()).toLocalDate();
             date = formatter.format(localDate);
         }
-*/
+
         holder.tvNewsCalendar.setText(date);
     }
 

@@ -4,13 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,6 +52,17 @@ public class NewsFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_news_category:
+                Navigation.findNavController(getView()).navigate(R.id.action_navigation_news_to_filtersFragment);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void initViews(View view){
         news = new LinkedList<>();
 
@@ -74,7 +88,7 @@ public class NewsFragment extends Fragment {
         rvNews.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvNews.setHasFixedSize(false);
 
-        NewsAdapter helpsAdapter = new NewsAdapter(news);
+        NewsAdapter helpsAdapter = new NewsAdapter(news, getContext());
         rvNews.setAdapter(helpsAdapter);
     }
 

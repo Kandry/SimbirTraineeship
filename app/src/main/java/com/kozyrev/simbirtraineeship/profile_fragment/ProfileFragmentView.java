@@ -11,15 +11,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.UsersAdapter;
@@ -114,11 +117,14 @@ public class ProfileFragmentView extends Fragment implements ProfileFragmentCont
 
     private void initToolbar(){
         TextView toolbarTitle = getActivity().findViewById(R.id.toolbar_title);
-        toolbarTitle.setVisibility(View.VISIBLE);
+        //toolbarTitle.setVisibility(View.VISIBLE);
         toolbarTitle.setText(R.string.nav_profile);
 /*
         SearchView searchView = getActivity().findViewById(R.id.toolbar_search);
         searchView.setVisibility(View.GONE);*/
+       /* AppBarLayout appBarLayout =
+        appBarLayout.setDi*/
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         setHasOptionsMenu(true);
     }
