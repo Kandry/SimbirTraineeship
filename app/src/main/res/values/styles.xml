@@ -26,7 +26,7 @@
         <item name="colorSwitchThumbNormal">@color/leaf</item>
 
         <!-- цвет дорожки для неактивного состояния (30% прозрачности) -->
-        <item name="android:colorForeground">@color/turtle_green</item>
+        <item name="android:colorForeground">@color/cool_grey</item>
     </style>
 
     <style name="TextStyle">

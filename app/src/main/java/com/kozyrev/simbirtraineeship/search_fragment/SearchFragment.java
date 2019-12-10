@@ -1,6 +1,5 @@
 package com.kozyrev.simbirtraineeship.search_fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,15 +11,17 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.ferfalk.simplesearchview.SimpleSearchView;
 import com.google.android.material.tabs.TabLayout;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.SearchFragmentPagerAdapter;
 
 public class SearchFragment extends Fragment {
+
+    private SimpleSearchView searchView;
 
     public SearchFragment(){}
 
@@ -47,21 +48,15 @@ public class SearchFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         MenuItem menuItem = menu.findItem(R.id.top_nav_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setQueryHint("Введите название организации");
-
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                view.setBackgroundColor(Color.WHITE);
-                //view.setBackgroundResource(R.drawable.search_bg);
-            }
-        });
+        searchView.setMenuItem(menuItem);
     }
 
     private void initToolbar(){
         TextView toolbarTitle = getActivity().findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("Поиск");
+        searchView = getActivity().findViewById(R.id.toolbar_search);
+
+        toolbarTitle.setText(R.string.nav_search);
+        searchView.setVisibility(View.VISIBLE);
         setHasOptionsMenu(true);
     }
 }

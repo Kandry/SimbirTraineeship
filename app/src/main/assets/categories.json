@@ -1,18 +1,22 @@
 [
 	{
         "id": 1,
-        "name": "Деньги"     
+        "name": "Деньги",
+        "isActive": true 
     },
     {
         "id": 2,
-        "name": "Вещи"     
+        "name": "Вещи",
+        "isActive": true
     },
     {
         "id": 3,
-        "name": "Проф. помощь"     
+        "name": "Проф. помощь",
+        "isActive": true
     },
     {
         "id": 4,
-        "name": "Волонтерство"     
+        "name": "Волонтерство",
+        "isActive": true
     }
 ]

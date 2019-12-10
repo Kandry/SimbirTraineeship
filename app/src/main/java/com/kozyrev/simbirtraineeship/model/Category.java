@@ -4,7 +4,7 @@ public class Category {
 
     private int id;
     private String name;
-    private boolean isActive = true;
+    private boolean isActive;
 
     public Category(String name){
         this.name = name;

@@ -31,6 +31,7 @@ public class FiltersFragmentView extends Fragment implements FiltersFragmentCont
 
     private List<Category> categories;
 
+    private Toolbar toolbar;
     private CategoriesAdapter categoriesAdapter;
 
     private FiltersFragmentPresenter filtersFragmentPresenter;
@@ -62,8 +63,8 @@ public class FiltersFragmentView extends Fragment implements FiltersFragmentCont
 
     private void initToolbar(){
         TextView toolbarTitle = getActivity().findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("Фильтры");
-        Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+        toolbarTitle.setText(R.string.filters_toolbar_title);
+        toolbar = getActivity().findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.icon_back);
         toolbar.setNavigationOnClickListener(view ->  {
                 toolbar.setNavigationIcon(null);
@@ -73,11 +74,7 @@ public class FiltersFragmentView extends Fragment implements FiltersFragmentCont
     }
 
     private void initViews(View view){
-        categories = new ArrayList<>(); /*
-        categories.add(new Category("Деньги"));
-        categories.add(new Category("Вещи"));
-        categories.add(new Category("Проф. помощь"));
-        categories.add(new Category("Волонтерство"));*/
+        categories = new ArrayList<>();
 
         RecyclerView rvFilters = view.findViewById(R.id.rv_filters);
         rvFilters.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

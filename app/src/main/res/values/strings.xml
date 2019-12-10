@@ -20,6 +20,8 @@
     <string name="profile_friends">Ваши друзья</string>
     <string name="profile_exit">Выйти из аккаунта</string>
 
+    <string name="search_hint">Введите название организации</string>
+
     <string name="photo_dialog_upload">Выбрать фото</string>
     <string name="photo_dialog_camera">Сделать снимок</string>
     <string name="photo_dialog_delete">Удалить</string>

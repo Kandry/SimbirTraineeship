@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ferfalk.simplesearchview.SimpleSearchView;
 import com.kozyrev.simbirtraineeship.adapter.HelpsAdapter;
 import com.kozyrev.simbirtraineeship.model.HelpItem;
 
@@ -50,8 +50,8 @@ public class HelpsFragment extends Fragment {
         TextView toolbarTitle = getActivity().findViewById(R.id.toolbar_title);
         //toolbarTitle.setVisibility(View.VISIBLE);
         toolbarTitle.setText(R.string.nav_help);
-       /* SearchView searchView = getActivity().findViewById(R.id.toolbar_search);
-        searchView.setVisibility(View.GONE);*/
+        SimpleSearchView searchView = getActivity().findViewById(R.id.toolbar_search);
+        searchView.setVisibility(View.GONE);
     }
 
     private void initHelps(){
