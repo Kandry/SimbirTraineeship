@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.CategoriesAdapter;
 import com.kozyrev.simbirtraineeship.model.Category;
@@ -68,6 +69,7 @@ public class FiltersFragmentView extends Fragment implements FiltersFragmentCont
         toolbar.setNavigationIcon(R.drawable.icon_back);
         toolbar.setNavigationOnClickListener(view ->  {
                 toolbar.setNavigationIcon(null);
+                filtersFragmentPresenter.setDataToFile(categoriesAdapter.getCategories());
                 getActivity().onBackPressed();
         });
         setHasOptionsMenu(true);
@@ -96,5 +98,11 @@ public class FiltersFragmentView extends Fragment implements FiltersFragmentCont
     public void onResponseFailure(Throwable throwable) {
         Log.e(TAG, throwable.getMessage());
         Toast.makeText(getActivity(), getString(R.string.communication_error), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onStop() {
+        filtersFragmentPresenter.setDataToFile(categoriesAdapter.getCategories());
+        super.onStop();
     }
 }

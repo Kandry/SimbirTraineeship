@@ -3,6 +3,7 @@ package com.kozyrev.simbirtraineeship.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         Category category = categories.get(position);
         holder.tvCardFilter.setText(category.getName());
         holder.switchCardFilter.setChecked(category.isActive());
+        holder.switchCardFilter.setOnCheckedChangeListener((compoundButton, b) -> category.setActive(b));
     }
 
     @Override
@@ -45,6 +47,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
     public void dataSetChanged(List<Category> categories){
         this.categories = categories;
         this.notifyDataSetChanged();
+    }
+
+    public List<Category> getCategories(){
+        return categories;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

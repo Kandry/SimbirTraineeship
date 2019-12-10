@@ -32,6 +32,11 @@ public class FiltersFragmentPresenter implements FiltersFragmentContract.Present
     }
 
     @Override
+    public void setDataToFile(List<Category> categories){
+        filtersFragmentModel.setFilters(categories);
+    }
+
+    @Override
     public void onDestroy() {
         this.filtersFragmentView = null;
     }

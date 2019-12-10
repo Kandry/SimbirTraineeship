@@ -92,6 +92,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         this.notifyDataSetChanged();
     }
 
+    public void setNews(List<Event> news) {
+        this.news = news;
+    }
+
+    public List<Event> getNews() {
+        return news;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivNewsImage;

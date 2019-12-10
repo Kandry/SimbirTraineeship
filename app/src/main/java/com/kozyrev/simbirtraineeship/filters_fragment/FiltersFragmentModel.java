@@ -2,7 +2,10 @@ package com.kozyrev.simbirtraineeship.filters_fragment;
 
 import android.content.Context;
 
+import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
+
+import java.util.List;
 
 public class FiltersFragmentModel implements FiltersFragmentContract.Model {
 
@@ -16,5 +19,10 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
     @Override
     public void getFilters(OnFinishedListener onFinishedListener) {
         onFinishedListener.onFinished(JSONHelper.getCategories(context, FILE_NAME));
+    }
+
+    @Override
+    public void setFilters(List<Category> categories) {
+        JSONHelper.setCategories(context, categories);
     }
 }

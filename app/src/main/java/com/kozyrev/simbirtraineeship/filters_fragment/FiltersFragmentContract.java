@@ -17,6 +17,8 @@ public interface FiltersFragmentContract {
         }
 
         void getFilters(OnFinishedListener onFinishedListener);
+
+        void setFilters(List<Category> categories);
     }
 
     interface View extends ViewBase {
@@ -27,5 +29,7 @@ public interface FiltersFragmentContract {
     interface Presenter extends PresenterBase {
 
         void requestDataFromFile();
+
+        void setDataToFile(List<Category> categories);
     }
 }
