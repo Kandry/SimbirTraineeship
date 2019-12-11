@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detail_event_activity.DetailEventView">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/abl_detail_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_detail_event"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:layout_gravity="center_horizontal"
+            app:elevation="0dp"
+            app:titleTextAppearance="@style/TextStyle2">
+
+            <TextView
+                android:id="@+id/toolbar_detail_event_title"
+                style="@style/TextStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:layout_gravity="center" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_detail_event_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:textColor="@color/blue_grey"
+            android:lineSpacingExtra="2sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_detail_event_calendar_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/icon_calendar"
+            app:layout_constraintEnd_toStartOf="@+id/tv_detail_event_calendar"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_title" />
+
+        <TextView
+            android:id="@+id/tv_detail_event_calendar"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="4dp"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            android:textColor="@color/grey"
+            android:lineSpacingExtra="4sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_detail_event_calendar_icon"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/iv_detail_event_calendar_icon"
+            app:layout_constraintTop_toTopOf="@+id/iv_detail_event_calendar_icon" />
+
+        <TextView
+            android:id="@+id/tv_detail_event_organizer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            android:textColor="@color/black___60"
+            android:lineSpacingExtra="8sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_detail_event_calendar_icon" />
+
+        <ImageView
+            android:id="@+id/iv_detail_event_address_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/nav"
+            app:layout_constraintEnd_toStartOf="@+id/tv_detail_event_address"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_organizer" />
+
+        <TextView
+            android:id="@+id/tv_detail_event_address"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            android:textColor="@color/black_70"
+            android:lineSpacingExtra="6sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_detail_event_address_icon"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/iv_detail_event_address_icon"
+            app:layout_constraintTop_toTopOf="@+id/iv_detail_event_address_icon" />
+
+        <ImageView
+            android:id="@+id/iv_detail_event_phone_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/phone"
+            app:layout_constraintEnd_toStartOf="@+id/tv_detail_event_phone"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_address" />
+
+        <TextView
+            android:id="@+id/tv_detail_event_phone"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            android:textColor="@color/black_70"
+            android:lineSpacingExtra="6sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_detail_event_phone_icon"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/iv_detail_event_phone_icon"
+            app:layout_constraintTop_toTopOf="@+id/iv_detail_event_phone_icon" />
+
+        <ImageView
+            android:id="@+id/iv_detail_event_mail_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/mail"
+            app:layout_constraintEnd_toStartOf="@+id/tv_detail_event_mail"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_phone" />
+
+        <TextView
+            android:id="@+id/tv_detail_event_mail"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            android:textColor="@color/black_70"
+            android:lineSpacingExtra="6sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_detail_event_mail_icon"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/iv_detail_event_mail_icon"
+            app:layout_constraintTop_toTopOf="@+id/iv_detail_event_mail_icon" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detail_event_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_mail" />
+
+        <TextView
+            android:id="@+id/tv_detail_event_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            android:textColor="@color/black_70"
+            android:lineSpacingExtra="6sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_detail_event_images" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detail_event_users"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_description"
+            android:background="@color/light_grey_two"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv_detail_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_detail_event_users"
+            android:background="@color/white"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

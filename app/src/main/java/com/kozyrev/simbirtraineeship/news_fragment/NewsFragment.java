@@ -1,5 +1,6 @@
 package com.kozyrev.simbirtraineeship.news_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ferfalk.simplesearchview.SimpleSearchView;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.NewsAdapter;
+import com.kozyrev.simbirtraineeship.detail_event_activity.DetailEventView;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
@@ -27,7 +29,9 @@ import com.kozyrev.simbirtraineeship.utils.JSONHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsFragment extends Fragment {
+import static com.kozyrev.simbirtraineeship.utils.Constants.EVENT_ID;
+
+public class NewsFragment extends Fragment implements NewsItemClickListener{
 
     private List<Event> news;
     private List<Event> allNews;
@@ -73,22 +77,29 @@ public class NewsFragment extends Fragment {
     }
 
     @Override
+    public void onNewsItemClick(int position) {
+        Intent intent = new Intent(getContext(), DetailEventView.class);
+        intent.putExtra(EVENT_ID, news.get(position).getId());
+        startActivity(intent);
+    }
+
+    @Override
     public void onStop() {
         JSONHelper.clearCategories(getContext());
         super.onStop();
     }
 
     private void initNews(){
-        allNews = JSONHelper.getEvents(getContext(), "events.json");
+        allNews = JSONHelper.getEvents(getContext(), getString(R.string.events_filename));
         news = new ArrayList<>();
         for (Event event : allNews){
             news.add(event);
         }
-        newsAdapter = new NewsAdapter(news, getContext());
+        newsAdapter = new NewsAdapter(news, getContext(), this);
     }
 
     private void updateNews(){
-        List<Category> categories = JSONHelper.getCategories(getContext(), "categories.json");
+        List<Category> categories = JSONHelper.getCategories(getContext(), getString(R.string.categories_filename));
         for (Event event: allNews) {
             List<Integer> categoriesID = event.getCategoriesID();
             boolean inNews = false;

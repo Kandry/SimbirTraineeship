@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.model.Event;
+import com.kozyrev.simbirtraineeship.news_fragment.NewsFragment;
 import com.squareup.picasso.Picasso;
 
 import org.threeten.bp.Instant;
@@ -28,19 +29,33 @@ import org.threeten.bp.temporal.ChronoUnit;
 import java.net.URI;
 import java.util.List;
 
+import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
+
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     private List<Event> news;
-    public NewsAdapter(List<Event> news, Context context){
+    private NewsFragment newsFragment;
+
+    public NewsAdapter(List<Event> news, Context context, NewsFragment newsFragment){
         AndroidThreeTen.init(context);
         this.news = news;
+        this.newsFragment = newsFragment;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         CardView cardView = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.card_news, parent, false);
-        return new ViewHolder(cardView);
+        ViewHolder viewHolder = new ViewHolder(cardView);
+
+        cardView.setOnClickListener((v) -> {
+            int adapterPosition = viewHolder.getAdapterPosition();
+            if (adapterPosition != NO_POSITION){
+                newsFragment.onNewsItemClick(adapterPosition);
+            }
+        });
+
+        return viewHolder;
     }
 
     @Override

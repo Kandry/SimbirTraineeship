@@ -5,6 +5,9 @@
     <string name="communication_error">Error in getting data. Please try again later.</string>
     <string name="get_need_permissions">Для корректной работы приложения предоставьте необходимые разрешения</string>
 
+    <string name="events_filename">events.json</string>
+    <string name="categories_filename">categories.json</string>
+
     <string name="nav_news">Новости</string>
     <string name="nav_search">Поиск</string>
     <string name="nav_help">Помочь</string>
@@ -34,4 +37,6 @@
 
     <string name="filters_toolbar_title">Фильтры</string>
     <string name="filters_title">Категории помощи</string>
+
+    <string name="detail_event_share">Поделиться</string>
 </resources>
