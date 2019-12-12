@@ -11,4 +11,8 @@
 
     <dimen name="iv_profile_photo_height">300dp</dimen>
     <dimen name="iv_profile_photo_width">0dp</dimen>
+
+    <dimen name="bnv_icons_padding">8dp</dimen>
+    <dimen name="bnv_labels_textSize">7sp</dimen>
+    <dimen name="bnv_labels_lineSpacingExtra">1sp</dimen>
 </resources>

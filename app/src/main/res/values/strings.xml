@@ -39,4 +39,9 @@
     <string name="filters_title">Категории помощи</string>
 
     <string name="detail_event_share">Поделиться</string>
+
+    <string name="event_nav_shirt">Помочь вещами</string>
+    <string name="event_nav_hands">Стать волонтером</string>
+    <string name="event_nav_tools">Проф. помощь</string>
+    <string name="event_nav_coins">Помочь деньгами</string>
 </resources>

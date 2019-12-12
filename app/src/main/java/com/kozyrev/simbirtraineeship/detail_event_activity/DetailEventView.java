@@ -7,9 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.model.Event;
@@ -30,6 +34,8 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
             tvDetailEventDescription;
     private RecyclerView rvDetailEventImages,
             rvDetailEventUsers;
+    //StaggeredGridLayoutManager для картинок/\
+
     private BottomNavigationView bnvDetailEvent;
 
     private DetailEventPresenter detailEventPresenter;
@@ -97,5 +103,29 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
         rvDetailEventUsers = findViewById(R.id.rv_detail_event_users);
 
         bnvDetailEvent = findViewById(R.id.bnv_detail_event);
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bnvDetailEvent.getChildAt(0);
+
+        for (int i = 0; i<menuView.getChildCount(); i++){
+            BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(i);
+            ImageView icon = itemView.findViewById(R.id.icon);
+            TextView smallLabel = itemView.findViewById(R.id.smallLabel);
+            TextView largeLabel = itemView.findViewById(R.id.largeLabel);
+
+            smallLabel.setMinLines(2);
+            largeLabel.setMinLines(2);
+
+            smallLabel.setMaxLines(2);
+            largeLabel.setMaxLines(2);
+
+            smallLabel.setTextSize(getResources().getDimension(R.dimen.bnv_labels_textSize));
+            smallLabel.setTextColor(getResources().getColor(R.color.black___40));
+            largeLabel.setTextSize(getResources().getDimension(R.dimen.bnv_labels_textSize));
+            largeLabel.setTextColor(getResources().getColor(R.color.black___40));
+
+            smallLabel.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            largeLabel.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+            icon.setPadding(0,0, 0, (int) getResources().getDimension(R.dimen.bnv_icons_padding));
+        }
     }
 }
