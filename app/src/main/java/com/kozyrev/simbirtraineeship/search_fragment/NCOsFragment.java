@@ -42,6 +42,7 @@ public class NCOsFragment extends Fragment {
     private void initViews(View view){
         randomNCO.add(new NCO("Благотворительный фонд Алины Кабаевой"));
         randomNCO.add(new NCO("Во имя жизни"));
+
         randomNCO.add(new NCO("Благотворительный фонд В. Потанина"));
         randomNCO.add(new NCO("Детские домики"));
         randomNCO.add(new NCO("Мозаика счастья"));
