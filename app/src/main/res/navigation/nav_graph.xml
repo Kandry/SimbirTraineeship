@@ -21,6 +21,22 @@
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.kozyrev.simbirtraineeship.search_fragment.SearchFragment"
-        android:label="fragment_search"
+        android:label="@string/nav_search"
         tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/navigation_news"
+        android:name="com.kozyrev.simbirtraineeship.news_fragment.NewsFragment"
+        android:label="@string/nav_news"
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_navigation_news_to_filtersFragment"
+            app:destination="@id/filtersFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/filtersFragment"
+        android:name="com.kozyrev.simbirtraineeship.filters_fragment.FiltersFragmentView"
+        android:label="@string/filters_toolbar_title"
+        tools:layout="@layout/fragment_filter" />
 </navigation>

@@ -15,7 +15,7 @@ public class User implements Parcelable {
     private String name;
     private int photoId = -1;
     private String photoUri;
-    private Date dateBirth;
+    private long dateBirthTime;
     private String profession;
     private boolean isPush = true;
     private List<User> friends;
@@ -36,7 +36,7 @@ public class User implements Parcelable {
         photoId = in.readInt();
         photoUri = in.readString();
         name = in.readString();
-        dateBirth = new Date(in.readLong());
+        dateBirthTime = in.readLong();
         profession = in.readString();
         isPush = in.readByte() != 0;
         friends = in.createTypedArrayList(User.CREATOR);
@@ -86,12 +86,12 @@ public class User implements Parcelable {
         this.name = name;
     }
 
-    public Date getDateBirth() {
-        return dateBirth;
+    public Long getDateBirthTime() {
+        return dateBirthTime;
     }
 
-    public void setDateBirth(Date dateBirth) {
-        this.dateBirth = dateBirth;
+    public void setDateBirthTime(Long dateBirthTime) {
+        this.dateBirthTime = dateBirthTime;
     }
 
     public String getProfession() {
@@ -130,7 +130,7 @@ public class User implements Parcelable {
         parcel.writeInt(photoId);
         parcel.writeString(photoUri);
         parcel.writeString(name);
-        parcel.writeLong(dateBirth.getTime());
+        parcel.writeLong(dateBirthTime);
         parcel.writeString(profession);
         parcel.writeBoolean(isPush);
         parcel.writeList(friends);

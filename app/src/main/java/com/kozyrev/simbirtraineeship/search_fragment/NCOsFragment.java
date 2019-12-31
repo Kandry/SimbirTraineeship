@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,6 +42,7 @@ public class NCOsFragment extends Fragment {
     private void initViews(View view){
         randomNCO.add(new NCO("Благотворительный фонд Алины Кабаевой"));
         randomNCO.add(new NCO("Во имя жизни"));
+
         randomNCO.add(new NCO("Благотворительный фонд В. Потанина"));
         randomNCO.add(new NCO("Детские домики"));
         randomNCO.add(new NCO("Мозаика счастья"));

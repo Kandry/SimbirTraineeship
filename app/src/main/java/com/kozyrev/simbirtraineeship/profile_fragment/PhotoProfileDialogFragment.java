@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.model.User;
 import com.kozyrev.simbirtraineeship.utils.AppPermissions;
 import com.kozyrev.simbirtraineeship.utils.Camera;
+import com.squareup.picasso.Picasso;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -60,35 +62,51 @@ public class PhotoProfileDialogFragment extends DialogFragment {
         //notImageAdding = true;
 
         switch (requestCode) {
-            /*
+
             case REQUEST_GALLERY:
                 if (resultCode == RESULT_OK) {
                     getImageFromGallery(data);
                 }
-                break;*/
+                break;
 
             case START_CAMERA_APP:
                 if (resultCode == RESULT_OK) {
                     imageUriString = camera.getPhotoFromCamera();
                     profileFragmentView.updatePhoto(imageUriString, -1);
-                    //user.setPhotoUri(imageUriString);
                 }
                 break;
         }
     }
 
     private void initListeners(View rootView){
+        Button dialogUpload = rootView.findViewById(R.id.dialog_upload);
         Button dialogCamera = rootView.findViewById(R.id.dialog_camera);
         Button deleteDialog = rootView.findViewById(R.id.dialog_delete);
 
-        dialogCamera.setOnClickListener(view -> {
-            addPhoto();
-        });
+        dialogUpload.setOnClickListener(view -> getGalleryImage());
+
+        dialogCamera.setOnClickListener(view -> addPhoto());
 
         deleteDialog.setOnClickListener(view -> {
             user.setPhotoUri(null);
             profileFragmentView.updatePhoto(null, R.drawable.user_icon);
         });
+    }
+
+    private void getGalleryImage(){
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.setType("image/*");
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_GALLERY);
+    }
+
+    private void getImageFromGallery(Intent data){
+        int takeFlags = data.getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+        Uri originalUri = data.getData();
+        getActivity().getContentResolver().takePersistableUriPermission(originalUri, takeFlags);
+
+        imageUriString = originalUri.toString();
+        profileFragmentView.updatePhoto(imageUriString, -1);
     }
 
     private void addPhoto(){

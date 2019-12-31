@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/event_nav_shirt"
+        android:icon="@drawable/shirt"
+        android:title="@string/event_nav_shirt" />
+
+    <item
+        android:id="@+id/event_nav_hands"
+        android:icon="@drawable/hands"
+        android:title="@string/event_nav_hands" />
+
+    <item
+        android:id="@+id/event_nav_tools"
+        android:icon="@drawable/tools"
+        android:title="@string/event_nav_tools" />
+
+    <item
+        android:id="@+id/event_nav_coins"
+        android:icon="@drawable/coins"
+        android:title="@string/event_nav_coins" />
+</menu>
