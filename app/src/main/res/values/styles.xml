@@ -15,6 +15,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="PushSwitch" parent="Theme.AppCompat.Light">
@@ -25,7 +26,13 @@
         <item name="colorSwitchThumbNormal">@color/leaf</item>
 
         <!-- цвет дорожки для неактивного состояния (30% прозрачности) -->
-        <item name="android:colorForeground">@color/turtle_green</item>
+        <item name="android:colorForeground">@color/cool_grey</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/light_olive_green</item>
     </style>
 
     <style name="TextStyle2">
@@ -41,6 +48,23 @@
         <item name="android:textStyle">normal</item>
         <item name="android:lineSpacingExtra">6sp</item>
         <item name="android:textColor">@color/black_70</item>
+    </style>
+
+    <style name="TextStyle5">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black__87</item>
+    </style>
+
+    <style name="TextStyle6">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white_70</item>
+        <item name="android:letterSpacing">0.04</item>
     </style>
 
 </resources>

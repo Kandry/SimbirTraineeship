@@ -2,6 +2,12 @@
     <string name="app_name">Хочу помочь</string>
     <string name="app_load_text">Загрузка…</string>
 
+    <string name="communication_error">Error in getting data. Please try again later.</string>
+    <string name="get_need_permissions">Для корректной работы приложения предоставьте необходимые разрешения</string>
+
+    <string name="events_filename">events.json</string>
+    <string name="categories_filename">categories.json</string>
+
     <string name="nav_news">Новости</string>
     <string name="nav_search">Поиск</string>
     <string name="nav_help">Помочь</string>
@@ -10,4 +16,36 @@
 
     <string name="nav_profile_name">Профиль</string>
     <string name="nav_profile_edit">Изменить</string>
+
+    <string name="profile_date_birth">Дата рождения</string>
+    <string name="profile_work">Сфера деятельности</string>
+    <string name="profile_push">Получать push-уведомления</string>
+    <string name="profile_friends">Ваши друзья</string>
+    <string name="profile_exit">Выйти из аккаунта</string>
+
+    <string name="search_hint">Введите название организации</string>
+
+    <string name="photo_dialog_upload">Выбрать фото</string>
+    <string name="photo_dialog_camera">Сделать снимок</string>
+    <string name="photo_dialog_delete">Удалить</string>
+
+    <string name="news_menu_filter">Фильтр</string>
+
+    <string name="helps_title">Выберите категорию помощи</string>
+
+    <string name="filters_ok">Принять</string>
+
+    <string name="filters_toolbar_title">Фильтры</string>
+    <string name="filters_title">Категории помощи</string>
+
+    <string name="detail_event_share">Поделиться</string>
+
+    <string name="event_nav_shirt">Помочь вещами</string>
+    <string name="event_nav_hands">Стать волонтером</string>
+    <string name="event_nav_tools">Проф. помощь</string>
+    <string name="event_nav_coins">Помочь деньгами</string>
+    
+    <string name="event_detail_mail_title">У вас есть вопросы?</string>
+    <string name="event_detail_mail_button"><u>Напишите нам</u></string>
+    <string name="event_detail_site_button"><u>Перейти на сайт организации</u></string>
 </resources>
