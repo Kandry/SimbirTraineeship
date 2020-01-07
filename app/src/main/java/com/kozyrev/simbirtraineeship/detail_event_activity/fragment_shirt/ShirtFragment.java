@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.alibaba.android.vlayout.LayoutHelper;
+import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.StaggeredGridLayoutHelper;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.ImagesEventAdapter;
@@ -48,7 +51,7 @@ public class ShirtFragment extends Fragment {
 
     private int id;
 
-    private List<Integer> imagesResId;
+    private List<String> imagesRes;
     private List<User> eventUsers;
 
     public ShirtFragment(int id){
@@ -122,12 +125,18 @@ public class ShirtFragment extends Fragment {
             //tvDetailEventMail.setText(event.getEmail());
             tvDetailEventDescription.setText(event.getDescription());
 
-            imagesResId = new LinkedList<>();
+            imagesRes = new LinkedList<>();
+            //List<String> images = event.getImagesUri();
+            imagesRes.addAll(event.getImagesUri());
+            /*
             imagesResId.add(R.drawable.cardimage_1);
             imagesResId.add(R.drawable.cardimage_2);
-            imagesResId.add(R.drawable.cardimage_3);
+            imagesResId.add(R.drawable.cardimage_3);*/
+            /*for (String imageUri: images) {
+                imagesRes.add(imageUri);
+            }*/
 
-            ImagesEventAdapter imagesEventAdapter = new ImagesEventAdapter(imagesResId);
+            ImagesEventAdapter imagesEventAdapter = new ImagesEventAdapter(imagesRes);
             rvDetailEventImages.setAdapter(imagesEventAdapter);
 
             eventUsers = new ArrayList<>();
@@ -177,6 +186,14 @@ public class ShirtFragment extends Fragment {
 
         rvDetailEventImages = view.findViewById(R.id.rv_detail_event_images);
         rvDetailEventImages.setHasFixedSize(true);
+      /*  VirtualLayoutManager layoutManager = new VirtualLayoutManager(getContext());
+        rvDetailEventImages.setLayoutManager(layoutManager);
+
+        List<LayoutHelper> helpers = new LinkedList<>();
+        helpers.add(new StaggeredGridLayoutHelper(2));
+
+        layoutManager.setLayoutHelpers(helpers);*/
+
         rvDetailEventImages.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         rvDetailEventUsers = view.findViewById(R.id.rv_detail_event_users);

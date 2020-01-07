@@ -61,14 +61,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position){
         Event event = news.get(position);
-        /*
-        Picasso.get()
-                .load(Uri.parse(event.getImageUri()))
-                .into(holder.ivNewsImage);*/
+
 
         Picasso.get()
-                .load(R.drawable.image_man)
+                .load(Uri.parse(event.getImagesUri().get(0)))
                 .into(holder.ivNewsImage);
+/*
+        Picasso.get()
+                .load(R.drawable.image_man)
+                .into(holder.ivNewsImage);*/
 
         holder.tvNewsName.setText(event.getName());
         holder.tvNewsDescription.setText(event.getDescription());
