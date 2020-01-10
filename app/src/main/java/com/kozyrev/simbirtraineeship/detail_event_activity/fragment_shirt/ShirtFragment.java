@@ -203,7 +203,7 @@ public class ShirtFragment extends Fragment {
     }
 
     private Event getEvent(int id){
-        List<Event> events = JSONHelper.getEvents(getContext(), getContext().getString(R.string.events_filename));
+        List<Event> events = JSONHelper.getEvents(getContext(), getContext().getString(R.string.events_filename), JSONHelper.BackThreadType.ASYNCTASK);
         Event finalEvent = null;
         for(Event event: events){
             if (event.getId() == id) finalEvent = event;

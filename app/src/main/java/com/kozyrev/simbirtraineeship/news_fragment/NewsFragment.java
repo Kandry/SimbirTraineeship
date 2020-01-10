@@ -90,7 +90,7 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
     }
 
     private void initNews(){
-        allNews = JSONHelper.getEvents(getContext(), getString(R.string.events_filename));
+        allNews = JSONHelper.getEvents(getContext(), getString(R.string.events_filename), JSONHelper.BackThreadType.ASYNCTASK);
         news = new ArrayList<>();
         for (Event event : allNews){
             news.add(event);
@@ -99,7 +99,7 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
     }
 
     private void updateNews(){
-        List<Category> categories = JSONHelper.getCategories(getContext(), getString(R.string.categories_filename));
+        List<Category> categories = JSONHelper.getCategories(getContext(), getString(R.string.categories_filename), JSONHelper.BackThreadType.ASYNCTASK);
         for (Event event: allNews) {
             List<Integer> categoriesID = event.getCategoriesID();
             boolean inNews = false;

@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.Ferfalk:SimpleSearchView:0.1.4@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/00d94511980290030b96487adc0b9bbc/jetified-SimpleSearchView-0.1.4/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1d461a5b84b8298b0b51459ba61c9c63/jetified-SimpleSearchView-0.1.4/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/00d94511980290030b96487adc0b9bbc/jetified-SimpleSearchView-0.1.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/00d94511980290030b96487adc0b9bbc/jetified-SimpleSearchView-0.1.4/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1d461a5b84b8298b0b51459ba61c9c63/jetified-SimpleSearchView-0.1.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1d461a5b84b8298b0b51459ba61c9c63/jetified-SimpleSearchView-0.1.4/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Ferfalk/SimpleSearchView/0.1.4/8e74ea8a40ae723045b5e3e2a47543e240fcf0aa/SimpleSearchView-0.1.4-javadoc.jar!/" />

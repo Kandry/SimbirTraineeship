@@ -17,7 +17,7 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
 
     @Override
     public void getFilters(OnFinishedListener onFinishedListener) {
-        onFinishedListener.onFinished(JSONHelper.getCategories(context, context.getString(R.string.categories_filename)));
+        onFinishedListener.onFinished(JSONHelper.getCategories(context, context.getString(R.string.categories_filename), JSONHelper.BackThreadType.ASYNCTASK));
     }
 
     @Override
