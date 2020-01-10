@@ -1,7 +1,9 @@
 package com.kozyrev.simbirtraineeship.utils;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
@@ -14,6 +16,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
+import com.kozyrev.simbirtraineeship.utils.intent_service.CategoriesIntentService;
+import com.kozyrev.simbirtraineeship.utils.intent_service.EventsIntentService;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,6 +46,10 @@ public class JSONHelper {
                 } catch (ExecutionException | InterruptedException e){
                     e.printStackTrace();
                 }
+            case INTENTSERVICE:
+                Intent intentCategories = new Intent(context, CategoriesIntentService.class);
+                intentCategories.putExtra(Constants.EXTRA_KEY_IN, fileName);
+                context.startService(intentCategories);
             case NONE:
             default:
                 SharedPreferences prefs = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
@@ -89,6 +97,10 @@ public class JSONHelper {
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();
                 }
+            case INTENTSERVICE:
+                Intent intentEvents = new Intent(context, EventsIntentService.class);
+                intentEvents.putExtra(Constants.EXTRA_KEY_IN, fileName);
+                context.startService(intentEvents);
             case NONE:
             default:
                 String json = readJson(context, fileName, new StringBuilder());
@@ -98,7 +110,7 @@ public class JSONHelper {
     }
 
     @Nullable
-    private static String readJson(@NotNull Context context, String fileName, StringBuilder json){
+    public static String readJson(@NotNull Context context, String fileName, StringBuilder json){
         try{
             InputStream inputStream = context.getAssets().open(fileName);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -156,6 +168,14 @@ public class JSONHelper {
 
             Type type = new TypeToken<List<Category>>() {}.getType();
             return new Gson().fromJson(json, type);
+        }
+    }
+
+    static class EventsBroadcastReceiver extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            List<Event> events = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
         }
     }
 }

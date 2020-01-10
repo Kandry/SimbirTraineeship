@@ -47,6 +47,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/paths" />
         </provider>
+        <service android:name=".utils.intent_service.EventsIntentService" />
+        <service android:name=".utils.intent_service.CategoriesIntentService" />
     </application>
 
 </manifest>

@@ -1,8 +1,11 @@
 package com.kozyrev.simbirtraineeship.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class Event {
+public class Event implements Parcelable {
 
     private int id;
     private String name;
@@ -126,5 +129,28 @@ public class Event {
 
     public void setParticipantsID(List<Integer> participantsID) {
         this.participantsID = participantsID;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(description);
+        parcel.writeList(imagesUri);
+        parcel.writeList(categoriesID);
+        parcel.writeLong(startDate);
+        parcel.writeLong(endDate);
+
+        parcel.writeString(organizer);
+        parcel.writeString(address);
+        parcel.writeList(phoneNumbers);
+        parcel.writeString(email);
+        parcel.writeString(site);
+        parcel.writeList(participantsID);;
     }
 }

@@ -1,6 +1,12 @@
 package com.kozyrev.simbirtraineeship.model;
 
-public class Category {
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
+
+public class Category implements Parcelable {
 
     private int id;
     private String name;
@@ -32,5 +38,20 @@ public class Category {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            parcel.writeBoolean(isActive);
+        }
     }
 }
