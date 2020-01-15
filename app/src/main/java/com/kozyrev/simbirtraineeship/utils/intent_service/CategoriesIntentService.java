@@ -2,6 +2,7 @@ package com.kozyrev.simbirtraineeship.utils.intent_service;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Parcelable;
 
 import androidx.annotation.Nullable;
 
@@ -23,15 +24,18 @@ public class CategoriesIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
+        JSONHelper jsonHelper = new JSONHelper();
         String fileName = intent.getStringExtra(Constants.EXTRA_KEY_IN);
 
-        String json = JSONHelper.readJson(getApplicationContext(), fileName, new StringBuilder());
+        String json = jsonHelper.readJson(getApplicationContext(), fileName, new StringBuilder());
         Type type = new TypeToken<List<Category>>(){}.getType();
-        ArrayList<Category> categories = new Gson().fromJson(json, type);
+        List<Category> categories = new Gson().fromJson(json, type);
+        if (categories == null) categories = new ArrayList<>();
 
         Intent responseIntent = new Intent();
-        responseIntent.setAction(Constants.ACTION_EVENTSINTENTSERVICE);
+        responseIntent.setAction(Constants.ACTION_INTENTSERVICE);
         responseIntent.addCategory(Intent.CATEGORY_DEFAULT);
-        responseIntent.putParcelableArrayListExtra(Constants.EXTRA_KEY_OUT, categories);
+        responseIntent.putParcelableArrayListExtra(Constants.EXTRA_KEY_OUT, (ArrayList<Category>) categories);
+        sendBroadcast(responseIntent);
     }
 }

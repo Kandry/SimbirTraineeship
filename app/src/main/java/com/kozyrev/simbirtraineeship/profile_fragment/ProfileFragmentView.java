@@ -106,6 +106,16 @@ public class ProfileFragmentView extends Fragment implements ProfileFragmentCont
     }
 
     @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
     public void onResponseFailure(Throwable throwable) {
         Log.e(TAG, throwable.getMessage());
         Toast.makeText(getActivity(), getString(R.string.communication_error), Toast.LENGTH_LONG).show();

@@ -2,6 +2,8 @@ package com.kozyrev.simbirtraineeship.utils.intent_service;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Parcelable;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -17,21 +19,30 @@ import java.util.List;
 
 public class EventsIntentService extends IntentService {
 
-    public EventsIntentService(String name) {
-        super(name);
+    public EventsIntentService() {
+        super("name");
     }
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         String fileName = intent.getStringExtra(Constants.EXTRA_KEY_IN);
+        Log.d("COUNT_EV1", "isEmpty: " + fileName);
 
-        String json = JSONHelper.readJson(getApplicationContext(), fileName, new StringBuilder());
+        JSONHelper jsonHelper = new JSONHelper();
+        String json = jsonHelper.readJson(getApplicationContext(), fileName, new StringBuilder());
         Type type = new TypeToken<List<Event>>(){}.getType();
-        ArrayList<Event> events = new Gson().fromJson(json, type);
+        List<Event> events = new Gson().fromJson(json, type);
+
+        Log.d("COUNT_EV1", "isEmpty: " + events.toString());
+
+        if (events == null) events = new ArrayList<>();
 
         Intent responseIntent = new Intent();
-        responseIntent.setAction(Constants.ACTION_EVENTSINTENTSERVICE);
+        responseIntent.setAction(Constants.ACTION_INTENTSERVICE);
         responseIntent.addCategory(Intent.CATEGORY_DEFAULT);
-        responseIntent.putParcelableArrayListExtra(Constants.EXTRA_KEY_OUT, events);
+        responseIntent.putParcelableArrayListExtra(Constants.EXTRA_KEY_OUT, (ArrayList<Event>) events);
+        sendBroadcast(responseIntent);
+
+        Log.d("COUNT_EV1", "isEmpty: " + events.toString());
     }
 }

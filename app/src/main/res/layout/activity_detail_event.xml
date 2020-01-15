@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".detail_event_activity.DetailEventView">
@@ -39,30 +40,420 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <FrameLayout
-            android:id="@+id/nav_detail_event_fragment"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_constraintBottom_toTopOf="@+id/bnv_detail_event"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bnv_detail_event"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/bottom_event_menu"
-            app:labelVisibilityMode="labeled"
-            android:background="@color/white"
-            app:itemBackground="@color/white"
-            app:itemIconSize="@dimen/icon_bottom_menu_size"
-            app:itemIconTint="@drawable/bottom_navigation_colors"
-            app:itemTextColor="@drawable/bottom_navigation_colors"
-            app:layout_constraintBottom_toBottomOf="parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <TextView
+                    android:id="@+id/tv_detail_event_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:lineSpacingExtra="2sp"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="21sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_detail_event_calendar_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/icon_calendar_grey"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_detail_event_calendar"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_title" />
+
+                <TextView
+                    android:id="@+id/tv_detail_event_calendar"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="4sp"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_detail_event_calendar_icon"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/iv_detail_event_calendar_icon"
+                    app:layout_constraintTop_toTopOf="@+id/iv_detail_event_calendar_icon" />
+
+                <TextView
+                    android:id="@+id/tv_detail_event_organizer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="8sp"
+                    android:singleLine="false"
+                    android:textColor="@color/black___60"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_detail_event_calendar_icon" />
+
+                <ImageView
+                    android:id="@+id/iv_detail_event_address_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/nav"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_detail_event_address"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_organizer" />
+
+                <TextView
+                    android:id="@+id/tv_detail_event_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="6sp"
+                    android:singleLine="false"
+                    android:textColor="@color/black_70"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/iv_detail_event_address_icon"
+                    app:layout_constraintTop_toTopOf="@+id/iv_detail_event_address_icon"
+                    app:layout_constraintWidth_percent="0.85" />
+
+                <ImageView
+                    android:id="@+id/iv_detail_event_phone_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/phone"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_detail_event_phone"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_address" />
+
+                <TextView
+                    android:id="@+id/tv_detail_event_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="6sp"
+                    android:singleLine="false"
+                    android:textColor="@color/black_70"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/iv_detail_event_phone_icon"
+                    app:layout_constraintTop_toTopOf="@+id/iv_detail_event_phone_icon" />
+
+                <ImageView
+                    android:id="@+id/iv_detail_event_mail_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/mail"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_detail_event_mail"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_phone" />
+
+                <TextView
+                    android:id="@+id/tv_detail_event_mail"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/event_detail_mail_title"
+                    android:textColor="@color/black_70"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_detail_event_mail_icon"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/iv_detail_event_mail_icon"
+                    app:layout_constraintTop_toTopOf="@+id/iv_detail_event_mail_icon" />
+
+                <TextView
+                    android:id="@+id/tv_detail_event_mail_button"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="8dp"
+                    android:autoLink="email"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/event_detail_mail_button"
+                    android:textColor="@color/leaf"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_detail_event_mail"
+                    app:layout_constraintStart_toEndOf="@+id/tv_detail_event_mail"
+                    app:layout_constraintTop_toTopOf="@+id/tv_detail_event_mail" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_detail_event_images"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:padding="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_mail" />
+
+                <TextView
+                    android:id="@+id/tv_detail_event_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="6sp"
+                    android:textColor="@color/black_70"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_detail_event_images" />
+
+                <TextView
+                    android:id="@+id/tv_detail_event_site_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:autoLink="web"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/event_detail_site_button"
+                    android:textColor="@color/leaf"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_description" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_rv_detail_event_users"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/light_grey_two"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_event_site_button">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_detail_event_users"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/light_grey_two"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_plus_users_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/rv_detail_event_users"
+                        app:layout_constraintStart_toEndOf="@+id/rv_detail_event_users"
+                        app:layout_constraintTop_toTopOf="@+id/rv_detail_event_users" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_rv_detail_event_users">
+
+                    <Button
+                        android:id="@+id/btn_event_shirt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:drawableTop="@drawable/shirt"
+                        android:fontFamily="sans-serif"
+                        android:lineSpacingExtra="2sp"
+                        android:lines="2"
+                        android:padding="@dimen/bnv_icons_padding"
+                        android:text="@string/event_nav_shirt"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black___40"
+                        android:textSize="10sp"
+                        android:textStyle="normal"
+                        style="?android:attr/borderlessButtonStyle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_event_hands"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/separator1"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/separator_vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_event_hands"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_event_shirt"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_event_hands"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:drawableTop="@drawable/hands"
+                        android:fontFamily="sans-serif"
+                        android:lineSpacingExtra="2sp"
+                        android:lines="2"
+                        android:padding="@dimen/bnv_icons_padding"
+                        android:text="@string/event_nav_hands"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black___40"
+                        android:textSize="10sp"
+                        android:textStyle="normal"
+                        style="?android:attr/borderlessButtonStyle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_event_tools"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_event_shirt"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/separator2"
+                        android:layout_width="1dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/separator_vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_event_tools"
+                        app:layout_constraintStart_toEndOf="@+id/btn_event_hands"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_event_tools"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:drawableTop="@drawable/tools"
+                        android:fontFamily="sans-serif"
+                        android:lineSpacingExtra="2sp"
+                        android:lines="2"
+                        android:padding="@dimen/bnv_icons_padding"
+                        android:text="@string/event_nav_tools"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black___40"
+                        android:textSize="10sp"
+                        android:textStyle="normal"
+                        style="?android:attr/borderlessButtonStyle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_event_coins"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_event_hands"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/separator3"
+                        android:layout_width="1dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/separator_vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_event_coins"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_event_tools"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_event_coins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:drawableTop="@drawable/coins"
+                        android:fontFamily="sans-serif"
+                        android:lineSpacingExtra="2sp"
+                        android:lines="2"
+                        android:padding="@dimen/bnv_icons_padding"
+                        android:text="@string/event_nav_coins"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black___40"
+                        android:textSize="10sp"
+                        android:textStyle="normal"
+                        style="?android:attr/borderlessButtonStyle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_event_tools"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--                <com.google.android.material.bottomnavigation.BottomNavigationView-->
+                <!--                    android:id="@+id/bnv_detail_event"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="?attr/actionBarSize"-->
+                <!--                    app:menu="@menu/bottom_event_menu"-->
+                <!--                    app:labelVisibilityMode="labeled"-->
+                <!--                    android:background="@color/white"-->
+                <!--                    app:itemBackground="@color/white"-->
+                <!--                    app:itemIconSize="@dimen/icon_bottom_menu_size"-->
+                <!--                    app:itemIconTint="@drawable/bottom_navigation_colors"-->
+                <!--                    app:itemTextColor="@drawable/bottom_navigation_colors"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/cl_rv_detail_event_users" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/pb_loading_detail"
+            style="@style/Base.Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

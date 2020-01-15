@@ -16,17 +16,11 @@ import java.util.List;
 
 public class ImagesEventAdapter extends RecyclerView.Adapter<ImagesEventAdapter.ViewHolder>  {
 
-    private List<Integer> resourcesId;
     private List<String> imagesUri;
-
-    /*public ImagesEventAdapter(List<Integer> resourcesId){
-        this.resourcesId = resourcesId;
-    }*/
 
     public ImagesEventAdapter(List<String> imagesUri){
         this.imagesUri = imagesUri;
     }
-
 
     @NonNull
     @Override

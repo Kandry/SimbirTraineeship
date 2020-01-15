@@ -10,6 +10,7 @@ import java.util.List;
 
 public class FiltersFragmentModel implements FiltersFragmentContract.Model {
     private Context context;
+    private JSONHelper jsonHelper = new JSONHelper();
 
     FiltersFragmentModel(Context context){
         this.context = context;
@@ -17,11 +18,11 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
 
     @Override
     public void getFilters(OnFinishedListener onFinishedListener) {
-        onFinishedListener.onFinished(JSONHelper.getCategories(context, context.getString(R.string.categories_filename), JSONHelper.BackThreadType.ASYNCTASK));
+        onFinishedListener.onFinished(jsonHelper.getCategories(context, context.getString(R.string.categories_filename)));
     }
 
     @Override
     public void setFilters(List<Category> categories) {
-        JSONHelper.setCategories(context, categories);
+        jsonHelper.setCategories(context, categories);
     }
 }

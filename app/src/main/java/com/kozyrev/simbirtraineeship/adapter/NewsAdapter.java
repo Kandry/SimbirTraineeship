@@ -62,7 +62,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position){
         Event event = news.get(position);
 
-
         Picasso.get()
                 .load(Uri.parse(event.getImagesUri().get(0)))
                 .into(holder.ivNewsImage);

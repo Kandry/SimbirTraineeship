@@ -22,9 +22,27 @@ public class Event implements Parcelable {
     private String site;
     private List<Integer> participantsID;
 
+    public Event (){}
 
     public Event (String name){
         this.name = name;
+    }
+
+    public Event (Parcel data) {
+        this.id = data.readInt();
+        this.name = data.readString();
+        this.description = data.readString();
+        this.imagesUri = data.readArrayList( String.class.getClassLoader());
+        this.categoriesID = data.readArrayList(Integer.class.getClassLoader());
+        this.startDate = data.readLong();
+        this.endDate = data.readLong();
+
+        this.organizer = data.readString();
+        this.address = data.readString();
+        this.phoneNumbers = data.readArrayList(String.class.getClassLoader());
+        this.email = data.readString();
+        this.site = data.readString();
+        this.participantsID = data.readArrayList(Integer.class.getClassLoader());
     }
 
     public int getId() {
@@ -151,6 +169,18 @@ public class Event implements Parcelable {
         parcel.writeList(phoneNumbers);
         parcel.writeString(email);
         parcel.writeString(site);
-        parcel.writeList(participantsID);;
+        parcel.writeList(participantsID);
     }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        @Override
+        public Event createFromParcel(Parcel parcel) {
+            return new Event(parcel);
+        }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
 }

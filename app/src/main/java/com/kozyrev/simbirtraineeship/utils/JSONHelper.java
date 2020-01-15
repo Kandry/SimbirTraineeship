@@ -1,12 +1,7 @@
 package com.kozyrev.simbirtraineeship.utils;
 
-import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -16,8 +11,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
-import com.kozyrev.simbirtraineeship.utils.intent_service.CategoriesIntentService;
-import com.kozyrev.simbirtraineeship.utils.intent_service.EventsIntentService;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -27,17 +20,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class JSONHelper {
-
-    public enum BackThreadType {NONE, ASYNCTASK, EXECUTOR, INTENTSERVICE}
 
     private static final String APP_PREFERENCES = "prefs";
     private static final String APP_PREFERENCES_JSON = "json";
 
-    public static List<Category> getCategories(@NotNull Context context, String fileName, @NotNull BackThreadType backThreadType) {
-        switch (backThreadType) {
+    //public EventsBroadcastReceiver eventsBroadcastReceiver = new EventsBroadcastReceiver();
+
+    public static List<Category> getCategories(@NotNull Context context, String fileName) {
+      /*  switch (backThreadType) {
             case ASYNCTASK:
                 CategoriesTask categoriesTask = new CategoriesTask(context, fileName);
                 categoriesTask.execute();
@@ -50,8 +42,24 @@ public class JSONHelper {
                 Intent intentCategories = new Intent(context, CategoriesIntentService.class);
                 intentCategories.putExtra(Constants.EXTRA_KEY_IN, fileName);
                 context.startService(intentCategories);
+
+                CategoriesBroadcastReceiver categoriesBroadcastReceiver = new CategoriesBroadcastReceiver();
+
+                IntentFilter intentFilter = new IntentFilter(Constants.ACTION_INTENTSERVICE);
+                intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+                context.registerReceiver(categoriesBroadcastReceiver, intentFilter);
+
+                List<Category> categories = categoriesBroadcastReceiver.getCategories();
+
+                int count = 0;
+                while (categories == null && count < 1000) {
+                    categories = categoriesBroadcastReceiver.getCategories();
+                    Log.d("COUNT_CAT", "count " + count);
+                    count++;
+                }
+                return categories;
             case NONE:
-            default:
+            default:*/
                 SharedPreferences prefs = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
                 StringBuilder jsonBuilder = new StringBuilder(prefs.getString(APP_PREFERENCES_JSON, ""));
                 String json;
@@ -63,7 +71,7 @@ public class JSONHelper {
 
                 Type type = new TypeToken<List<Category>>() {}.getType();
                 return new Gson().fromJson(json, type);
-        }
+      //  }
     }
 
     public static void setCategories(@NotNull Context context, List<Category> categories) {
@@ -87,26 +95,24 @@ public class JSONHelper {
         editor.apply();
     }
 
-    public static List<Event> getEvents(Context context, String fileName, @NotNull BackThreadType backThreadType) {
+    public static List<Event> getEvents(Context context, String fileName) {/*
         switch (backThreadType){
-            case ASYNCTASK:
-                EventsTask eventsTask = new EventsTask(context, fileName);
-                eventsTask.execute();
-                try {
-                    return eventsTask.get();
-                } catch (ExecutionException | InterruptedException e) {
-                    e.printStackTrace();
-                }
             case INTENTSERVICE:
                 Intent intentEvents = new Intent(context, EventsIntentService.class);
                 intentEvents.putExtra(Constants.EXTRA_KEY_IN, fileName);
                 context.startService(intentEvents);
-            case NONE:
-            default:
+
+                IntentFilter intentFilter = new IntentFilter(Constants.ACTION_INTENTSERVICE);
+                intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+                context.registerReceiver(eventsBroadcastReceiver, intentFilter);
+
+                List<Event> events = eventsBroadcastReceiver.getEvents();
+                return events;
+                */
                 String json = readJson(context, fileName, new StringBuilder());
                 Type type = new TypeToken<List<Event>>(){}.getType();
                 return new Gson().fromJson(json, type);
-        }
+       // }
     }
 
     @Nullable
@@ -125,26 +131,7 @@ public class JSONHelper {
         return json.toString();
     }
 
-    static class EventsTask extends AsyncTask<Void, Void, List<Event>> {
-
-        @SuppressLint("StaticFieldLeak")
-        Context context;
-        String fileName;
-
-        EventsTask(Context context, String fileName){
-            this.context = context;
-            this.fileName = fileName;
-        }
-
-        @Override
-        protected List<Event> doInBackground(Void... voids) {
-            String json = readJson(context, fileName, new StringBuilder());
-            Type type = new TypeToken<List<Event>>(){}.getType();
-            return new Gson().fromJson(json, type);
-        }
-    }
-
-    static class CategoriesTask extends AsyncTask<Void, Void, List<Category>>{
+   /* class CategoriesTask extends AsyncTask<Void, Void, List<Category>>{
 
         @SuppressLint("StaticFieldLeak")
         Context context;
@@ -169,13 +156,35 @@ public class JSONHelper {
             Type type = new TypeToken<List<Category>>() {}.getType();
             return new Gson().fromJson(json, type);
         }
-    }
+    }*/
+/*
+    public class EventsBroadcastReceiver extends BroadcastReceiver{
 
-    static class EventsBroadcastReceiver extends BroadcastReceiver{
+        private ArrayList<Event> events = null;
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            List<Event> events = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
+            events = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
+            //Log.d("COUNT_EV1", "isEmpty: " + events.toString());
         }
-    }
+
+        public List<Event> getEvents() {
+            return events;
+        }
+    }*/
+/*
+    class CategoriesBroadcastReceiver extends BroadcastReceiver{
+
+        private List<Category> categories = null;
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            categories = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
+            //Log.d("COUNT_EV1", "isEmpty: " + categories.toString());
+        }
+
+        public List<Category> getCategories() {
+            return categories;
+        }
+    }*/
 }

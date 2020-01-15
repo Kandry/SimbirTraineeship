@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ import com.kozyrev.simbirtraineeship.utils.JSONHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static com.kozyrev.simbirtraineeship.utils.Constants.EVENT_ID;
 
@@ -37,10 +39,15 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
     private List<Event> allNews;
     private NewsAdapter newsAdapter;
 
+    private ProgressBar pbLoading;
+
+    private JSONHelper jsonHelper;
+
     public NewsFragment(){}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        jsonHelper = new JSONHelper();
         initNews();
         super.onCreate(savedInstanceState);
     }
@@ -85,12 +92,29 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
 
     @Override
     public void onStop() {
-        JSONHelper.clearCategories(getContext());
+        jsonHelper.clearCategories(getContext());
         super.onStop();
     }
 
+    public void showProgress() {
+        pbLoading.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgress() {
+        pbLoading.setVisibility(View.GONE);
+    }
+
     private void initNews(){
-        allNews = JSONHelper.getEvents(getContext(), getString(R.string.events_filename), JSONHelper.BackThreadType.ASYNCTASK);
+        allNews = jsonHelper.getEvents(getContext(), getString(R.string.events_filename));
+/*
+        if (allNews == null)
+            try {
+                TimeUnit.SECONDS.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        allNews = JSONHelper.eventsBroadcastReceiver.getEvents();*/
+
         news = new ArrayList<>();
         for (Event event : allNews){
             news.add(event);
@@ -99,7 +123,7 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
     }
 
     private void updateNews(){
-        List<Category> categories = JSONHelper.getCategories(getContext(), getString(R.string.categories_filename), JSONHelper.BackThreadType.ASYNCTASK);
+        List<Category> categories = jsonHelper.getCategories(getContext(), getString(R.string.categories_filename));
         for (Event event: allNews) {
             List<Integer> categoriesID = event.getCategoriesID();
             boolean inNews = false;
@@ -119,6 +143,8 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
     }
 
     private void initViews(View view){
+        pbLoading = view.findViewById(R.id.pb_loading);
+
         RecyclerView rvNews = view.findViewById(R.id.rv_news);
         rvNews.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvNews.setHasFixedSize(false);
