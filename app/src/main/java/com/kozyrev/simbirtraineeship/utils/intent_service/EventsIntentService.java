@@ -26,14 +26,10 @@ public class EventsIntentService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         String fileName = intent.getStringExtra(Constants.EXTRA_KEY_IN);
-        Log.d("COUNT_EV1", "isEmpty: " + fileName);
 
-        JSONHelper jsonHelper = new JSONHelper();
-        String json = jsonHelper.readJson(getApplicationContext(), fileName, new StringBuilder());
+        String json = JSONHelper.readJson(getApplicationContext(), fileName, new StringBuilder());
         Type type = new TypeToken<List<Event>>(){}.getType();
         List<Event> events = new Gson().fromJson(json, type);
-
-        Log.d("COUNT_EV1", "isEmpty: " + events.toString());
 
         if (events == null) events = new ArrayList<>();
 
@@ -41,8 +37,13 @@ public class EventsIntentService extends IntentService {
         responseIntent.setAction(Constants.ACTION_INTENTSERVICE);
         responseIntent.addCategory(Intent.CATEGORY_DEFAULT);
         responseIntent.putParcelableArrayListExtra(Constants.EXTRA_KEY_OUT, (ArrayList<Event>) events);
-        sendBroadcast(responseIntent);
 
-        Log.d("COUNT_EV1", "isEmpty: " + events.toString());
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        sendBroadcast(responseIntent);
     }
 }

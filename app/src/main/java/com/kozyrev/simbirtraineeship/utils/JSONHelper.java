@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.gson.Gson;
@@ -11,8 +12,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class JSONHelper {
 
     //public EventsBroadcastReceiver eventsBroadcastReceiver = new EventsBroadcastReceiver();
 
-    public static List<Category> getCategories(@NotNull Context context, String fileName) {
+    public static List<Category> getCategories(@NonNull Context context, String fileName) {
       /*  switch (backThreadType) {
             case ASYNCTASK:
                 CategoriesTask categoriesTask = new CategoriesTask(context, fileName);
@@ -74,7 +73,7 @@ public class JSONHelper {
       //  }
     }
 
-    public static void setCategories(@NotNull Context context, List<Category> categories) {
+    public static void setCategories(@NonNull Context context, List<Category> categories) {
         StringBuilder json = new StringBuilder();
 
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -88,7 +87,7 @@ public class JSONHelper {
         editor.apply();
     }
 
-    public static void clearCategories(@NotNull Context context) {
+    public static void clearCategories(@NonNull Context context) {
         SharedPreferences prefs = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.clear();
@@ -116,7 +115,7 @@ public class JSONHelper {
     }
 
     @Nullable
-    public static String readJson(@NotNull Context context, String fileName, StringBuilder json){
+    public static String readJson(@NonNull Context context, String fileName, StringBuilder json){
         try{
             InputStream inputStream = context.getAssets().open(fileName);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

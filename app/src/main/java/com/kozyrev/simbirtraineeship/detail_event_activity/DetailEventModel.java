@@ -1,18 +1,25 @@
 package com.kozyrev.simbirtraineeship.detail_event_activity;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.model.Event;
+import com.kozyrev.simbirtraineeship.utils.Constants;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
+import com.kozyrev.simbirtraineeship.utils.intent_service.EventsIntentService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailEventModel implements DetailEventContract.Model {
 
     private Context context;
+    private EventsBroadcastReceiver eventsBroadcastReceiver = new EventsBroadcastReceiver();
 
     public DetailEventModel(Context context) {
         this.context = context;
@@ -37,7 +44,14 @@ public class DetailEventModel implements DetailEventContract.Model {
 
     @Override
     public void getEventDetailsIntentService(OnFinishedListener onFinishedListener, int id) {
+        Intent intent = new Intent(context, EventsIntentService.class);
+        intent.putExtra(Constants.EXTRA_KEY_IN, context.getString(R.string.events_filename));
+        context.startService(intent);
 
+        IntentFilter intentFilter = new IntentFilter(Constants.ACTION_INTENTSERVICE);
+        intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+        eventsBroadcastReceiver.setData(onFinishedListener, id);
+        context.registerReceiver(eventsBroadcastReceiver, intentFilter);
     }
 
     @Override
@@ -59,10 +73,10 @@ public class DetailEventModel implements DetailEventContract.Model {
     class EventTask extends AsyncTask<Void, Void, List<Event>> {
 
         private Context context;
-        private DetailEventContract.Model.OnFinishedListener onFinishedListener;
+        private OnFinishedListener onFinishedListener;
         private int id;
 
-        EventTask(Context context, DetailEventContract.Model.OnFinishedListener onFinishedListener, int id){
+        EventTask(Context context, OnFinishedListener onFinishedListener, int id){
             this.context = context;
             this.onFinishedListener = onFinishedListener;
             this.id = id;
@@ -82,6 +96,25 @@ public class DetailEventModel implements DetailEventContract.Model {
         @Override
         protected void onPostExecute(List<Event> events) {
             super.onPostExecute(events);
+            DetailEventModel.checkEvents(onFinishedListener, id, events);
+        }
+    }
+
+    public class EventsBroadcastReceiver extends BroadcastReceiver {
+
+        private OnFinishedListener onFinishedListener;
+        private int id;
+
+        public EventsBroadcastReceiver(){}
+
+        public void setData(OnFinishedListener onFinishedListener, int id) {
+            this.onFinishedListener = onFinishedListener;
+            this.id = id;
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ArrayList<Event> events = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
             DetailEventModel.checkEvents(onFinishedListener, id, events);
         }
     }
