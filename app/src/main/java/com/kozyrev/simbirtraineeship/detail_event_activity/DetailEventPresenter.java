@@ -23,8 +23,8 @@ public class DetailEventPresenter implements DetailEventContract.Presenter, Deta
         }
         //detailEventModel.getEventDetails(this, id);
         //detailEventModel.getEventDetailsAsyncTask(this, id);
-        //detailEventModel.getEventDetailsExecutor(this, id);
-        detailEventModel.getEventDetailsIntentService(this, id);
+        detailEventModel.getEventDetailsExecutor(this, id);
+        //detailEventModel.getEventDetailsIntentService(this, id);
     }
 
     @Override

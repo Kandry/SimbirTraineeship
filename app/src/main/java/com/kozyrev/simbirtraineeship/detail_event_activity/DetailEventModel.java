@@ -12,16 +12,25 @@ import com.kozyrev.simbirtraineeship.utils.Constants;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
 import com.kozyrev.simbirtraineeship.utils.intent_service.EventsIntentService;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class DetailEventModel implements DetailEventContract.Model {
 
     private Context context;
     private EventsBroadcastReceiver eventsBroadcastReceiver = new EventsBroadcastReceiver();
 
-    public DetailEventModel(Context context) {
+    DetailEventModel(Context context) {
         this.context = context;
     }
 
@@ -39,7 +48,22 @@ public class DetailEventModel implements DetailEventContract.Model {
 
     @Override
     public void getEventDetailsExecutor(OnFinishedListener onFinishedListener, int id) {
+        EventBus.getDefault().register(this);
+        ExecutorService service = Executors.newCachedThreadPool();
+        service.execute(() -> {
+            List<Event> events = JSONHelper.getEvents(context, context.getString(R.string.events_filename));
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            EventBus.getDefault().post(new ExecutorResult(onFinishedListener, id, events));
+        });
+    }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void executorDone(ExecutorResult executorResult){
+        executorResult.checkExecutorEvents();
     }
 
     @Override
@@ -100,12 +124,10 @@ public class DetailEventModel implements DetailEventContract.Model {
         }
     }
 
-    public class EventsBroadcastReceiver extends BroadcastReceiver {
+    class EventsBroadcastReceiver extends BroadcastReceiver {
 
         private OnFinishedListener onFinishedListener;
         private int id;
-
-        public EventsBroadcastReceiver(){}
 
         public void setData(OnFinishedListener onFinishedListener, int id) {
             this.onFinishedListener = onFinishedListener;
@@ -116,6 +138,22 @@ public class DetailEventModel implements DetailEventContract.Model {
         public void onReceive(Context context, Intent intent) {
             ArrayList<Event> events = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
             DetailEventModel.checkEvents(onFinishedListener, id, events);
+        }
+    }
+
+    public class ExecutorResult {
+        private OnFinishedListener onFinishedListener;
+        private int id;
+        private List<Event> events;
+
+        ExecutorResult(OnFinishedListener onFinishedListener, int id, List<Event> events){
+            this.onFinishedListener = onFinishedListener;
+            this.id = id;
+            this.events = events;
+        }
+
+        void checkExecutorEvents(){
+            checkEvents(onFinishedListener, id, events);
         }
     }
 }
