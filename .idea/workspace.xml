@@ -10,33 +10,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8861f42-67e0-433d-9e0d-8be8274ccf1f" name="Default Changelist" comment="MVP для экрана Новости">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_rxbinding2_rxbinding_2_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxjava_2_2_8_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/exceptions/ExpectedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/exceptions/NotImplementedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/rx/RxCombiningTraining.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/rx/RxCompletableTraining.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/rx/RxCreatingTraining.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/rx/RxErrorsTraining.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/rx/RxFilteringTraining.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/rx/RxMaybeTraining.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/rx/RxSingleTraining.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/rx/RxTransformingTraining.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+    <list default="true" id="e8861f42-67e0-433d-9e0d-8be8274ccf1f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,11 +40,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="493">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
@@ -83,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/exceptions/NotImplementedException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+            <state relative-caret-position="102">
+              <caret line="6" column="47" lean-forward="true" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -213,7 +188,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="rx_java" />
       </map>
     </option>
     <option name="AUTO_COMMIT_ON_CHERRY_PICK" value="true" />
@@ -362,6 +337,7 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kozyrev_aa\Documents\Test_folder\Android_projects\SimbirProjects\SimbirTraineeship\app\src\main\java\com\kozyrev\simbirtraineeship" />
+      <recent name="C:\Users\kozyrev_aa\Documents\Test_folder\Android_projects\SimbirProjects\SimbirTraineeship\app\src\main\java\com\kozyrev\simbirtraineeship\model" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -666,7 +642,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579509849753</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Init commit ветки rx_java">
+      <created>1579530002437</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1579530002437</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -801,7 +784,8 @@
     <MESSAGE value="BroadcastReceiver для детального описания события" />
     <MESSAGE value="AsyncTask, Executor и IntentService для экрана Категории помощи" />
     <MESSAGE value="MVP для экрана Новости" />
-    <option name="LAST_COMMIT_MESSAGE" value="MVP для экрана Новости" />
+    <MESSAGE value="Init commit ветки rx_java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init commit ветки rx_java" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/async_task/EventTask.java" />
@@ -1210,13 +1194,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/exceptions/ExpectedException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1226,8 +1203,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/exceptions/NotImplementedException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        <state relative-caret-position="102">
+          <caret line="6" column="47" lean-forward="true" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
