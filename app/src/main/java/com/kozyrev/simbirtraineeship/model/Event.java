@@ -1,8 +1,11 @@
 package com.kozyrev.simbirtraineeship.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class Event {
+public class Event implements Parcelable {
 
     private int id;
     private String name;
@@ -19,9 +22,27 @@ public class Event {
     private String site;
     private List<Integer> participantsID;
 
+    public Event (){}
 
     public Event (String name){
         this.name = name;
+    }
+
+    public Event (Parcel data) {
+        this.id = data.readInt();
+        this.name = data.readString();
+        this.description = data.readString();
+        this.imagesUri = data.readArrayList( String.class.getClassLoader());
+        this.categoriesID = data.readArrayList(Integer.class.getClassLoader());
+        this.startDate = data.readLong();
+        this.endDate = data.readLong();
+
+        this.organizer = data.readString();
+        this.address = data.readString();
+        this.phoneNumbers = data.readArrayList(String.class.getClassLoader());
+        this.email = data.readString();
+        this.site = data.readString();
+        this.participantsID = data.readArrayList(Integer.class.getClassLoader());
     }
 
     public int getId() {
@@ -127,4 +148,39 @@ public class Event {
     public void setParticipantsID(List<Integer> participantsID) {
         this.participantsID = participantsID;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(description);
+        parcel.writeList(imagesUri);
+        parcel.writeList(categoriesID);
+        parcel.writeLong(startDate);
+        parcel.writeLong(endDate);
+
+        parcel.writeString(organizer);
+        parcel.writeString(address);
+        parcel.writeList(phoneNumbers);
+        parcel.writeString(email);
+        parcel.writeString(site);
+        parcel.writeList(participantsID);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        @Override
+        public Event createFromParcel(Parcel parcel) {
+            return new Event(parcel);
+        }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
 }

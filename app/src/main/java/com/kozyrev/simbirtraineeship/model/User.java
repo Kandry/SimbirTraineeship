@@ -123,7 +123,6 @@ public class User implements Parcelable {
         return 0;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
@@ -132,7 +131,10 @@ public class User implements Parcelable {
         parcel.writeString(name);
         parcel.writeLong(dateBirthTime);
         parcel.writeString(profession);
-        parcel.writeBoolean(isPush);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            parcel.writeBoolean(isPush);
+        }
         parcel.writeList(friends);
     }
 }

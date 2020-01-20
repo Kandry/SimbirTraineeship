@@ -18,12 +18,22 @@ public interface FiltersFragmentContract {
 
         void getFilters(OnFinishedListener onFinishedListener);
 
+        void getFiltersAsyncTask(OnFinishedListener onFinishedListener);
+
+        void getFiltersExecutors(OnFinishedListener onFinishedListener);
+
+        void getFiltersIntentService(OnFinishedListener onFinishedListener);
+
         void setFilters(List<Category> categories);
     }
 
     interface View extends ViewBase {
 
         void setDataToRecyclerView(List<Category> categories);
+
+        void showEmptyView();
+
+        void hideEmptyView();
     }
 
     interface Presenter extends PresenterBase {

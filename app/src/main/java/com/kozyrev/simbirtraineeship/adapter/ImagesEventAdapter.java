@@ -16,10 +16,10 @@ import java.util.List;
 
 public class ImagesEventAdapter extends RecyclerView.Adapter<ImagesEventAdapter.ViewHolder>  {
 
-    private List<Integer> resourcesId;
+    private List<String> imagesUri;
 
-    public ImagesEventAdapter(List<Integer> resourcesId){
-        this.resourcesId = resourcesId;
+    public ImagesEventAdapter(List<String> imagesUri){
+        this.imagesUri = imagesUri;
     }
 
     @NonNull
@@ -31,19 +31,19 @@ public class ImagesEventAdapter extends RecyclerView.Adapter<ImagesEventAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ImagesEventAdapter.ViewHolder holder, int position){
-        int resId = resourcesId.get(position);
+        String image = imagesUri.get(position);
         Picasso.get()
-                .load(resId)
+                .load(image)
                 .into(holder.ivImageEvent);
     }
 
     @Override
     public int getItemCount(){
-        return resourcesId.size();
+        return imagesUri.size();
     }
 
-    public void dataSetChanged(List<Integer> resourcesId){
-        this.resourcesId = resourcesId;
+    public void dataSetChanged(List<String> imagesUri){
+        this.imagesUri = imagesUri;
         this.notifyDataSetChanged();
     }
 
