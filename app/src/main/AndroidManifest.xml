@@ -18,7 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:windowSoftInputMode="stateHidden">
-        <activity android:name=".detail_event_activity.DetailEventView"></activity>
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait">
@@ -29,13 +28,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity android:name=".detail_event_activity.DetailEventView">
+
         </activity>
 
         <provider

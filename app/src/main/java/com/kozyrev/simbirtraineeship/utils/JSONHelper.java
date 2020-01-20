@@ -25,8 +25,6 @@ public class JSONHelper {
     private static final String APP_PREFERENCES = "prefs";
     private static final String APP_PREFERENCES_JSON = "json";
 
-    //public EventsBroadcastReceiver eventsBroadcastReceiver = new EventsBroadcastReceiver();
-
     public static List<Category> getCategories(@NonNull Context context, String fileName) {
       /*  switch (backThreadType) {
             case ASYNCTASK:
@@ -94,24 +92,10 @@ public class JSONHelper {
         editor.apply();
     }
 
-    public static List<Event> getEvents(Context context, String fileName) {/*
-        switch (backThreadType){
-            case INTENTSERVICE:
-                Intent intentEvents = new Intent(context, EventsIntentService.class);
-                intentEvents.putExtra(Constants.EXTRA_KEY_IN, fileName);
-                context.startService(intentEvents);
-
-                IntentFilter intentFilter = new IntentFilter(Constants.ACTION_INTENTSERVICE);
-                intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
-                context.registerReceiver(eventsBroadcastReceiver, intentFilter);
-
-                List<Event> events = eventsBroadcastReceiver.getEvents();
-                return events;
-                */
-                String json = readJson(context, fileName, new StringBuilder());
-                Type type = new TypeToken<List<Event>>(){}.getType();
-                return new Gson().fromJson(json, type);
-       // }
+    public static List<Event> getEvents(Context context, String fileName) {
+        String json = readJson(context, fileName, new StringBuilder());
+        Type type = new TypeToken<List<Event>>(){}.getType();
+        return new Gson().fromJson(json, type);
     }
 
     @Nullable
@@ -154,21 +138,6 @@ public class JSONHelper {
 
             Type type = new TypeToken<List<Category>>() {}.getType();
             return new Gson().fromJson(json, type);
-        }
-    }*/
-/*
-    public class EventsBroadcastReceiver extends BroadcastReceiver{
-
-        private ArrayList<Event> events = null;
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            events = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
-            //Log.d("COUNT_EV1", "isEmpty: " + events.toString());
-        }
-
-        public List<Event> getEvents() {
-            return events;
         }
     }*/
 /*

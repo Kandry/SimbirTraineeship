@@ -18,17 +18,35 @@ public class FiltersFragmentPresenter implements FiltersFragmentContract.Present
 
     @Override
     public void onFinished(List<Category> categories) {
+        if (filtersFragmentView != null){
+            filtersFragmentView.hideProgress();
+            filtersFragmentView.hideEmptyView();
+        }
+
         filtersFragmentView.setDataToRecyclerView(categories);
     }
 
     @Override
     public void onFailure(Throwable throwable) {
+        if (filtersFragmentView != null){
+            filtersFragmentView.hideProgress();
+            filtersFragmentView.hideEmptyView();
+        }
+        
         filtersFragmentView.onResponseFailure(throwable);
     }
 
     @Override
     public void requestDataFromFile() {
-        filtersFragmentModel.getFilters(this);
+        if (filtersFragmentView != null){
+            filtersFragmentView.showEmptyView();
+            filtersFragmentView.showProgress();
+        }
+
+        //filtersFragmentModel.getFilters(this);
+        //filtersFragmentModel.getFiltersAsyncTask(this);
+        //filtersFragmentModel.getFiltersExecutors(this);
+        filtersFragmentModel.getFiltersIntentService(this);
     }
 
     @Override

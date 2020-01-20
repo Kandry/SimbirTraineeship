@@ -73,14 +73,14 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
 
         initViews();
 
+        detailEventPresenter = new DetailEventPresenter(this, this);
+
         if (savedInstanceState != null) {
             event = savedInstanceState.getParcelable(KEY);
             setDataToViews(event);
         } else {
             Intent intent = getIntent();
             int id = intent.getIntExtra(EVENT_ID, -1);
-
-            detailEventPresenter = new DetailEventPresenter(this, this);
             detailEventPresenter.requestEventData(id);
         }
     }

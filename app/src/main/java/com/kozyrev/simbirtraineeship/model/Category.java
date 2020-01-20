@@ -4,8 +4,6 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.RequiresApi;
-
 public class Category implements Parcelable {
 
     private int id;
@@ -14,6 +12,16 @@ public class Category implements Parcelable {
 
     public Category(String name){
         this.name = name;
+    }
+
+    public Category (Parcel data){
+        this.id = data.readInt();
+        this.name = data.readString();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            this.isActive = data.readBoolean();
+        } else {
+            this.isActive = true;
+        }
     }
 
     public int getId() {
@@ -54,4 +62,17 @@ public class Category implements Parcelable {
             parcel.writeBoolean(isActive);
         }
     }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+
+        @Override
+        public Object createFromParcel(Parcel parcel) {
+            return new Category(parcel);
+        }
+
+        @Override
+        public Object[] newArray(int size) {
+            return new Category[size];
+        }
+    };
 }

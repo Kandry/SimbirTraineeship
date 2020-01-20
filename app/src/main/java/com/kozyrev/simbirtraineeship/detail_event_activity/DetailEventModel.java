@@ -19,11 +19,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class DetailEventModel implements DetailEventContract.Model {
 
@@ -61,18 +58,13 @@ public class DetailEventModel implements DetailEventContract.Model {
         });
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void executorDone(ExecutorResult executorResult){
-        executorResult.checkExecutorEvents();
-    }
-
     @Override
     public void getEventDetailsIntentService(OnFinishedListener onFinishedListener, int id) {
         Intent intent = new Intent(context, EventsIntentService.class);
         intent.putExtra(Constants.EXTRA_KEY_IN, context.getString(R.string.events_filename));
         context.startService(intent);
 
-        IntentFilter intentFilter = new IntentFilter(Constants.ACTION_INTENTSERVICE);
+        IntentFilter intentFilter = new IntentFilter(Constants.ACTION_EVENTS);
         intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
         eventsBroadcastReceiver.setData(onFinishedListener, id);
         context.registerReceiver(eventsBroadcastReceiver, intentFilter);
@@ -81,6 +73,12 @@ public class DetailEventModel implements DetailEventContract.Model {
     @Override
     public void updateEvent(Event event) {
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void executorDone(ExecutorResult executorResult){
+        EventBus.getDefault().unregister(this);
+        executorResult.checkExecutorEvents();
     }
 
     private static void checkEvents(OnFinishedListener onFinishedListener, int id, List<Event> events){
@@ -137,11 +135,16 @@ public class DetailEventModel implements DetailEventContract.Model {
         @Override
         public void onReceive(Context context, Intent intent) {
             ArrayList<Event> events = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
-            DetailEventModel.checkEvents(onFinishedListener, id, events);
+            finishedReceiver(onFinishedListener, id, events);
         }
     }
 
-    public class ExecutorResult {
+    private void finishedReceiver(OnFinishedListener onFinishedListener, int id, List<Event> events){
+        context.unregisterReceiver(eventsBroadcastReceiver);
+        DetailEventModel.checkEvents(onFinishedListener, id, events);
+    }
+
+    class ExecutorResult {
         private OnFinishedListener onFinishedListener;
         private int id;
         private List<Event> events;

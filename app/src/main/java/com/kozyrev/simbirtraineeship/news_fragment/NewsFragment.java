@@ -41,13 +41,10 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
 
     private ProgressBar pbLoading;
 
-    private JSONHelper jsonHelper;
-
     public NewsFragment(){}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        jsonHelper = new JSONHelper();
         initNews();
         super.onCreate(savedInstanceState);
     }
@@ -92,7 +89,7 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
 
     @Override
     public void onStop() {
-        jsonHelper.clearCategories(getContext());
+        JSONHelper.clearCategories(getContext());
         super.onStop();
     }
 
@@ -105,7 +102,7 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
     }
 
     private void initNews(){
-        allNews = jsonHelper.getEvents(getContext(), getString(R.string.events_filename));
+        allNews = JSONHelper.getEvents(getContext(), getString(R.string.events_filename));
 /*
         if (allNews == null)
             try {
@@ -123,7 +120,7 @@ public class NewsFragment extends Fragment implements NewsItemClickListener{
     }
 
     private void updateNews(){
-        List<Category> categories = jsonHelper.getCategories(getContext(), getString(R.string.categories_filename));
+        List<Category> categories = JSONHelper.getCategories(getContext(), getString(R.string.categories_filename));
         for (Event event: allNews) {
             List<Integer> categoriesID = event.getCategoriesID();
             boolean inNews = false;

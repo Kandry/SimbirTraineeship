@@ -2,8 +2,6 @@ package com.kozyrev.simbirtraineeship.utils.intent_service;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.os.Parcelable;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -20,7 +18,7 @@ import java.util.List;
 public class EventsIntentService extends IntentService {
 
     public EventsIntentService() {
-        super("name");
+        super("EventsIntentService");
     }
 
     @Override
@@ -34,7 +32,7 @@ public class EventsIntentService extends IntentService {
         if (events == null) events = new ArrayList<>();
 
         Intent responseIntent = new Intent();
-        responseIntent.setAction(Constants.ACTION_INTENTSERVICE);
+        responseIntent.setAction(Constants.ACTION_EVENTS);
         responseIntent.addCategory(Intent.CATEGORY_DEFAULT);
         responseIntent.putParcelableArrayListExtra(Constants.EXTRA_KEY_OUT, (ArrayList<Event>) events);
 
