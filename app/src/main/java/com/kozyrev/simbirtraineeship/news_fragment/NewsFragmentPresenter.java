@@ -24,10 +24,10 @@ public class NewsFragmentPresenter implements NewsFragmentContract.Presenter, Ne
             newsFragmentView.showEmptyView();
             newsFragmentView.showProgress();
         }
-        newsFragmentModel.getEvents(this);
-//        newsFragmentModel.getEventsAsyncTask(this);
-//        newsFragmentModel.getEventsExecutors(this);
-//        newsFragmentModel.getEventsIntentService(this);
+        //newsFragmentModel.getEvents(this);
+        newsFragmentModel.getEventsAsyncTask(this);
+        //newsFragmentModel.getEventsExecutors(this);
+        //newsFragmentModel.getEventsIntentService(this);
     }
 
     private List<Event> filterNews(List<Event> events) {
@@ -64,8 +64,8 @@ public class NewsFragmentPresenter implements NewsFragmentContract.Presenter, Ne
         if (newsFragmentView != null){
             newsFragmentView.hideProgress();
             newsFragmentView.hideEmptyView();
+            newsFragmentView.setDataToRecyclerView(filterNews(events));
         }
-        newsFragmentView.setDataToRecyclerView(filterNews(events));
     }
 
     @Override
@@ -73,8 +73,8 @@ public class NewsFragmentPresenter implements NewsFragmentContract.Presenter, Ne
         if (newsFragmentView != null){
             newsFragmentView.hideProgress();
             newsFragmentView.hideEmptyView();
+            newsFragmentView.onResponseFailure(throwable);
         }
-        newsFragmentView.onResponseFailure(throwable);
     }
 
     @Override

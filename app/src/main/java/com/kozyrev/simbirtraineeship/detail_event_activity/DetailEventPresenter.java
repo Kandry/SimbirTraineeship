@@ -1,7 +1,6 @@
 package com.kozyrev.simbirtraineeship.detail_event_activity;
 
 import android.content.Context;
-import android.os.Handler;
 
 import com.kozyrev.simbirtraineeship.model.Event;
 
@@ -10,7 +9,7 @@ public class DetailEventPresenter implements DetailEventContract.Presenter, Deta
     private DetailEventContract.View detailEventView;
     private DetailEventContract.Model detailEventModel;
 
-    public DetailEventPresenter(DetailEventContract.View detailEventView, Context context){
+    DetailEventPresenter(DetailEventContract.View detailEventView, Context context){
         this.detailEventView = detailEventView;
         this.detailEventModel = new DetailEventModel(context);
     }
@@ -32,8 +31,8 @@ public class DetailEventPresenter implements DetailEventContract.Presenter, Deta
         if (detailEventView != null){
             detailEventView.hideProgress();
             detailEventView.hideEmptyView();
+            detailEventView.setDataToViews(event);
         }
-        detailEventView.setDataToViews(event);
     }
 
     @Override
@@ -41,8 +40,8 @@ public class DetailEventPresenter implements DetailEventContract.Presenter, Deta
         if (detailEventView != null){
             detailEventView.hideProgress();
             detailEventView.hideEmptyView();
+            detailEventView.onResponseFailure(throwable);
         }
-        detailEventView.onResponseFailure(throwable);
     }
 
     @Override

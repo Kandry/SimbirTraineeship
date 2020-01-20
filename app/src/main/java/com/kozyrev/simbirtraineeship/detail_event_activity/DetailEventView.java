@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -41,8 +39,6 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
 
     private static final String TAG = "DetailEventView";
     private static final String KEY = "DetailEventView";
-
-    private CoordinatorLayout clRoot;
 
     private ProgressBar pbLoading;
     private ConstraintLayout clContent;
@@ -101,8 +97,6 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
         });
     }
     private void initViews(){
-        clRoot = findViewById(R.id.cl_root);
-
         pbLoading = findViewById(R.id.pb_loading_detail);
 
         clContent = findViewById(R.id.constraintLayout);
@@ -141,7 +135,7 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
             if (phoneNumbersList.size() > 0) {
                 StringBuilder phoneNumbers = new StringBuilder();
                 for (int i = 0; i < phoneNumbersList.size() - 1; i++) {
-                    phoneNumbers.append(phoneNumbersList.get(i) + "\n");
+                    phoneNumbers.append(phoneNumbersList.get(i)).append("\n");
                 }
                 phoneNumbers.append(phoneNumbersList.get(phoneNumbersList.size() - 1));
                 tvDetailEventPhone.setText(phoneNumbers.toString());
@@ -149,8 +143,7 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
 
             tvDetailEventDescription.setText(event.getDescription());
 
-            List<String> imagesRes = new LinkedList<>();
-            imagesRes.addAll(event.getImagesUri());
+            List<String> imagesRes = new LinkedList<>(event.getImagesUri());
 
             ImagesEventAdapter imagesEventAdapter = new ImagesEventAdapter(imagesRes);
             rvDetailEventImages.setAdapter(imagesEventAdapter);

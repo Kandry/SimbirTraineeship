@@ -33,9 +33,8 @@ public class FiltersFragmentPresenter implements FiltersFragmentContract.Present
         if (filtersFragmentView != null){
             filtersFragmentView.hideProgress();
             filtersFragmentView.hideEmptyView();
+            filtersFragmentView.setDataToRecyclerView(categories);
         }
-
-        filtersFragmentView.setDataToRecyclerView(categories);
     }
 
     @Override
@@ -43,9 +42,8 @@ public class FiltersFragmentPresenter implements FiltersFragmentContract.Present
         if (filtersFragmentView != null){
             filtersFragmentView.hideProgress();
             filtersFragmentView.hideEmptyView();
+            filtersFragmentView.onResponseFailure(throwable);
         }
-        
-        filtersFragmentView.onResponseFailure(throwable);
     }
 
     @Override
