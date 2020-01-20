@@ -22,53 +22,23 @@ import java.util.List;
 
 public class JSONHelper {
 
+    private static final String TAG = "JSONHelper";
+
     private static final String APP_PREFERENCES = "prefs";
     private static final String APP_PREFERENCES_JSON = "json";
 
     public static List<Category> getCategories(@NonNull Context context, String fileName) {
-      /*  switch (backThreadType) {
-            case ASYNCTASK:
-                CategoriesTask categoriesTask = new CategoriesTask(context, fileName);
-                categoriesTask.execute();
-                try {
-                    return categoriesTask.get();
-                } catch (ExecutionException | InterruptedException e){
-                    e.printStackTrace();
-                }
-            case INTENTSERVICE:
-                Intent intentCategories = new Intent(context, CategoriesIntentService.class);
-                intentCategories.putExtra(Constants.EXTRA_KEY_IN, fileName);
-                context.startService(intentCategories);
+        SharedPreferences prefs = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        StringBuilder jsonBuilder = new StringBuilder(prefs.getString(APP_PREFERENCES_JSON, ""));
+        String json;
 
-                CategoriesBroadcastReceiver categoriesBroadcastReceiver = new CategoriesBroadcastReceiver();
+        if (jsonBuilder.length() < 1)
+            json = readJson(context, fileName, new StringBuilder());
+        else
+            json = jsonBuilder.toString();
 
-                IntentFilter intentFilter = new IntentFilter(Constants.ACTION_INTENTSERVICE);
-                intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
-                context.registerReceiver(categoriesBroadcastReceiver, intentFilter);
-
-                List<Category> categories = categoriesBroadcastReceiver.getCategories();
-
-                int count = 0;
-                while (categories == null && count < 1000) {
-                    categories = categoriesBroadcastReceiver.getCategories();
-                    Log.d("COUNT_CAT", "count " + count);
-                    count++;
-                }
-                return categories;
-            case NONE:
-            default:*/
-                SharedPreferences prefs = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-                StringBuilder jsonBuilder = new StringBuilder(prefs.getString(APP_PREFERENCES_JSON, ""));
-                String json;
-
-                if (jsonBuilder.length() < 1)
-                    json = readJson(context, fileName, new StringBuilder());
-                else
-                    json = jsonBuilder.toString();
-
-                Type type = new TypeToken<List<Category>>() {}.getType();
-                return new Gson().fromJson(json, type);
-      //  }
+        Type type = new TypeToken<List<Category>>() {}.getType();
+        return new Gson().fromJson(json, type);
     }
 
     public static void setCategories(@NonNull Context context, List<Category> categories) {
@@ -77,7 +47,7 @@ public class JSONHelper {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
         json.append(gson.toJson(categories));
-        Log.d("JSONTAG", json.toString());
+        Log.d(TAG, json.toString());
 
         SharedPreferences prefs = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -113,46 +83,4 @@ public class JSONHelper {
         }
         return json.toString();
     }
-
-   /* class CategoriesTask extends AsyncTask<Void, Void, List<Category>>{
-
-        @SuppressLint("StaticFieldLeak")
-        Context context;
-        String fileName;
-
-        CategoriesTask(Context context, String fileName){
-            this.context = context;
-            this.fileName = fileName;
-        }
-
-        @Override
-        protected List<Category> doInBackground(Void... voids){
-            SharedPreferences prefs = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-            StringBuilder jsonBuilder = new StringBuilder(prefs.getString(APP_PREFERENCES_JSON, ""));
-            String json;
-
-            if (jsonBuilder.length() < 1)
-                json = readJson(context, fileName, new StringBuilder());
-            else
-                json = jsonBuilder.toString();
-
-            Type type = new TypeToken<List<Category>>() {}.getType();
-            return new Gson().fromJson(json, type);
-        }
-    }*/
-/*
-    class CategoriesBroadcastReceiver extends BroadcastReceiver{
-
-        private List<Category> categories = null;
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            categories = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
-            //Log.d("COUNT_EV1", "isEmpty: " + categories.toString());
-        }
-
-        public List<Category> getCategories() {
-            return categories;
-        }
-    }*/
 }

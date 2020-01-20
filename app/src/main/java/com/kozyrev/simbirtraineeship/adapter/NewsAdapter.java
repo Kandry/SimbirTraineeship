@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.model.Event;
-import com.kozyrev.simbirtraineeship.news_fragment.NewsFragment;
+import com.kozyrev.simbirtraineeship.news_fragment.NewsFragmentView;
 import com.squareup.picasso.Picasso;
 
 import org.threeten.bp.Instant;
@@ -26,7 +25,6 @@ import org.threeten.bp.ZoneId;
 import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.temporal.ChronoUnit;
 
-import java.net.URI;
 import java.util.List;
 
 import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
@@ -34,12 +32,12 @@ import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     private List<Event> news;
-    private NewsFragment newsFragment;
+    private NewsFragmentView newsFragmentView;
 
-    public NewsAdapter(List<Event> news, Context context, NewsFragment newsFragment){
+    public NewsAdapter(List<Event> news, Context context, NewsFragmentView newsFragmentView){
         AndroidThreeTen.init(context);
         this.news = news;
-        this.newsFragment = newsFragment;
+        this.newsFragmentView = newsFragmentView;
     }
 
     @NonNull
@@ -51,7 +49,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         cardView.setOnClickListener((v) -> {
             int adapterPosition = viewHolder.getAdapterPosition();
             if (adapterPosition != NO_POSITION){
-                newsFragment.onNewsItemClick(adapterPosition);
+                newsFragmentView.onNewsItemClick(adapterPosition);
             }
         });
 

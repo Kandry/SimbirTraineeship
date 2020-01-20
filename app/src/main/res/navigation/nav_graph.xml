@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/navigation_news"
-        android:name="com.kozyrev.simbirtraineeship.news_fragment.NewsFragment"
+        android:name="com.kozyrev.simbirtraineeship.news_fragment.NewsFragmentView"
         android:label="@string/nav_news"
         tools:layout="@layout/fragment_news" >
         <action

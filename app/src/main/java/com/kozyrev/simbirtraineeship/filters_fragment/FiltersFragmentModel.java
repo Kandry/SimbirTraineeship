@@ -9,7 +9,6 @@ import android.os.AsyncTask;
 
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.model.Category;
-import com.kozyrev.simbirtraineeship.model.Event;
 import com.kozyrev.simbirtraineeship.utils.Constants;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
 import com.kozyrev.simbirtraineeship.utils.intent_service.CategoriesIntentService;
