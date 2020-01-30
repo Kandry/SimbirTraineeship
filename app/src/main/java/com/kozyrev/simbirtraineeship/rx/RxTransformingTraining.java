@@ -1,11 +1,11 @@
 package com.kozyrev.simbirtraineeship.rx;
 
-import com.kozyrev.simbirtraineeship.exceptions.NotImplementedException;
 import com.kozyrev.simbirtraineeship.model.Entity;
 
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.functions.Function;
 import io.reactivex.observables.GroupedObservable;
 
 /**
@@ -25,7 +25,17 @@ public class RxTransformingTraining {
      * преобразованные из чисел в {@code intObservable}
      */
     public Observable<String> transformIntToString(Observable<Integer> intObservable) {
-        throw new NotImplementedException();
+      /* List<Integer> numbers = new LinkedList<>();
+       intObservable.subscribe(numbers::add);
+
+       return Observable.fromArray(numbers.toArray(new Integer[0])).map(new Function<Integer, String>() {
+           @Override
+           public String apply(Integer integer) throws Exception {
+               return String.valueOf(integer);
+           }
+       });*/
+      return intObservable
+              .flatMap((Function<Integer, Observable<String>>) integer -> Observable.just(String.valueOf(integer)));
     }
 
     /**
@@ -37,7 +47,17 @@ public class RxTransformingTraining {
      * {@code idObservable}
      */
     public Observable<Entity> requestEntityById(Observable<Integer> idObservable) {
-        throw new NotImplementedException();
+       /* List<Integer> numbers = new ArrayList<>();
+        idObservable.subscribe(numbers::add);
+
+        Observable<Entity>[] observables = new Observable[numbers.size()];
+        for (int i = 0; i < numbers.size(); i++){
+            observables[i] = requestApiEntity(numbers.get(i));
+        }
+
+        return Observable.concatArray(observables);*/
+       return idObservable
+               .flatMap((Function<Integer, Observable<Entity>>) integer -> requestApiEntity(integer));
     }
 
     /**
@@ -49,7 +69,9 @@ public class RxTransformingTraining {
      * поток имён объединённых первой буквой в имени
      */
     public Observable<GroupedObservable<Character, String>> distributeNamesByFirstLetter(Observable<String> namesObservable) {
-        throw new NotImplementedException();
+
+        return namesObservable
+                .groupBy(s -> s.charAt(0));
     }
 
     /**
@@ -61,7 +83,8 @@ public class RxTransformingTraining {
      * @return {@code Observable} который эммитит списки чисел из {@code intObservable}
      */
     public Observable<List<Integer>> collectsIntsToLists(int listsSize, Observable<Integer> intObservable) {
-        throw new NotImplementedException();
+        return intObservable
+                .buffer(listsSize);
     }
 
     /* Вспомогательные методы */

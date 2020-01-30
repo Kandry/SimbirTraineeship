@@ -13,7 +13,6 @@ import io.reactivex.observers.TestObserver;
 import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.TestScheduler;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.reset;
 
 /**

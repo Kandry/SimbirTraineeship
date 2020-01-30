@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.util.NoSuchElementException;
-
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
 import io.reactivex.functions.Function;

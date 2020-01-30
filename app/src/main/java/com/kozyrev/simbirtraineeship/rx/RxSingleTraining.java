@@ -1,7 +1,6 @@
 package com.kozyrev.simbirtraineeship.rx;
 
 import com.kozyrev.simbirtraineeship.exceptions.ExpectedException;
-import com.kozyrev.simbirtraineeship.exceptions.NotImplementedException;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -25,7 +24,11 @@ public class RxSingleTraining {
      * либо ошибку {@link ExpectedException} если оно отрицательное
      */
     Single<Integer> onlyOneElement(Integer value) {
-        throw new NotImplementedException();
+        return Single
+                .create(emitter -> {
+                    if (value > 0) emitter.onSuccess(value);
+                    else emitter.onError(new ExpectedException());
+                });
     }
 
     /**
@@ -37,7 +40,7 @@ public class RxSingleTraining {
      * последовательность пустая
      */
     Single<Integer> onlyOneElementOfSequence(Observable<Integer> integerObservable) {
-        throw new NotImplementedException();
+        return integerObservable.firstOrError();
     }
 
     /**
@@ -48,7 +51,9 @@ public class RxSingleTraining {
      * пустая
      */
     Single<Integer> calculateSumOfValues(Observable<Integer> integerObservable) {
-        throw new NotImplementedException();
+        final int[] sum = {0};
+        integerObservable.subscribe(integer -> sum[0] += integer);
+        return Single.just(sum[0]);
     }
 
     /**
@@ -59,7 +64,7 @@ public class RxSingleTraining {
      * {@code integerObservable}
      */
     Single<List<Integer>> collectionOfValues(Observable<Integer> integerObservable) {
-        throw new NotImplementedException();
+        return integerObservable.toList();
     }
 
     /**
@@ -70,7 +75,10 @@ public class RxSingleTraining {
      * {@code integerSingle} положительны, {@code false} если есть отрицательные элементы
      */
     Single<Boolean> allElementsIsPositive(Observable<Integer> integerSingle) {
-        throw new NotImplementedException();
+        final boolean[] isPositive = {true};
+        integerSingle.subscribe(integer -> {if (integer < 1) isPositive[0] = false;});
+
+        return Single.just(isPositive[0]);
     }
 
 }
