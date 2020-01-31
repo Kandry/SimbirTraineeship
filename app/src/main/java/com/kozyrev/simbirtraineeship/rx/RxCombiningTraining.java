@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.functions.BiFunction;
 
 /**
  * @author Arthur Korchagin (artur.korchagin@simbirsoft.com)
@@ -40,12 +39,8 @@ public class RxCombiningTraining {
      */
     public Observable<List<String>> requestItems(Observable<String> searchObservable,
                                                  Observable<Integer> categoryObservable) {
-        return Observable.zip(searchObservable, categoryObservable, new BiFunction<String, Integer, List<String>>() {
-            @Override
-            public List<String> apply(String s, Integer integer) throws Exception {
-                return searchItems(s, integer);
-            }
-        });
+        return Observable
+                .combineLatest(searchObservable, categoryObservable, (s, integer) -> searchItems(s, integer));
     }
 
     /**

@@ -94,6 +94,17 @@ public class RxSingleTrainingTest {
     }
 
     @Test
+    public void calculateSumOfValues_empty() {
+        TestObserver<Integer> testObserver = mRxSingleTraining
+                .calculateSumOfValues(Observable.empty())
+                .test();
+
+        testObserver.assertNoErrors();
+        testObserver.assertComplete();
+        testObserver.assertValues(0);
+    }
+
+    @Test
     public void collectionOfValues() {
         TestObserver<List<Integer>> testObserver = mRxSingleTraining
                 .collectionOfValues(Observable.fromArray(1, 2, 3))

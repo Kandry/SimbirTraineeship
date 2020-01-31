@@ -33,7 +33,6 @@ public class RxFilteringTraining {
     public Observable<Integer> onlyLastValues(int count, Observable<Integer> intValues) {
         return intValues
                 .takeLast(count);
-               // .skipLast(count);
     }
 
     /**
@@ -72,7 +71,7 @@ public class RxFilteringTraining {
      */
     public Observable<Integer> onlyLastPerInterval(int periodMills, Observable<Integer> intValues) {
         return intValues
-                .takeLast(periodMills, TimeUnit.MILLISECONDS);
+                .throttleLast(periodMills, TimeUnit.MILLISECONDS);
     }
 
     /**

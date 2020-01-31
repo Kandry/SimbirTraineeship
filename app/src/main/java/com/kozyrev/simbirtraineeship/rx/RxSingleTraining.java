@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
+import io.reactivex.SingleSource;
 
 /**
  * @author Arthur Korchagin (artur.korchagin@simbirsoft.com)
@@ -24,11 +25,10 @@ public class RxSingleTraining {
      * либо ошибку {@link ExpectedException} если оно отрицательное
      */
     Single<Integer> onlyOneElement(Integer value) {
-        return Single
-                .create(emitter -> {
-                    if (value > 0) emitter.onSuccess(value);
-                    else emitter.onError(new ExpectedException());
-                });
+       return Single
+               .just(value)
+               .filter(integer -> integer > 0)
+               .switchIfEmpty((SingleSource<Integer>) observer -> observer.onError(new ExpectedException()));
     }
 
     /**
@@ -51,9 +51,13 @@ public class RxSingleTraining {
      * пустая
      */
     Single<Integer> calculateSumOfValues(Observable<Integer> integerObservable) {
-        final int[] sum = {0};
-        integerObservable.subscribe(integer -> sum[0] += integer);
-        return Single.just(sum[0]);
+        return Single
+                .just(
+                        integerObservable
+                                .defaultIfEmpty(0)
+                                .reduce(0, (integer, integer2) -> integer + integer2)
+                                .blockingGet()
+                );
     }
 
     /**
@@ -64,7 +68,8 @@ public class RxSingleTraining {
      * {@code integerObservable}
      */
     Single<List<Integer>> collectionOfValues(Observable<Integer> integerObservable) {
-        return integerObservable.toList();
+        return integerObservable
+                .toList();
     }
 
     /**
@@ -75,10 +80,8 @@ public class RxSingleTraining {
      * {@code integerSingle} положительны, {@code false} если есть отрицательные элементы
      */
     Single<Boolean> allElementsIsPositive(Observable<Integer> integerSingle) {
-        final boolean[] isPositive = {true};
-        integerSingle.subscribe(integer -> {if (integer < 1) isPositive[0] = false;});
-
-        return Single.just(isPositive[0]);
+        return integerSingle
+                .all(integer -> integer > 0);
     }
 
 }

@@ -20,8 +20,9 @@ public class RxMaybeTraining {
      * либо не эммитит ничего, если {@code value} отрицательное
      */
     Maybe<Integer> positiveOrEmpty(Integer value) {
-        if (value > 0) return Maybe.just(value);
-        else return Maybe.empty();
+       return Maybe
+               .just(value)
+               .filter(integer -> integer > 0);
     }
 
     /**
@@ -32,7 +33,8 @@ public class RxMaybeTraining {
      * положительное число, иначе не эммитит ничего
      */
     Maybe<Integer> positiveOrEmpty(Single<Integer> valueSingle) {
-        return valueSingle.filter(integer -> integer > 0);
+        return valueSingle
+                .filter(integer -> integer > 0);
     }
 
     /**
@@ -43,10 +45,11 @@ public class RxMaybeTraining {
      * последовательность пустая
      */
     Maybe<Integer> calculateSumOfValues(Observable<Integer> integerObservable) {
-        final int[] sum = {0};
-        integerObservable.subscribe(integer -> sum[0] += integer);
-        if (sum[0] > 0) return Maybe.just(sum[0]);
-        else return Maybe.empty();
+        return Maybe
+                .fromCallable(() ->
+                        integerObservable
+                        .reduce(((integer, integer2) -> integer + integer2))
+                        .blockingGet());
     }
 
     /**
@@ -57,7 +60,9 @@ public class RxMaybeTraining {
      * {@code defaultValue} если последовательность пустая
      */
     Single<Integer> leastOneElement(Maybe<Integer> integerMaybe, int defaultValue) {
-        return integerMaybe.defaultIfEmpty(defaultValue).toSingle();
+        return integerMaybe
+                .defaultIfEmpty(defaultValue)
+                .toSingle();
     }
 
 }

@@ -21,7 +21,6 @@ import static org.mockito.Mockito.reset;
  */
 public class RxMaybeTrainingTest {
 
-
     private RxMaybeTraining mRxMaybeTraining = Mockito.spy(new RxMaybeTraining());
     private TestScheduler mTestScheduler;
 

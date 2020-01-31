@@ -30,7 +30,7 @@ public class RxCompletableTraining {
      * @return {@code Completable}
      */
     Completable completeWhenTrue(Single<Boolean> checkSingle) {
-        return checkSingle.flatMapCompletable(aBoolean -> {
+       return checkSingle.flatMapCompletable(aBoolean -> {
             if (aBoolean) return Completable.complete();
             else return Completable.error(new ExpectedException());
         });
