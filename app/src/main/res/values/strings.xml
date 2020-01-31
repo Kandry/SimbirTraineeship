@@ -44,8 +44,17 @@
     <string name="event_nav_hands">Стать\nволонтером</string>
     <string name="event_nav_tools">Проф.\nпомощь</string>
     <string name="event_nav_coins">Помочь\nденьгами</string>
-    
+
     <string name="event_detail_mail_title">У вас есть вопросы?</string>
     <string name="event_detail_mail_button"><u>Напишите нам</u></string>
     <string name="event_detail_site_button"><u>Перейти на сайт организации</u></string>
+
+    <string name="auth_tv_toolbar">Авторизация</string>
+    <string name="auth_tv_top">Для участия в мероприятиях войдите в приложение через социальные сети</string>
+    <string name="auth_tv_center">Или авторизуйтесь через приложение</string>
+    <string name="auth_tv_hint_email">Введите e-mail</string>
+    <string name="auth_tv_hint_pass">Введите пароль</string>
+    <string name="auth_btn_enter">ВОЙТИ</string>
+    <string name="auth_tv_forgot_pass"><u>Забыли пароль?</u></string>
+    <string name="auth_tv_registration"><u>Регистрация</u></string>
 </resources>
