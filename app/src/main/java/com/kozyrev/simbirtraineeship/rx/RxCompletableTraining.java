@@ -1,6 +1,6 @@
 package com.kozyrev.simbirtraineeship.rx;
 
-import com.kozyrev.simbirtraineeship.exceptions.NotImplementedException;
+import com.kozyrev.simbirtraineeship.exceptions.ExpectedException;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -19,7 +19,7 @@ public class RxCompletableTraining {
      * @return {@link Completable}, который вызывает {@link #havyMethod()}
      */
     Completable callFunction() {
-        throw new NotImplementedException();
+        return Completable.fromAction(() -> havyMethod());
     }
 
     /**
@@ -30,7 +30,10 @@ public class RxCompletableTraining {
      * @return {@code Completable}
      */
     Completable completeWhenTrue(Single<Boolean> checkSingle) {
-        throw new NotImplementedException();
+       return checkSingle.flatMapCompletable(aBoolean -> {
+            if (aBoolean) return Completable.complete();
+            else return Completable.error(new ExpectedException());
+        });
     }
 
     /* Вспомогательные методы */

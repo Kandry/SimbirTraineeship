@@ -1,7 +1,5 @@
 package com.kozyrev.simbirtraineeship.rx;
 
-import com.kozyrev.simbirtraineeship.exceptions.NotImplementedException;
-
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -22,7 +20,9 @@ public class RxMaybeTraining {
      * либо не эммитит ничего, если {@code value} отрицательное
      */
     Maybe<Integer> positiveOrEmpty(Integer value) {
-        throw new NotImplementedException();
+       return Maybe
+               .just(value)
+               .filter(integer -> integer > 0);
     }
 
     /**
@@ -33,7 +33,8 @@ public class RxMaybeTraining {
      * положительное число, иначе не эммитит ничего
      */
     Maybe<Integer> positiveOrEmpty(Single<Integer> valueSingle) {
-        throw new NotImplementedException();
+        return valueSingle
+                .filter(integer -> integer > 0);
     }
 
     /**
@@ -44,7 +45,11 @@ public class RxMaybeTraining {
      * последовательность пустая
      */
     Maybe<Integer> calculateSumOfValues(Observable<Integer> integerObservable) {
-        throw new NotImplementedException();
+        return Maybe
+                .fromCallable(() ->
+                        integerObservable
+                        .reduce(((integer, integer2) -> integer + integer2))
+                        .blockingGet());
     }
 
     /**
@@ -55,7 +60,9 @@ public class RxMaybeTraining {
      * {@code defaultValue} если последовательность пустая
      */
     Single<Integer> leastOneElement(Maybe<Integer> integerMaybe, int defaultValue) {
-        throw new NotImplementedException();
+        return integerMaybe
+                .defaultIfEmpty(defaultValue)
+                .toSingle();
     }
 
 }
