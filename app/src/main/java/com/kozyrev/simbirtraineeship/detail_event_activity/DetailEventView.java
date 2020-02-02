@@ -16,18 +16,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.ImagesEventAdapter;
 import com.kozyrev.simbirtraineeship.adapter.UsersEventAdapter;
 import com.kozyrev.simbirtraineeship.model.Event;
 import com.kozyrev.simbirtraineeship.model.User;
-
-import org.threeten.bp.Instant;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.ZoneId;
-import org.threeten.bp.format.DateTimeFormatter;
-import org.threeten.bp.temporal.ChronoUnit;
+import com.kozyrev.simbirtraineeship.utils.DateFormating;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -61,8 +55,6 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        AndroidThreeTen.init(this);
 
         setContentView(R.layout.activity_detail_event);
         initToolbar();
@@ -127,7 +119,7 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
 
             toolbarDetailEventTitle.setText(event.getName());
             tvDetailEventTitle.setText(event.getName());
-            tvDetailEventCalendar.setText(dateFormat(event.getStartDate(), event.getEndDate()));
+            tvDetailEventCalendar.setText(DateFormating.startEndDateFormat(event.getStartDate(), event.getEndDate(), "MMMM d, yyyy"));
             tvDetailEventOrganizer.setText(event.getOrganizer());
             tvDetailEventAddresses.setText(event.getAddress());
 
@@ -198,31 +190,5 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
     public void onResponseFailure(Throwable throwable) {
         Log.e(TAG, throwable.getMessage());
         Toast.makeText(this, R.string.communication_error, Toast.LENGTH_LONG).show();
-    }
-
-    private String dateFormat(long dateStart, long dateEnd){
-        String date = "";
-
-        if (dateEnd > -1){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM");
-
-            LocalDate startLocalDate = Instant.ofEpochMilli(dateStart).atZone(ZoneId.systemDefault()).toLocalDate();
-            String startDate = formatter.format(startLocalDate);
-
-            LocalDate endLocalDate = Instant.ofEpochMilli(dateEnd).atZone(ZoneId.systemDefault()).toLocalDate();
-            String endDate = formatter.format(endLocalDate);
-
-            LocalDate localDate = LocalDate.now();
-            long diffDays = ChronoUnit.DAYS.between(localDate, startLocalDate);
-            if (diffDays > 0) date = "Осталось " + diffDays + " дней ";
-
-            date += "(" + startDate + " - " + endDate + ")";
-        } else{
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
-            LocalDate localDate = Instant.ofEpochMilli(dateStart).atZone(ZoneId.systemDefault()).toLocalDate();
-            date = formatter.format(localDate);
-        }
-
-        return date;
     }
 }

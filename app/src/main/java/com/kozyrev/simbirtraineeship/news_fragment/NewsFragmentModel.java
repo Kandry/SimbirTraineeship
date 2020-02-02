@@ -34,12 +34,12 @@ public class NewsFragmentModel implements NewsFragmentContract.Model {
 
     @Override
     public void getEvents(OnFinishedListener onFinishedListener) {
-        onFinishedListener.onFinished(JSONHelper.getEvents(context, context.getString(R.string.events_filename)));
+        onFinishedListener.onFinished(JSONHelper.getEvents());
     }
 
     @Override
     public void getEventsAsyncTask(OnFinishedListener onFinishedListener) {
-        NewsTask newsTask = new NewsTask(context, onFinishedListener);
+        NewsTask newsTask = new NewsTask(onFinishedListener);
         newsTask.execute();
     }
 
@@ -48,7 +48,7 @@ public class NewsFragmentModel implements NewsFragmentContract.Model {
         EventBus.getDefault().register(this);
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
-            List<Event> news = JSONHelper.getEvents(context, context.getString(R.string.events_filename));
+            List<Event> news = JSONHelper.getEvents();
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
@@ -72,12 +72,12 @@ public class NewsFragmentModel implements NewsFragmentContract.Model {
 
     @Override
     public List<Category> getCategories() {
-        return JSONHelper.getCategories(context, context.getString(R.string.categories_filename));
+        return JSONHelper.getCategories();
     }
 
     @Override
     public void clearCategories() {
-        JSONHelper.clearCategories(context);
+        JSONHelper.clearCategories();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -89,17 +89,15 @@ public class NewsFragmentModel implements NewsFragmentContract.Model {
     @SuppressLint("StaticFieldLeak")
     class NewsTask extends AsyncTask<Void, Void, List<Event>> {
 
-        private Context context;
         private OnFinishedListener onFinishedListener;
 
-        NewsTask(Context context, OnFinishedListener onFinishedListener){
-            this.context = context;
+        NewsTask(OnFinishedListener onFinishedListener){
             this.onFinishedListener = onFinishedListener;
         }
 
         @Override
         protected List<Event> doInBackground(Void... voids) {
-            List<Event> news = JSONHelper.getEvents(context, context.getString(R.string.events_filename));
+            List<Event> news = JSONHelper.getEvents();
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {

@@ -33,12 +33,12 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
 
     @Override
     public void getFilters(OnFinishedListener onFinishedListener) {
-        onFinishedListener.onFinished(JSONHelper.getCategories(context, context.getString(R.string.categories_filename)));
+        onFinishedListener.onFinished(JSONHelper.getCategories());
     }
 
     @Override
     public void getFiltersAsyncTask(OnFinishedListener onFinishedListener) {
-        FiltersTask filtersTask = new FiltersTask(context, onFinishedListener);
+        FiltersTask filtersTask = new FiltersTask(onFinishedListener);
         filtersTask.execute();
     }
 
@@ -47,7 +47,7 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
         EventBus.getDefault().register(this);
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
-            List<Category> categories = JSONHelper.getCategories(context, context.getString(R.string.categories_filename));
+            List<Category> categories = JSONHelper.getCategories();
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException ex) {
@@ -71,7 +71,7 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
 
     @Override
     public void setFilters(List<Category> categories) {
-        JSONHelper.setCategories(context, categories);
+        JSONHelper.setCategories(categories);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -83,17 +83,15 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
     @SuppressLint("StaticFieldLeak")
     class FiltersTask extends AsyncTask<Void, Void, List<Category>> {
 
-        private Context context;
         private OnFinishedListener onFinishedListener;
 
-        FiltersTask(Context context, OnFinishedListener onFinishedListener){
-            this.context = context;
+        FiltersTask(OnFinishedListener onFinishedListener){
             this.onFinishedListener = onFinishedListener;
         }
 
         @Override
         protected List<Category> doInBackground(Void... voids){
-            List<Category> categories = JSONHelper.getCategories(context, context.getString(R.string.categories_filename));
+            List<Category> categories = JSONHelper.getCategories();
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException ex){

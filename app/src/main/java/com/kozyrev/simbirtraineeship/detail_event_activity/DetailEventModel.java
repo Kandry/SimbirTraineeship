@@ -33,13 +33,13 @@ public class DetailEventModel implements DetailEventContract.Model {
 
     @Override
     public void getEventDetails(OnFinishedListener onFinishedListener, int id) {
-        List<Event> events = JSONHelper.getEvents(context, context.getString(R.string.events_filename));
+        List<Event> events = JSONHelper.getEvents();
         checkEvents(onFinishedListener, id, events);
     }
 
     @Override
     public void getEventDetailsAsyncTask(OnFinishedListener onFinishedListener, int id) {
-        EventTask eventTask = new EventTask(context, onFinishedListener, id);
+        EventTask eventTask = new EventTask(onFinishedListener, id);
         eventTask.execute();
     }
 
@@ -48,7 +48,7 @@ public class DetailEventModel implements DetailEventContract.Model {
         EventBus.getDefault().register(this);
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
-            List<Event> events = JSONHelper.getEvents(context, context.getString(R.string.events_filename));
+            List<Event> events = JSONHelper.getEvents();
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
@@ -94,19 +94,17 @@ public class DetailEventModel implements DetailEventContract.Model {
     @SuppressLint("StaticFieldLeak")
     class EventTask extends AsyncTask<Void, Void, List<Event>> {
 
-        private Context context;
         private OnFinishedListener onFinishedListener;
         private int id;
 
-        EventTask(Context context, OnFinishedListener onFinishedListener, int id){
-            this.context = context;
+        EventTask(OnFinishedListener onFinishedListener, int id){
             this.onFinishedListener = onFinishedListener;
             this.id = id;
         }
 
         @Override
         protected List<Event> doInBackground(Void... voids) {
-            List<Event> events = JSONHelper.getEvents(context, context.getString(R.string.events_filename));
+            List<Event> events = JSONHelper.getEvents();
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {

@@ -3,9 +3,13 @@ package com.kozyrev.simbirtraineeship.authorization_activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.kozyrev.simbirtraineeship.MainActivity;
 import com.kozyrev.simbirtraineeship.R;
 
 public class AuthorizationActivity extends AppCompatActivity {
@@ -16,6 +20,7 @@ public class AuthorizationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_authorization);
 
         initToolbar();
+        initView();
     }
 
     private void initToolbar(){
@@ -31,5 +36,14 @@ public class AuthorizationActivity extends AppCompatActivity {
         });
 
         tvTitleAuth.setText(getString(R.string.auth_tv_toolbar));
+    }
+
+    private void initView(){
+        Button btnEnter = findViewById(R.id.btn_enter);
+        btnEnter.setOnClickListener(view -> {
+            Intent intent = new Intent(AuthorizationActivity.this, MainActivity.class);
+            startActivity(intent);
+            AuthorizationActivity.this.finish();
+        });
     }
 }

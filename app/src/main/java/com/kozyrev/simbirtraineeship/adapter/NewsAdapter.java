@@ -1,6 +1,5 @@
 package com.kozyrev.simbirtraineeship.adapter;
 
-import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +12,11 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.model.Event;
 import com.kozyrev.simbirtraineeship.news_fragment.NewsFragmentView;
+import com.kozyrev.simbirtraineeship.utils.DateFormating;
 import com.squareup.picasso.Picasso;
-
-import org.threeten.bp.Instant;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.ZoneId;
-import org.threeten.bp.format.DateTimeFormatter;
-import org.threeten.bp.temporal.ChronoUnit;
 
 import java.util.List;
 
@@ -34,8 +27,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     private List<Event> news;
     private NewsFragmentView newsFragmentView;
 
-    public NewsAdapter(List<Event> news, Context context, NewsFragmentView newsFragmentView){
-        AndroidThreeTen.init(context);
+    public NewsAdapter(List<Event> news, NewsFragmentView newsFragmentView){
         this.news = news;
         this.newsFragmentView = newsFragmentView;
     }
@@ -63,35 +55,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         Picasso.get()
                 .load(Uri.parse(event.getImagesUri().get(0)))
                 .into(holder.ivNewsImage);
-/*
-        Picasso.get()
-                .load(R.drawable.image_man)
-                .into(holder.ivNewsImage);*/
 
         holder.tvNewsName.setText(event.getName());
         holder.tvNewsDescription.setText(event.getDescription());
-        String date = "";
 
-        if (event.getEndDate() > -1){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM");
-
-            LocalDate startLocalDate = Instant.ofEpochMilli(event.getStartDate()).atZone(ZoneId.systemDefault()).toLocalDate();
-            String startDate = formatter.format(startLocalDate);
-
-            LocalDate endLocalDate = Instant.ofEpochMilli(event.getEndDate()).atZone(ZoneId.systemDefault()).toLocalDate();
-            String endDate = formatter.format(endLocalDate);
-
-            LocalDate localDate = LocalDate.now();
-            long diffDays = ChronoUnit.DAYS.between(localDate, startLocalDate);
-            if (diffDays > 0) date = "Осталось " + diffDays + " дней ";
-
-            date += "(" + startDate + " - " + endDate + ")";
-        } else{
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
-            LocalDate localDate = Instant.ofEpochMilli(event.getStartDate()).atZone(ZoneId.systemDefault()).toLocalDate();
-            date = formatter.format(localDate);
-        }
-
+        String date = DateFormating.startEndDateFormat(event.getStartDate(), event.getEndDate(),"MMMM d, yyyy");
         holder.tvNewsCalendar.setText(date);
     }
 

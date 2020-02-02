@@ -106,7 +106,7 @@ public class NewsFragmentView extends Fragment implements NewsFragmentContract.V
         rvNews.setHasFixedSize(false);
 
         news = new ArrayList<>();
-        newsAdapter = new NewsAdapter(news, getContext(), this);
+        newsAdapter = new NewsAdapter(news, this);
 
         rvNews.setAdapter(newsAdapter);
     }
