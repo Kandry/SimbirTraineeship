@@ -5,7 +5,7 @@ import com.kozyrev.simbirtraineeship.model.Event;
 
 public interface Model {
 
-    void getEventDetails(OnFinishedListenerEvents onFinishedListener); //, int id
+    void getEventDetails(OnFinishedListenerEvents onFinishedListener);
 
     void getEventDetailsAsyncTask(OnFinishedListenerEvents onFinishedListener);
 

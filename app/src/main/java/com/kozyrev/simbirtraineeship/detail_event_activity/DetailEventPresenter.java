@@ -57,6 +57,7 @@ public class DetailEventPresenter implements Presenter, OnFinishedListenerEvents
         detailEventView = null;
     }
 
+
     private void checkEvents(int id, List<Event> events){
         if (events != null) {
             for (Event event : events) {
@@ -66,6 +67,5 @@ public class DetailEventPresenter implements Presenter, OnFinishedListenerEvents
                 }
             }
         } else this.onFailure(new IOException("События не загружены"));
-
     }
 }
