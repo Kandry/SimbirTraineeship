@@ -1,19 +1,18 @@
 package com.kozyrev.simbirtraineeship.filters_fragment;
 
-import android.content.Context;
-
+import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerCategories;
 import com.kozyrev.simbirtraineeship.model.Category;
 
 import java.util.List;
 
-public class FiltersFragmentPresenter implements FiltersFragmentContract.Presenter, FiltersFragmentContract.Model.OnFinishedListener {
+public class FiltersFragmentPresenter implements Presenter, OnFinishedListenerCategories {
 
-    private FiltersFragmentContract.View filtersFragmentView;
-    private FiltersFragmentContract.Model filtersFragmentModel;
+    private View filtersFragmentView;
+    private Model filtersFragmentModel;
 
-    FiltersFragmentPresenter(FiltersFragmentContract.View filtersFragmentView, Context context){
+    FiltersFragmentPresenter(View filtersFragmentView){
         this.filtersFragmentView = filtersFragmentView;
-        this.filtersFragmentModel = new FiltersFragmentModel(context);
+        this.filtersFragmentModel = new FiltersFragmentModel();
     }
 
     @Override

@@ -29,7 +29,7 @@ import com.squareup.picasso.Picasso;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ProfileFragmentView extends Fragment implements ProfileFragmentContract.View {
+public class ProfileFragmentView extends Fragment implements com.kozyrev.simbirtraineeship.profile_fragment.View {
 
     private static final String TAG = "ProfileFragmentView";
 

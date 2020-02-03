@@ -8,9 +8,14 @@ import android.content.IntentFilter;
 import android.os.AsyncTask;
 
 import com.kozyrev.simbirtraineeship.R;
+import com.kozyrev.simbirtraineeship.application.HelpingApplication;
+import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerCategories;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.utils.Constants;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
+import com.kozyrev.simbirtraineeship.utils.async_tasks.FiltersTask;
+import com.kozyrev.simbirtraineeship.utils.broadcast_receivers.CategoriesBroadcastReceiver;
+import com.kozyrev.simbirtraineeship.utils.executors.ExecutorCategoriesResult;
 import com.kozyrev.simbirtraineeship.utils.intent_service.CategoriesIntentService;
 
 import org.greenrobot.eventbus.EventBus;
@@ -22,28 +27,23 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class FiltersFragmentModel implements FiltersFragmentContract.Model {
+public class FiltersFragmentModel implements Model {
 
-    private Context context;
     private CategoriesBroadcastReceiver categoriesBroadcastReceiver = new CategoriesBroadcastReceiver();
 
-    FiltersFragmentModel(Context context){
-        this.context = context;
-    }
-
     @Override
-    public void getFilters(OnFinishedListener onFinishedListener) {
+    public void getFilters(OnFinishedListenerCategories onFinishedListener) {
         onFinishedListener.onFinished(JSONHelper.getCategories());
     }
 
     @Override
-    public void getFiltersAsyncTask(OnFinishedListener onFinishedListener) {
+    public void getFiltersAsyncTask(OnFinishedListenerCategories onFinishedListener) {
         FiltersTask filtersTask = new FiltersTask(onFinishedListener);
         filtersTask.execute();
     }
 
     @Override
-    public void getFiltersExecutors(OnFinishedListener onFinishedListener) {
+    public void getFiltersExecutors(OnFinishedListenerCategories onFinishedListener) {
         EventBus.getDefault().register(this);
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
@@ -53,12 +53,13 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
-            EventBus.getDefault().post(new ExecutorResult(onFinishedListener, categories));
+            EventBus.getDefault().post(new ExecutorCategoriesResult(onFinishedListener, categories));
         });
     }
 
     @Override
-    public void getFiltersIntentService(OnFinishedListener onFinishedListener) {
+    public void getFiltersIntentService(OnFinishedListenerCategories onFinishedListener) {
+        Context context = HelpingApplication.getAppContext();
         Intent intent = new Intent(context, CategoriesIntentService.class);
         intent.putExtra(Constants.EXTRA_KEY_IN, context.getString(R.string.categories_filename));
         context.startService(intent);
@@ -75,57 +76,16 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void executorDone(ExecutorResult executorResult){
+    public void executorDone(ExecutorCategoriesResult executorResult){
         EventBus.getDefault().unregister(this);
         executorResult.finishCategories();
     }
-
-    @SuppressLint("StaticFieldLeak")
-    class FiltersTask extends AsyncTask<Void, Void, List<Category>> {
-
-        private OnFinishedListener onFinishedListener;
-
-        FiltersTask(OnFinishedListener onFinishedListener){
-            this.onFinishedListener = onFinishedListener;
-        }
-
-        @Override
-        protected List<Category> doInBackground(Void... voids){
-            List<Category> categories = JSONHelper.getCategories();
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException ex){
-                ex.printStackTrace();
-            }
-            return categories;
-        }
-
-        @Override
-        protected void onPostExecute(List<Category> categories){
-            super.onPostExecute(categories);
-            onFinishedListener.onFinished(categories);
-        }
-    }
-
-    class ExecutorResult{
-        private OnFinishedListener onFinishedListener;
-        private List<Category> categories;
-
-        ExecutorResult(OnFinishedListener onFinishedListener, List<Category> categories){
-            this.onFinishedListener = onFinishedListener;
-            this.categories = categories;
-        }
-
-        void finishCategories(){
-            onFinishedListener.onFinished(categories);
-        }
-    }
-
+/*
     class CategoriesBroadcastReceiver extends BroadcastReceiver {
 
-        private OnFinishedListener onFinishedListener;
+        private OnFinishedListenerCategories onFinishedListener;
 
-        public void setData(OnFinishedListener onFinishedListener){
+        public void setData(OnFinishedListenerCategories onFinishedListener){
             this.onFinishedListener = onFinishedListener;
         }
 
@@ -136,8 +96,8 @@ public class FiltersFragmentModel implements FiltersFragmentContract.Model {
         }
     }
 
-    private void finishedReceiver(OnFinishedListener onFinishedListener, List<Category> categories){
-        context.unregisterReceiver(categoriesBroadcastReceiver);
+    private void finishedReceiver(OnFinishedListenerCategories onFinishedListener, List<Category> categories){
+        HelpingApplication.getAppContext().unregisterReceiver(categoriesBroadcastReceiver);
         onFinishedListener.onFinished(categories);
-    }
+    }*/
 }

@@ -1,50 +1,46 @@
 package com.kozyrev.simbirtraineeship.news_fragment;
 
-import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.AsyncTask;
 
 import com.kozyrev.simbirtraineeship.R;
+import com.kozyrev.simbirtraineeship.application.HelpingApplication;
+import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
 import com.kozyrev.simbirtraineeship.utils.Constants;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
+import com.kozyrev.simbirtraineeship.utils.async_tasks.EventsTask;
+import com.kozyrev.simbirtraineeship.utils.broadcast_receivers.EventsBroadcastReceiver;
+import com.kozyrev.simbirtraineeship.utils.executors.ExecutorEventsResult;
 import com.kozyrev.simbirtraineeship.utils.intent_service.EventsIntentService;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class NewsFragmentModel implements NewsFragmentContract.Model {
+public class NewsFragmentModel implements Model {
 
-    private Context context;
-    private NewsBroadcastReceiver newsBroadcastReceiver = new NewsBroadcastReceiver();
-
-    NewsFragmentModel(Context context){
-        this.context = context;
-    }
+    private EventsBroadcastReceiver newsBroadcastReceiver = new EventsBroadcastReceiver();
 
     @Override
-    public void getEvents(OnFinishedListener onFinishedListener) {
+    public void getEvents(OnFinishedListenerEvents onFinishedListener) {
         onFinishedListener.onFinished(JSONHelper.getEvents());
     }
 
     @Override
-    public void getEventsAsyncTask(OnFinishedListener onFinishedListener) {
-        NewsTask newsTask = new NewsTask(onFinishedListener);
+    public void getEventsAsyncTask(OnFinishedListenerEvents onFinishedListener) {
+        EventsTask newsTask = new EventsTask(onFinishedListener);
         newsTask.execute();
     }
 
     @Override
-    public void getEventsExecutors(OnFinishedListener onFinishedListener) {
+    public void getEventsExecutors(OnFinishedListenerEvents onFinishedListener) {
         EventBus.getDefault().register(this);
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
@@ -54,12 +50,13 @@ public class NewsFragmentModel implements NewsFragmentContract.Model {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            EventBus.getDefault().post(new ExecutorResult(onFinishedListener, news));
+            EventBus.getDefault().post(new ExecutorEventsResult(onFinishedListener, news));
         });
     }
 
     @Override
-    public void getEventsIntentService(OnFinishedListener onFinishedListener) {
+    public void getEventsIntentService(OnFinishedListenerEvents onFinishedListener) {
+        Context context = HelpingApplication.getAppContext();
         Intent intent = new Intent(context, EventsIntentService.class);
         intent.putExtra(Constants.EXTRA_KEY_IN, context.getString(R.string.events_filename));
         context.startService(intent);
@@ -81,69 +78,8 @@ public class NewsFragmentModel implements NewsFragmentContract.Model {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void executorDone(ExecutorResult executorResult){
+    public void executorDone(ExecutorEventsResult executorEventsResult){
         EventBus.getDefault().unregister(this);
-        executorResult.finishNews();
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    class NewsTask extends AsyncTask<Void, Void, List<Event>> {
-
-        private OnFinishedListener onFinishedListener;
-
-        NewsTask(OnFinishedListener onFinishedListener){
-            this.onFinishedListener = onFinishedListener;
-        }
-
-        @Override
-        protected List<Event> doInBackground(Void... voids) {
-            List<Event> news = JSONHelper.getEvents();
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return news;
-        }
-
-        @Override
-        protected void onPostExecute(List<Event> news){
-            super.onPostExecute(news);
-            onFinishedListener.onFinished(news);
-        }
-    }
-
-    class ExecutorResult {
-        private OnFinishedListener onFinishedListener;
-        private List<Event> news;
-
-        ExecutorResult(OnFinishedListener onFinishedListener, List<Event> news){
-            this.onFinishedListener = onFinishedListener;
-            this.news = news;
-        }
-
-        void finishNews(){
-            onFinishedListener.onFinished(news);
-        }
-    }
-
-    class NewsBroadcastReceiver extends BroadcastReceiver {
-
-        private OnFinishedListener onFinishedListener;
-
-        public void setData(OnFinishedListener onFinishedListener){
-            this.onFinishedListener = onFinishedListener;
-        }
-
-        @Override
-        public void onReceive(Context context, Intent intent){
-            ArrayList<Event> news = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
-            finishedReceiver(onFinishedListener, news);
-        }
-    }
-
-    private void finishedReceiver(OnFinishedListener onFinishedListener, List<Event> news){
-        context.unregisterReceiver(newsBroadcastReceiver);
-        onFinishedListener.onFinished(news);
+        executorEventsResult.finish();
     }
 }

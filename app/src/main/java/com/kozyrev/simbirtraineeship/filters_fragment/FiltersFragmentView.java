@@ -28,7 +28,7 @@ import com.kozyrev.simbirtraineeship.model.Category;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FiltersFragmentView extends Fragment implements FiltersFragmentContract.View {
+public class FiltersFragmentView extends Fragment implements com.kozyrev.simbirtraineeship.filters_fragment.View {
 
     private static final String TAG = "FiltersFragmentView";
     private static final String KEY = "FiltersFragmentView";
@@ -58,7 +58,7 @@ public class FiltersFragmentView extends Fragment implements FiltersFragmentCont
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
 
-        filtersFragmentPresenter = new FiltersFragmentPresenter(this, getContext());
+        filtersFragmentPresenter = new FiltersFragmentPresenter(this);
 
         if (savedInstanceState != null) {
             categories = savedInstanceState.getParcelableArrayList(KEY);

@@ -59,8 +59,6 @@ public class PhotoProfileDialogFragment extends DialogFragment {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        //notImageAdding = true;
-
         switch (requestCode) {
 
             case REQUEST_GALLERY:
@@ -120,7 +118,7 @@ public class PhotoProfileDialogFragment extends DialogFragment {
     }
 
     private void callCameraApp(){
-        Intent cameraAppIntent = camera.callCameraApp(getActivity(), getActivity());
+        Intent cameraAppIntent = camera.callCameraApp(getActivity());
         startActivityForResult(cameraAppIntent, START_CAMERA_APP);
     }
 }

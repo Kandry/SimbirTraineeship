@@ -1,17 +1,22 @@
 package com.kozyrev.simbirtraineeship.detail_event_activity;
 
-import android.content.Context;
-
+import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
 import com.kozyrev.simbirtraineeship.model.Event;
 
-public class DetailEventPresenter implements DetailEventContract.Presenter, DetailEventContract.Model.OnFinishedListener {
+import java.io.IOException;
+import java.util.List;
 
-    private DetailEventContract.View detailEventView;
-    private DetailEventContract.Model detailEventModel;
+public class DetailEventPresenter implements Presenter, OnFinishedListenerEvents {
 
-    DetailEventPresenter(DetailEventContract.View detailEventView, Context context){
+    private View detailEventView;
+    private Model detailEventModel;
+
+    private int id;
+    private Event finalEvent = null;
+
+    DetailEventPresenter(View detailEventView){
         this.detailEventView = detailEventView;
-        this.detailEventModel = new DetailEventModel(context);
+        this.detailEventModel = new DetailEventModel();
     }
 
     @Override
@@ -20,18 +25,21 @@ public class DetailEventPresenter implements DetailEventContract.Presenter, Deta
             detailEventView.showEmptyView();
             detailEventView.showProgress();
         }
-        //detailEventModel.getEventDetails(this, id);
-        //detailEventModel.getEventDetailsAsyncTask(this, id);
-        detailEventModel.getEventDetailsExecutor(this, id);
-        //detailEventModel.getEventDetailsIntentService(this, id);
+        this.id = id;
+
+        //detailEventModel.getEventDetails(this);
+        //detailEventModel.getEventDetailsAsyncTask(this);
+        detailEventModel.getEventDetailsExecutor(this);
+        //detailEventModel.getEventDetailsIntentService(this);
     }
 
     @Override
-    public void onFinished(Event event) {
-        if (detailEventView != null){
+    public void onFinished(List<Event> events) {
+        checkEvents(id, events);
+        if (detailEventView != null && finalEvent != null){
             detailEventView.hideProgress();
             detailEventView.hideEmptyView();
-            detailEventView.setDataToViews(event);
+            detailEventView.setDataToViews(finalEvent);
         }
     }
 
@@ -47,5 +55,17 @@ public class DetailEventPresenter implements DetailEventContract.Presenter, Deta
     @Override
     public void onDestroy() {
         detailEventView = null;
+    }
+
+    private void checkEvents(int id, List<Event> events){
+        if (events != null) {
+            for (Event event : events) {
+                if (event.getId() == id) {
+                    finalEvent = event;
+                    return;
+                }
+            }
+        } else this.onFailure(new IOException("События не загружены"));
+
     }
 }

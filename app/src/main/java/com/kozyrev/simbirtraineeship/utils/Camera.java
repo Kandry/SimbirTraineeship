@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import androidx.core.content.FileProvider;
 
+import com.kozyrev.simbirtraineeship.application.HelpingApplication;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -32,7 +33,7 @@ public class Camera {
         return cameraImageUri.toString();
     }
 
-    public Intent callCameraApp(Context appContext, Context currientContext){
+    public Intent callCameraApp(Context currentContext){
         Intent cameraAppIntent = new Intent();
         cameraAppIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -43,8 +44,8 @@ public class Camera {
             ex.printStackTrace();
         }
 
-        String authorities = appContext.getPackageName() + ".fileprovider";
-        cameraImageUri = FileProvider.getUriForFile(currientContext, authorities, photoFile);
+        String authorities = HelpingApplication.getAppContext().getPackageName() + ".fileprovider";
+        cameraImageUri = FileProvider.getUriForFile(currentContext, authorities, photoFile);
 
         cameraAppIntent.putExtra(MediaStore.EXTRA_OUTPUT, cameraImageUri);
         return cameraAppIntent;

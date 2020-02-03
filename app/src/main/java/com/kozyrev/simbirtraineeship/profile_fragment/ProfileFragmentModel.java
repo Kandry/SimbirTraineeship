@@ -1,6 +1,7 @@
 package com.kozyrev.simbirtraineeship.profile_fragment;
 
 import com.kozyrev.simbirtraineeship.R;
+import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerUser;
 import com.kozyrev.simbirtraineeship.model.User;
 
 import java.text.ParseException;
@@ -9,10 +10,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
-public class ProfileFragmentModel implements ProfileFragmentContract.Model {
+public class ProfileFragmentModel implements Model {
 
     @Override
-    public void getUserData(OnFinishedListener onFinishedListener, int id) {
+    public void getUserData(OnFinishedListenerUser onFinishedListener, int id) {
         User user = new User(100000, R.drawable.image_man, "Константинов Денис");
         SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
         try {

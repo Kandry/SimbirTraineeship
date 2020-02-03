@@ -29,8 +29,6 @@
                 android:layout_gravity="center"
                 android:maxLines="1"/>
 
-<!--            android:text="@string/auth_tv_toolbar"-->
-
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -147,9 +145,6 @@
                 android:textSize="16sp"
                 android:textStyle="normal" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!--        http://developer.alexanderklimov.ru/android/views/quickclearedittext.php-->
-        <!--        password syrdl-->
 
         <Button
             android:id="@+id/btn_enter"

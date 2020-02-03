@@ -29,7 +29,7 @@ import java.util.List;
 
 import static com.kozyrev.simbirtraineeship.utils.Constants.EVENT_ID;
 
-public class DetailEventView extends AppCompatActivity implements DetailEventContract.View {
+public class DetailEventView extends AppCompatActivity implements com.kozyrev.simbirtraineeship.detail_event_activity.View {
 
     private static final String TAG = "DetailEventView";
     private static final String KEY = "DetailEventView";
@@ -61,7 +61,7 @@ public class DetailEventView extends AppCompatActivity implements DetailEventCon
 
         initViews();
 
-        detailEventPresenter = new DetailEventPresenter(this, this);
+        detailEventPresenter = new DetailEventPresenter(this);
 
         if (savedInstanceState != null) {
             event = savedInstanceState.getParcelable(KEY);
