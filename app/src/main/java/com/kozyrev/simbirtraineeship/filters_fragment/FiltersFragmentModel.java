@@ -1,11 +1,8 @@
 package com.kozyrev.simbirtraineeship.filters_fragment;
 
-import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.AsyncTask;
 
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.application.HelpingApplication;
@@ -22,7 +19,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -76,28 +72,8 @@ public class FiltersFragmentModel implements Model {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void executorDone(ExecutorCategoriesResult executorResult){
+    public void executorDone(ExecutorCategoriesResult executorResult) {
         EventBus.getDefault().unregister(this);
         executorResult.finishCategories();
     }
-/*
-    class CategoriesBroadcastReceiver extends BroadcastReceiver {
-
-        private OnFinishedListenerCategories onFinishedListener;
-
-        public void setData(OnFinishedListenerCategories onFinishedListener){
-            this.onFinishedListener = onFinishedListener;
-        }
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            ArrayList<Category> categories = intent.getParcelableArrayListExtra(Constants.EXTRA_KEY_OUT);
-            finishedReceiver(onFinishedListener, categories);
-        }
-    }
-
-    private void finishedReceiver(OnFinishedListenerCategories onFinishedListener, List<Category> categories){
-        HelpingApplication.getAppContext().unregisterReceiver(categoriesBroadcastReceiver);
-        onFinishedListener.onFinished(categories);
-    }*/
 }

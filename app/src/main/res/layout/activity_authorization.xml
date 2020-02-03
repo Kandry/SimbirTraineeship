@@ -32,169 +32,181 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:id="@+id/tv_auth_top"
-            style="@style/TextStyle3"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/auth_tv_top"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ImageView
-            android:id="@+id/iv_vk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/vk"
-            app:layout_constraintEnd_toStartOf="@+id/iv_ok"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_auth_top" />
-
-        <ImageView
-            android:id="@+id/iv_ok"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ok_sn"
-            app:layout_constraintEnd_toStartOf="@+id/iv_fb"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/iv_vk"
-            app:layout_constraintTop_toTopOf="@+id/iv_vk" />
-
-        <ImageView
-            android:id="@+id/iv_fb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:src="@drawable/fb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/iv_ok"
-            app:layout_constraintTop_toTopOf="@+id/iv_vk" />
-
-        <TextView
-            android:id="@+id/tv_auth_cntr"
-            style="@style/TextStyle3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/auth_tv_center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_ok" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tv_auth_layout_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="16dp"
-            app:hintTextColor="@color/black__38"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_auth_cntr">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tv_input_email"
+            <TextView
+                android:id="@+id/tv_auth_top"
+                style="@style/TextStyle3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:hint="@string/auth_tv_hint_email"
-                android:inputType="textEmailAddress"
-                android:lineSpacingExtra="8sp"
-                android:textColor="@color/black__38"
-                android:textSize="16sp"
-                android:textStyle="normal" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/auth_tv_top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tv_auth_layout_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:hintTextColor="@color/black__38"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_auth_layout_email">
+            <ImageView
+                android:id="@+id/iv_vk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/vk"
+                app:layout_constraintEnd_toStartOf="@+id/iv_ok"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_auth_top" />
 
-            <EditText
-                android:id="@+id/tv_input_pass"
+            <ImageView
+                android:id="@+id/iv_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ok_sn"
+                app:layout_constraintEnd_toStartOf="@+id/iv_fb"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_vk"
+                app:layout_constraintTop_toTopOf="@+id/iv_vk" />
+
+            <ImageView
+                android:id="@+id/iv_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/fb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_ok"
+                app:layout_constraintTop_toTopOf="@+id/iv_vk" />
+
+            <TextView
+                android:id="@+id/tv_auth_cntr"
+                style="@style/TextStyle3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:hint="@string/auth_tv_hint_pass"
-                android:inputType="textPassword"
-                android:lineSpacingExtra="8sp"
-                android:textColor="@color/black__38"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/auth_tv_center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_ok" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_auth_layout_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="16dp"
+                app:hintTextColor="@color/black__38"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_auth_cntr">
+
+                <EditText
+                    android:id="@+id/et_input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/auth_tv_hint_email"
+                    android:inputType="textEmailAddress"
+                    android:lineSpacingExtra="8sp"
+                    android:textColor="@color/black__38"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_auth_layout_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:hintTextColor="@color/black__38"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_auth_layout_email">
+
+                <com.kozyrev.simbirtraineeship.custom_views.PassVisibleEditText
+                    android:id="@+id/et_input_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:hint="@string/auth_tv_hint_pass"
+                    android:inputType="textPassword"
+                    android:lineSpacingExtra="8sp"
+                    android:textColor="@color/black__38"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    android:drawableRight="@drawable/open"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_enter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/black__38"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.04"
+                android:text="@string/auth_btn_enter"
+                android:textColor="@color/white"
                 android:textSize="16sp"
-                android:textStyle="normal" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:textStyle="normal"
+                android:enabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_auth_layout_pass" />
 
-        <Button
-            android:id="@+id/btn_enter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/black__38"
-            android:fontFamily="sans-serif-medium"
-            android:letterSpacing="0.04"
-            android:text="@string/auth_btn_enter"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_auth_layout_pass" />
+            <TextView
+                android:id="@+id/tv_forgot_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:autoLink="web"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="6sp"
+                android:linksClickable="true"
+                android:text="@string/auth_tv_forgot_pass"
+                android:textColor="@color/leaf"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/btn_enter"
+                app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
 
-        <TextView
-            android:id="@+id/tv_forgot_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:autoLink="web"
-            android:linksClickable="true"
-            android:textColor="@color/leaf"
-            android:textSize="14sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="normal"
-            android:lineSpacingExtra="6sp"
-            android:text="@string/auth_tv_forgot_pass"
-            app:layout_constraintStart_toStartOf="@+id/btn_enter"
-            app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
+            <TextView
+                android:id="@+id/tv_registration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:autoLink="web"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="6sp"
+                android:linksClickable="true"
+                android:text="@string/auth_tv_registration"
+                android:textColor="@color/leaf"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_forgot_pass"
+                app:layout_constraintEnd_toEndOf="@+id/btn_enter"
+                app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
 
-        <TextView
-            android:id="@+id/tv_registration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:autoLink="web"
-            android:linksClickable="true"
-            android:textColor="@color/leaf"
-            android:textSize="14sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="normal"
-            android:lineSpacingExtra="6sp"
-            android:text="@string/auth_tv_registration"
-            app:layout_constraintEnd_toEndOf="@+id/btn_enter"
-            app:layout_constraintTop_toBottomOf="@+id/btn_enter" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
