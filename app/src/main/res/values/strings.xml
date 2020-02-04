@@ -23,8 +23,6 @@
     <string name="profile_friends">Ваши друзья</string>
     <string name="profile_exit">Выйти из аккаунта</string>
 
-    <string name="search_hint">Введите название организации</string>
-
     <string name="photo_dialog_upload">Выбрать фото</string>
     <string name="photo_dialog_camera">Сделать снимок</string>
     <string name="photo_dialog_delete">Удалить</string>
@@ -57,4 +55,8 @@
     <string name="auth_btn_enter">ВОЙТИ</string>
     <string name="auth_tv_forgot_pass"><u>Забыли пароль?</u></string>
     <string name="auth_tv_registration"><u>Регистрация</u></string>
+
+    <string name="search_hint">Введите ключевые слова</string>
+    <string name="events_search_fragment_text_center">Напишите в строке поиска название мероприятия или ключевые слова.</string>
+    <string name="events_search_fragment_text_bottom">Например, <u>мастер-класс, помощь</u></string>
 </resources>

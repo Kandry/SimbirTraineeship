@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.kozyrev.simbirtraineeship.search_fragment.EventsFragment;
-import com.kozyrev.simbirtraineeship.search_fragment.NCOsFragment;
+import com.kozyrev.simbirtraineeship.search_fragment.search_events_fragment.SearchEventsFragmentView;
+import com.kozyrev.simbirtraineeship.search_fragment.search_nco_fragment.NCOsFragment;
 
 public class SearchFragmentPagerAdapter extends FragmentPagerAdapter {
 
@@ -27,7 +27,7 @@ public class SearchFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new EventsFragment();
+                return new SearchEventsFragmentView();
             case 1:
                 return new NCOsFragment();
 
