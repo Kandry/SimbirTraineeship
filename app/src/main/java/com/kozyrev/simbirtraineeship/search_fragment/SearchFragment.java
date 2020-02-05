@@ -37,7 +37,8 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ViewPager vpSearch = view.findViewById(R.id.vp_search);
-        vpSearch.setAdapter(new SearchFragmentPagerAdapter(getFragmentManager(), 0));
+        SearchFragmentPagerAdapter fragmentPagerAdapter = new SearchFragmentPagerAdapter(this.getChildFragmentManager(), 0); //getActivity().getSupportFragmentManager()
+        vpSearch.setAdapter(fragmentPagerAdapter);
         TabLayout tabLayout = view.findViewById(R.id.tl_search);
         tabLayout.setupWithViewPager(vpSearch);
     }

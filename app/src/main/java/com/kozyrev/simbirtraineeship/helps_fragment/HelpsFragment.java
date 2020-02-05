@@ -1,4 +1,4 @@
-package com.kozyrev.simbirtraineeship;
+package com.kozyrev.simbirtraineeship.helps_fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ferfalk.simplesearchview.SimpleSearchView;
+import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.HelpsAdapter;
 import com.kozyrev.simbirtraineeship.model.HelpItem;
 

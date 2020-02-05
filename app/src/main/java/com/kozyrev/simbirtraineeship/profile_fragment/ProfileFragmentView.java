@@ -20,21 +20,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ferfalk.simplesearchview.SimpleSearchView;
-import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.UsersAdapter;
 import com.kozyrev.simbirtraineeship.model.User;
+import com.kozyrev.simbirtraineeship.utils.DateFormating;
 import com.squareup.picasso.Picasso;
-
-import org.threeten.bp.Instant;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.ZoneId;
-import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class ProfileFragmentView extends Fragment implements ProfileFragmentContract.View {
+public class ProfileFragmentView extends Fragment implements com.kozyrev.simbirtraineeship.profile_fragment.View {
 
     private static final String TAG = "ProfileFragmentView";
 
@@ -55,7 +50,6 @@ public class ProfileFragmentView extends Fragment implements ProfileFragmentCont
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AndroidThreeTen.init(getContext());
     }
 
     @Override
@@ -87,9 +81,7 @@ public class ProfileFragmentView extends Fragment implements ProfileFragmentCont
         if (user != null) {
             tvName.setText(user.getName());
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
-            LocalDate localDate = Instant.ofEpochMilli(user.getDateBirthTime()).atZone(ZoneId.systemDefault()).toLocalDate();
-            String formattedDate = formatter.format(localDate);
+            String formattedDate = DateFormating.dateFormat(user.getDateBirthTime(), "d MMMM yyyy");
             tvDateBirth.setText(formattedDate);
 
             tvWork.setText(user.getProfession());

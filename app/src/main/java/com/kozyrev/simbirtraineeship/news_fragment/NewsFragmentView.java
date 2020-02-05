@@ -31,7 +31,7 @@ import java.util.List;
 
 import static com.kozyrev.simbirtraineeship.utils.Constants.EVENT_ID;
 
-public class NewsFragmentView extends Fragment implements NewsFragmentContract.View, NewsItemClickListener{
+public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtraineeship.news_fragment.View, NewsItemClickListener{
 
     private static final String KEY = "NewsFragmentView";
 
@@ -58,7 +58,7 @@ public class NewsFragmentView extends Fragment implements NewsFragmentContract.V
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
 
-        newsFragmentPresenter = new NewsFragmentPresenter(this, getContext());
+        newsFragmentPresenter = new NewsFragmentPresenter(this);
 
         if (savedInstanceState != null) {
             news = savedInstanceState.getParcelableArrayList(KEY);
@@ -106,7 +106,7 @@ public class NewsFragmentView extends Fragment implements NewsFragmentContract.V
         rvNews.setHasFixedSize(false);
 
         news = new ArrayList<>();
-        newsAdapter = new NewsAdapter(news, getContext(), this);
+        newsAdapter = new NewsAdapter(news, this);
 
         rvNews.setAdapter(newsAdapter);
     }

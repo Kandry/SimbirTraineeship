@@ -1,13 +1,14 @@
 package com.kozyrev.simbirtraineeship.profile_fragment;
 
+import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerUser;
 import com.kozyrev.simbirtraineeship.model.User;
 
-public class ProfileFragmentPresenter implements ProfileFragmentContract.Presenter, ProfileFragmentContract.Model.OnFinishedListener {
+public class ProfileFragmentPresenter implements Presenter, OnFinishedListenerUser {
 
-    private ProfileFragmentContract.View profileFragmentView;
-    private ProfileFragmentContract.Model profileFragmentModel;
+    private View profileFragmentView;
+    private Model profileFragmentModel;
 
-    public ProfileFragmentPresenter(ProfileFragmentContract.View profileFragmentView){
+    public ProfileFragmentPresenter(View profileFragmentView){
         this.profileFragmentView = profileFragmentView;
         this.profileFragmentModel = new ProfileFragmentModel();
     }

@@ -1,21 +1,20 @@
 package com.kozyrev.simbirtraineeship.news_fragment;
 
-import android.content.Context;
-
+import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsFragmentPresenter implements NewsFragmentContract.Presenter, NewsFragmentContract.Model.OnFinishedListener {
+public class NewsFragmentPresenter implements Presenter, OnFinishedListenerEvents {
 
-    private NewsFragmentContract.View newsFragmentView;
-    private NewsFragmentContract.Model newsFragmentModel;
+    private View newsFragmentView;
+    private Model newsFragmentModel;
 
-    NewsFragmentPresenter(NewsFragmentContract.View newsFragmentView, Context context){
+    NewsFragmentPresenter(View newsFragmentView){
         this.newsFragmentView = newsFragmentView;
-        this.newsFragmentModel = new NewsFragmentModel(context);
+        this.newsFragmentModel = new NewsFragmentModel();
     }
 
     @Override
@@ -25,9 +24,9 @@ public class NewsFragmentPresenter implements NewsFragmentContract.Presenter, Ne
             newsFragmentView.showProgress();
         }
         //newsFragmentModel.getEvents(this);
-        newsFragmentModel.getEventsAsyncTask(this);
+        //newsFragmentModel.getEventsAsyncTask(this);
         //newsFragmentModel.getEventsExecutors(this);
-        //newsFragmentModel.getEventsIntentService(this);
+        newsFragmentModel.getEventsIntentService(this);
     }
 
     private List<Event> filterNews(List<Event> events) {

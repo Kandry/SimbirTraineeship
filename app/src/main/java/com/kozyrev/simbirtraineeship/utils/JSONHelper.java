@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.kozyrev.simbirtraineeship.R;
+import com.kozyrev.simbirtraineeship.application.HelpingApplication;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
 
@@ -27,13 +29,14 @@ public class JSONHelper {
     private static final String APP_PREFERENCES = "prefs";
     private static final String APP_PREFERENCES_JSON = "json";
 
-    public static List<Category> getCategories(@NonNull Context context, String fileName) {
+    public static List<Category> getCategories() {
+        Context context = HelpingApplication.getAppContext();
         SharedPreferences prefs = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         StringBuilder jsonBuilder = new StringBuilder(prefs.getString(APP_PREFERENCES_JSON, ""));
         String json;
 
         if (jsonBuilder.length() < 1)
-            json = readJson(context, fileName, new StringBuilder());
+            json = readJson(context, context.getString(R.string.categories_filename), new StringBuilder());
         else
             json = jsonBuilder.toString();
 
@@ -41,7 +44,8 @@ public class JSONHelper {
         return new Gson().fromJson(json, type);
     }
 
-    public static void setCategories(@NonNull Context context, List<Category> categories) {
+    public static void setCategories(List<Category> categories) {
+        Context context =  HelpingApplication.getAppContext();
         StringBuilder json = new StringBuilder();
 
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -55,15 +59,17 @@ public class JSONHelper {
         editor.apply();
     }
 
-    public static void clearCategories(@NonNull Context context) {
+    public static void clearCategories() {
+        Context context =  HelpingApplication.getAppContext();
         SharedPreferences prefs = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.clear();
         editor.apply();
     }
 
-    public static List<Event> getEvents(Context context, String fileName) {
-        String json = readJson(context, fileName, new StringBuilder());
+    public static List<Event> getEvents() {
+        Context context =  HelpingApplication.getAppContext();
+        String json = readJson(context, context.getString(R.string.events_filename), new StringBuilder());
         Type type = new TypeToken<List<Event>>(){}.getType();
         return new Gson().fromJson(json, type);
     }

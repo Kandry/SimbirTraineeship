@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.kozyrev.simbirtraineeship.authorization_activity.AuthorizationActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     private final int SPLASH_SCREEN_LENGTH = 3000;
@@ -17,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                Intent intent = new Intent(SplashScreen.this, AuthorizationActivity.class);
                 startActivity(intent);
                 SplashScreen.this.finish();
             }

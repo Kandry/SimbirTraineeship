@@ -1,4 +1,4 @@
-package com.kozyrev.simbirtraineeship.search_fragment;
+package com.kozyrev.simbirtraineeship.search_fragment.search_nco_fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
