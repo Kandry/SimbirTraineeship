@@ -2,6 +2,7 @@ package com.kozyrev.simbirtraineeship.news_fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +26,7 @@ import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.NewsAdapter;
 import com.kozyrev.simbirtraineeship.detail_event_activity.DetailEventView;
 import com.kozyrev.simbirtraineeship.model.Event;
+import com.kozyrev.simbirtraineeship.utils.SparseBooleanArrayParcelable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +35,12 @@ import static com.kozyrev.simbirtraineeship.utils.Constants.EVENT_ID;
 
 public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtraineeship.news_fragment.View, NewsItemClickListener{
 
-    private static final String KEY = "NewsFragmentView";
+    private static final String KEY = "NewsFragmentView_News";
+    public static final String KEY_SBA = "CustomBooleanArray";
 
-    private List<Event> news;
+    private List<Event> news = null;
     private NewsAdapter newsAdapter;
+    private SparseBooleanArray categories = null;
 
     private ProgressBar pbLoading;
     private RecyclerView rvNews;
@@ -60,9 +64,16 @@ public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtrai
 
         newsFragmentPresenter = new NewsFragmentPresenter(this);
 
+        if (getArguments() != null) categories = getArguments().getParcelable(KEY_SBA);
+        if (categories != null){
+            newsFragmentPresenter.setCategories(categories);
+            newsFragmentPresenter.requestDataFromFile();
+        }
+
         if (savedInstanceState != null) {
+            categories = savedInstanceState.getParcelable(KEY_SBA);
             news = savedInstanceState.getParcelableArrayList(KEY);
-            setDataToRecyclerView(news);
+            setDataToRecyclerView(newsFragmentPresenter.filterNews(news, categories));
         } else {
             newsFragmentPresenter.requestDataFromFile();
         }
@@ -72,6 +83,7 @@ public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtrai
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList(KEY, (ArrayList<Event>) news);
+        outState.putParcelable(KEY_SBA, new SparseBooleanArrayParcelable(categories));
     }
 
     @Override
@@ -84,7 +96,9 @@ public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtrai
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_news_category:
-                Navigation.findNavController(getView()).navigate(R.id.action_navigation_news_to_filtersFragment);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(KEY_SBA, new SparseBooleanArrayParcelable(categories));
+                Navigation.findNavController(getView()).navigate(R.id.action_navigation_news_to_filtersFragment, bundle);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -121,6 +135,7 @@ public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtrai
 
     @Override
     public void setDataToRecyclerView(List<Event> events) {
+        if (categories == null) categories = newsFragmentPresenter.getCategories();
         if (events != null) {
             this.news = events;
 
@@ -151,12 +166,12 @@ public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtrai
     public void hideEmptyView() {
         rvNews.setVisibility(View.VISIBLE);
     }
-
+/*
     @Override
     public void onStop() {
         newsFragmentPresenter.clearCategories();
         super.onStop();
-    }
+    }*/
 
     @Override
     public void onResponseFailure(Throwable throwable) {

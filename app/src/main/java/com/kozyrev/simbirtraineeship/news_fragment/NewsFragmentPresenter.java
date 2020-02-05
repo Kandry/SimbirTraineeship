@@ -1,5 +1,7 @@
 package com.kozyrev.simbirtraineeship.news_fragment;
 
+import android.util.SparseBooleanArray;
+
 import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
@@ -11,6 +13,7 @@ public class NewsFragmentPresenter implements Presenter, OnFinishedListenerEvent
 
     private View newsFragmentView;
     private Model newsFragmentModel;
+    private SparseBooleanArray categories = null;
 
     NewsFragmentPresenter(View newsFragmentView){
         this.newsFragmentView = newsFragmentView;
@@ -29,17 +32,20 @@ public class NewsFragmentPresenter implements Presenter, OnFinishedListenerEvent
         newsFragmentModel.getEventsIntentService(this);
     }
 
-    private List<Event> filterNews(List<Event> events) {
+    private SparseBooleanArray fillCategories(){
+        List<Category> getCategories = newsFragmentModel.getCategories();
+        SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
+        for (Category category: getCategories) {
+            sparseBooleanArray.put(category.getId(), true);
+        }
+        return sparseBooleanArray;
+    }
+
+    List<Event> filterNews(List<Event> events, SparseBooleanArray categories) {
         List<Event> news = new ArrayList<>();
 
-        List<Category> categories = newsFragmentModel.getCategories();
         for (Event event: events) {
-            List<Integer> categoriesID = event.getCategoriesID();
-            boolean inNews = false;
-
-            for (Category category: categories) {
-                if ((categoriesID.contains(category.getId())) && (category.isActive())) inNews = true;
-            }
+            boolean inNews = categories.get(event.getCategory());
 
             if (!inNews && news.contains(event)){
                 news.remove(event);
@@ -54,16 +60,12 @@ public class NewsFragmentPresenter implements Presenter, OnFinishedListenerEvent
     }
 
     @Override
-    public void clearCategories() {
-        newsFragmentModel.clearCategories();
-    }
-
-    @Override
     public void onFinished(List<Event> events) {
+        if (categories == null) categories = fillCategories();
         if (newsFragmentView != null){
             newsFragmentView.hideProgress();
             newsFragmentView.hideEmptyView();
-            newsFragmentView.setDataToRecyclerView(filterNews(events));
+            newsFragmentView.setDataToRecyclerView(filterNews(events, categories));
         }
     }
 
@@ -79,5 +81,13 @@ public class NewsFragmentPresenter implements Presenter, OnFinishedListenerEvent
     @Override
     public void onDestroy() {
         this.newsFragmentView = null;
+    }
+
+    public SparseBooleanArray getCategories() {
+        return categories;
+    }
+
+    public void setCategories(SparseBooleanArray categories) {
+        this.categories = categories;
     }
 }

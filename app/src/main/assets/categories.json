@@ -1,22 +1,22 @@
 [
 	{
-        "id": 1,
-        "name": "Деньги",
-        "isActive": true 
-    },
-    {
-        "id": 2,
-        "name": "Вещи",
-        "isActive": true
-    },
-    {
-        "id": 3,
-        "name": "Проф. помощь",
-        "isActive": true
-    },
-    {
         "id": 4,
+        "name": "Деньги",
+        "name_en": "money"
+    },
+    {
+        "id": 5,
+        "name": "Вещи",
+        "name_en": "goods"
+    },
+    {
+        "id": 6,
+        "name": "Проф. помощь",
+        "name_en": "prof. help"
+    },
+    {
+        "id": 7,
         "name": "Волонтерство",
-        "isActive": true
+        "name_en": "volunteerism"
     }
 ]

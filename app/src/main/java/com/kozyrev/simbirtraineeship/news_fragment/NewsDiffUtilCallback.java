@@ -39,10 +39,10 @@ public class NewsDiffUtilCallback extends DiffUtil.Callback {
         Event oldEvent = oldList.get(oldItemPosition);
         Event newEvent = newList.get(newItemPosition);
 
-        boolean isNotOldImagesIsEmpty = oldEvent.getImagesUri().size() > 0;
-        boolean isNotNewImagesIsEmpty = newEvent.getImagesUri().size() > 0;
+        boolean isNotOldImagesIsEmpty = oldEvent.getPhotos().size() > 0;
+        boolean isNotNewImagesIsEmpty = newEvent.getPhotos().size() > 0;
 
-        boolean isImagesTheSame = isNotOldImagesIsEmpty && isNotNewImagesIsEmpty ? oldEvent.getImagesUri().get(0).equals(newEvent.getImagesUri().get(0)) : false;
+        boolean isImagesTheSame = isNotOldImagesIsEmpty && isNotNewImagesIsEmpty ? oldEvent.getPhotos().get(0).equals(newEvent.getPhotos().get(0)) : false;
 
         return oldEvent.getName().equals(newEvent.getName())
                 && oldEvent.getDescription().equals(newEvent.getDescription())
@@ -53,15 +53,13 @@ public class NewsDiffUtilCallback extends DiffUtil.Callback {
     }
 
     private boolean isCategoriesTheSame(Event oldEvent, Event newEvent){
-        List<Integer> oldEventCategories = oldEvent.getCategoriesID();
-        List<Integer> newEventCategories = newEvent.getCategoriesID();
+        int oldEventCategory = oldEvent.getCategory();
+        int newEventCategory = newEvent.getCategory();
 
-        if (oldEventCategories.size() != newEventCategories.size()) return false;
+        //if (oldEventCategories.size() != newEventCategories.size()) return false;
 
-        for (int i = 0; i < oldEventCategories.size(); i++){
-            if (!oldEventCategories.get(i).equals(newEventCategories.get(i))) return false;
-        }
-
-        return true;
+        //for (int i = 0; i < oldEventCategories.size(); i++){
+        return oldEventCategory == newEventCategory;
+        //}
     }
 }

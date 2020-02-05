@@ -9,5 +9,5 @@ public interface Presenter extends PresenterBase {
 
     void requestDataFromFile();
 
-    void setDataToFile(List<Category> categories);
+    //void setDataToFile(List<Category> categories);
 }

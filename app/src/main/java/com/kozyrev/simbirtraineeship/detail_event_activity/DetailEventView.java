@@ -120,10 +120,10 @@ public class DetailEventView extends AppCompatActivity implements com.kozyrev.si
             toolbarDetailEventTitle.setText(event.getName());
             tvDetailEventTitle.setText(event.getName());
             tvDetailEventCalendar.setText(DateFormating.startEndDateFormat(event.getStartDate(), event.getEndDate(), "MMMM d, yyyy"));
-            tvDetailEventOrganizer.setText(event.getOrganizer());
+            tvDetailEventOrganizer.setText(event.getOrganisation());
             tvDetailEventAddresses.setText(event.getAddress());
 
-            List<String> phoneNumbersList = event.getPhoneNumbers();
+            /*List<String> phoneNumbersList = event.getPhoneNumbers();
             if (phoneNumbersList.size() > 0) {
                 StringBuilder phoneNumbers = new StringBuilder();
                 for (int i = 0; i < phoneNumbersList.size() - 1; i++) {
@@ -131,11 +131,11 @@ public class DetailEventView extends AppCompatActivity implements com.kozyrev.si
                 }
                 phoneNumbers.append(phoneNumbersList.get(phoneNumbersList.size() - 1));
                 tvDetailEventPhone.setText(phoneNumbers.toString());
-            }
-
+            }*/
+            tvDetailEventPhone.setText(event.getPhone());
             tvDetailEventDescription.setText(event.getDescription());
 
-            List<String> imagesRes = new LinkedList<>(event.getImagesUri());
+            List<String> imagesRes = new LinkedList<>(event.getPhotos());
 
             ImagesEventAdapter imagesEventAdapter = new ImagesEventAdapter(imagesRes);
             rvDetailEventImages.setAdapter(imagesEventAdapter);

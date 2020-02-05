@@ -15,5 +15,5 @@ public interface Model {
 
     void getFiltersIntentService(OnFinishedListenerCategories onFinishedListener);
 
-    void setFilters(List<Category> categories);
+    //void setFilters(List<Category> categories);
 }

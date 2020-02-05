@@ -53,7 +53,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         Event event = news.get(position);
 
         Picasso.get()
-                .load(Uri.parse(event.getImagesUri().get(0)))
+                .load(Uri.parse(event.getPhotos().get(0)))
                 .into(holder.ivNewsImage);
 
         holder.tvNewsName.setText(event.getName());

@@ -66,11 +66,6 @@ public class FiltersFragmentModel implements Model {
         context.registerReceiver(categoriesBroadcastReceiver, intentFilter);
     }
 
-    @Override
-    public void setFilters(List<Category> categories) {
-        JSONHelper.setCategories(categories);
-    }
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void executorDone(ExecutorCategoriesResult executorResult) {
         EventBus.getDefault().unregister(this);

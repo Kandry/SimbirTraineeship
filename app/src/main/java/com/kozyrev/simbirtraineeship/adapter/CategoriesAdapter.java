@@ -3,7 +3,6 @@ package com.kozyrev.simbirtraineeship.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,14 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.model.Category;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder>  {
 
-    private List<Category> categories;
+    private HashMap<Category, Boolean> categories;
+    private List<Category> categoryList = new ArrayList<>();
 
-    public CategoriesAdapter(List<Category> categories){
+    public CategoriesAdapter(HashMap<Category, Boolean> categories){
         this.categories = categories;
+        categoryList.addAll(categories.keySet());
     }
 
     @NonNull
@@ -33,10 +36,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position){
-        Category category = categories.get(position);
+        Category category = categoryList.get(position);
         holder.tvCardFilter.setText(category.getName());
-        holder.switchCardFilter.setChecked(category.isActive());
-        holder.switchCardFilter.setOnCheckedChangeListener((compoundButton, b) -> category.setActive(b));
+        holder.switchCardFilter.setChecked(categories.get(category));
+        holder.switchCardFilter.setOnCheckedChangeListener((compoundButton, bool) -> categories.put(category, bool));
     }
 
     @Override
@@ -44,12 +47,14 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         return categories.size();
     }
 
-    public void dataSetChanged(List<Category> categories){
+    public void dataSetChanged(HashMap<Category, Boolean> categories){
         this.categories = categories;
+        categoryList.clear();
+        categoryList.addAll(categories.keySet());
         this.notifyDataSetChanged();
     }
 
-    public List<Category> getCategories(){
+    public HashMap<Category, Boolean> getCategories(){
         return categories;
     }
 
