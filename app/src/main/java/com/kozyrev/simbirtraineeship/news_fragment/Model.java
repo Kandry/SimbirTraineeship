@@ -17,5 +17,5 @@ public interface Model {
 
     List<Category> getCategories();
 
-    void clearCategories();
+   // void clearCategories();
 }

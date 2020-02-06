@@ -3,11 +3,15 @@ package com.kozyrev.simbirtraineeship.filters_fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.util.Log;
 
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.application.HelpingApplication;
 import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerCategories;
 import com.kozyrev.simbirtraineeship.model.Category;
+import com.kozyrev.simbirtraineeship.network.ApiClient;
+import com.kozyrev.simbirtraineeship.network.ApiInterface;
+import com.kozyrev.simbirtraineeship.network.NetHelper;
 import com.kozyrev.simbirtraineeship.utils.Constants;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
 import com.kozyrev.simbirtraineeship.utils.async_tasks.FiltersTask;
@@ -19,9 +23,17 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FiltersFragmentModel implements Model {
 
@@ -55,6 +67,9 @@ public class FiltersFragmentModel implements Model {
 
     @Override
     public void getFiltersIntentService(OnFinishedListenerCategories onFinishedListener) {
+        NetHelper.getCategories()
+                .subscribe(categories -> {Log.d("FiltersFragmentModel1", categories.get(1).getName());});
+
         Context context = HelpingApplication.getAppContext();
         Intent intent = new Intent(context, CategoriesIntentService.class);
         intent.putExtra(Constants.EXTRA_KEY_IN, context.getString(R.string.categories_filename));

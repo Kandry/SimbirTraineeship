@@ -1,16 +1,23 @@
 package com.kozyrev.simbirtraineeship.model;
 
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Category implements Parcelable {
 
+    @SerializedName("id")
     private int id;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("name_en")
     private String name_en;
+
+    @SerializedName("image")
     private String image;
-    //private boolean isActive;
 
     public Category(String name){
         this.name = name;
@@ -21,13 +28,6 @@ public class Category implements Parcelable {
         this.name = data.readString();
         this.name_en = data.readString();
         this.image = data.readString();
-
-        /*
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            this.isActive = data.readBoolean();
-        } else {
-            this.isActive = true;
-        }*/
     }
 
     public int getId() {
@@ -61,14 +61,6 @@ public class Category implements Parcelable {
     public void setImage(String image) {
         this.image = image;
     }
-/*
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }*/
 
     @Override
     public int describeContents() {
@@ -81,10 +73,6 @@ public class Category implements Parcelable {
         parcel.writeString(name);
         parcel.writeString(name_en);
         parcel.writeString(image);
-/*
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            parcel.writeBoolean(isActive);
-        }*/
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

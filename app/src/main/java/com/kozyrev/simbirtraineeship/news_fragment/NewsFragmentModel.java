@@ -72,11 +72,6 @@ public class NewsFragmentModel implements Model {
         return JSONHelper.getCategories();
     }
 
-    @Override
-    public void clearCategories() {
-        JSONHelper.clearCategories();
-    }
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void executorDone(ExecutorEventsResult executorEventsResult){
         EventBus.getDefault().unregister(this);

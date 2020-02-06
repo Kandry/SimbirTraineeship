@@ -3,28 +3,52 @@ package com.kozyrev.simbirtraineeship.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import org.jetbrains.annotations.Contract;
+import com.google.gson.annotations.SerializedName;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class Event implements Parcelable {
 
+    @SerializedName("id")
     private int id;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("description")
     private String description;
+
+    @SerializedName("photos")
     private List<String> photos;
+
+    @SerializedName("category")
     private int category;
+
+    @SerializedName("startDate")
     private long startDate;
+
+    @SerializedName("endDate")
     private long endDate = -1;
+
+    @SerializedName("createAt")
     private long createAt;
 
+    @SerializedName("organization")
     private String organisation;
+
+    @SerializedName("address")
     private String address;
+
+    @SerializedName("phone")
     private String phone;
+
+    @SerializedName("email")
     private String email;
+
+    @SerializedName("site")
     private String site;
-    //private List<Integer> participantsID;
 
     public Event (){}
 
@@ -47,7 +71,6 @@ public class Event implements Parcelable {
         this.phone = data.readString();
         this.email = data.readString();
         this.site = data.readString();
-        //this.participantsID = data.readArrayList(Integer.class.getClassLoader());
     }
 
     public int getId() {
@@ -145,14 +168,6 @@ public class Event implements Parcelable {
     public void setSite(String site) {
         this.site = site;
     }
-/*
-    public List<Integer> getParticipantsID() {
-        return participantsID;
-    }
-
-    public void setParticipantsID(List<Integer> participantsID) {
-        this.participantsID = participantsID;
-    }*/
 
     public long getCreateAt() {
         return createAt;
@@ -183,7 +198,6 @@ public class Event implements Parcelable {
         parcel.writeString(phone);
         parcel.writeString(email);
         parcel.writeString(site);
-        //parcel.writeList(participantsID);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
