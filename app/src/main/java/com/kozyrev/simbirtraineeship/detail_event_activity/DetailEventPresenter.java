@@ -27,9 +27,9 @@ public class DetailEventPresenter implements Presenter, OnFinishedListenerEvents
         }
         this.id = id;
 
-        //detailEventModel.getEventDetails(this);
+        detailEventModel.getEventDetails(this);
         //detailEventModel.getEventDetailsAsyncTask(this);
-        detailEventModel.getEventDetailsExecutor(this);
+        //detailEventModel.getEventDetailsExecutor(this);
         //detailEventModel.getEventDetailsIntentService(this);
     }
 

@@ -9,11 +9,11 @@ public interface Model {
 
     void getEvents(OnFinishedListenerEvents onFinishedListener);
 
-    void getEventsAsyncTask(OnFinishedListenerEvents onFinishedListener);
+    //void getEventsAsyncTask(OnFinishedListenerEvents onFinishedListener);
 
-    void getEventsExecutors(OnFinishedListenerEvents onFinishedListener);
+    //void getEventsExecutors(OnFinishedListenerEvents onFinishedListener);
 
-    void getEventsIntentService(OnFinishedListenerEvents onFinishedListener);
+    //void getEventsIntentService(OnFinishedListenerEvents onFinishedListener);
 
     List<Category> getCategories();
 

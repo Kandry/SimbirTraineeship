@@ -25,10 +25,7 @@ public class FiltersFragmentPresenter implements Presenter, OnFinishedListenerCa
             filtersFragmentView.showEmptyView();
             filtersFragmentView.showProgress();
         }
-        //filtersFragmentModel.getFilters(this);
-        //filtersFragmentModel.getFiltersAsyncTask(this);
-        //filtersFragmentModel.getFiltersExecutors(this);
-        filtersFragmentModel.getFiltersIntentService(this);
+        filtersFragmentModel.getFilters(this);
     }
 
     @Override

@@ -3,12 +3,14 @@ package com.kozyrev.simbirtraineeship.news_fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.util.Log;
 
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.application.HelpingApplication;
 import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
+import com.kozyrev.simbirtraineeship.network.NetHelper;
 import com.kozyrev.simbirtraineeship.utils.Constants;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
 import com.kozyrev.simbirtraineeship.utils.async_tasks.EventsTask;
@@ -24,23 +26,28 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 public class NewsFragmentModel implements Model {
 
     private EventsBroadcastReceiver newsBroadcastReceiver = new EventsBroadcastReceiver();
 
     @Override
     public void getEvents(OnFinishedListenerEvents onFinishedListener) {
-        onFinishedListener.onFinished(JSONHelper.getEvents());
+        //onFinishedListener.onFinished(JSONHelper.getEvents());
+        //getEventsAsyncTask(this);
+        //getEventsExecutors(this);
+        //getEventsIntentService(onFinishedListener);
+        getNetEvents(onFinishedListener);
     }
 
-    @Override
-    public void getEventsAsyncTask(OnFinishedListenerEvents onFinishedListener) {
+    private void getEventsAsyncTask(OnFinishedListenerEvents onFinishedListener) {
         EventsTask newsTask = new EventsTask(onFinishedListener);
         newsTask.execute();
     }
 
-    @Override
-    public void getEventsExecutors(OnFinishedListenerEvents onFinishedListener) {
+    private void getEventsExecutors(OnFinishedListenerEvents onFinishedListener) {
         EventBus.getDefault().register(this);
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
@@ -54,8 +61,7 @@ public class NewsFragmentModel implements Model {
         });
     }
 
-    @Override
-    public void getEventsIntentService(OnFinishedListenerEvents onFinishedListener) {
+    private void getEventsIntentService(OnFinishedListenerEvents onFinishedListener) {
         Context context = HelpingApplication.getAppContext();
         Intent intent = new Intent(context, EventsIntentService.class);
         intent.putExtra(Constants.EXTRA_KEY_IN, context.getString(R.string.events_filename));
@@ -67,7 +73,29 @@ public class NewsFragmentModel implements Model {
         context.registerReceiver(newsBroadcastReceiver, intentFilter);
     }
 
-    @Override
+    private void getNetEvents(OnFinishedListenerEvents onFinishedListener){
+        NetHelper
+                .getEvents()
+                .subscribe(new Observer<List<Event>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onNext(List<Event> events) {
+                        onFinishedListener.onFinished(events);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("NewsFragmentModel1", e.getMessage());
+                        getEventsIntentService(onFinishedListener);
+                    }
+
+                    @Override
+                    public void onComplete() {}
+                });
+    }
+
     public List<Category> getCategories() {
         return JSONHelper.getCategories();
     }
