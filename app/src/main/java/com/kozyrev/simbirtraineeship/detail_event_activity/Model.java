@@ -7,11 +7,11 @@ public interface Model {
 
     void getEventDetails(OnFinishedListenerEvents onFinishedListener);
 
-    void getEventDetailsAsyncTask(OnFinishedListenerEvents onFinishedListener);
+    //void getEventDetailsAsyncTask(OnFinishedListenerEvents onFinishedListener);
 
-    void getEventDetailsExecutor(OnFinishedListenerEvents onFinishedListener);
+    //void getEventDetailsExecutor(OnFinishedListenerEvents onFinishedListener);
 
-    void getEventDetailsIntentService(OnFinishedListenerEvents onFinishedListener);
+    //void getEventDetailsIntentService(OnFinishedListenerEvents onFinishedListener);
 
-    void updateEvent(Event event);
+    //void updateEvent(Event event);
 }

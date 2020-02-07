@@ -38,5 +38,9 @@
         android:id="@+id/filtersFragment"
         android:name="com.kozyrev.simbirtraineeship.filters_fragment.FiltersFragmentView"
         android:label="@string/filters_toolbar_title"
-        tools:layout="@layout/fragment_filter" />
+        tools:layout="@layout/fragment_filter" >
+        <action
+            android:id="@+id/action_filtersFragment_to_navigation_news"
+            app:destination="@id/navigation_news" />
+    </fragment>
 </navigation>

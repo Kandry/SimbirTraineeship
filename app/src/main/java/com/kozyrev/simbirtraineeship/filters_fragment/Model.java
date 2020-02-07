@@ -8,12 +8,14 @@ import java.util.List;
 public interface Model {
 
     void getFilters(OnFinishedListenerCategories onFinishedListener);
+    /*
+    void
 
     void getFiltersAsyncTask(OnFinishedListenerCategories onFinishedListener);
 
     void getFiltersExecutors(OnFinishedListenerCategories onFinishedListener);
 
-    void getFiltersIntentService(OnFinishedListenerCategories onFinishedListener);
+    void getFiltersIntentService(OnFinishedListenerCategories onFinishedListener);*/
 
-    void setFilters(List<Category> categories);
+    //void setFilters(List<Category> categories);
 }

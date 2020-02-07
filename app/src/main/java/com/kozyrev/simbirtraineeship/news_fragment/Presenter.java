@@ -6,5 +6,5 @@ public interface Presenter extends PresenterBase {
 
     void requestDataFromFile();
 
-    void clearCategories();
+    //void clearCategories();
 }

@@ -1,14 +1,23 @@
 package com.kozyrev.simbirtraineeship.model;
 
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Category implements Parcelable {
 
+    @SerializedName("id")
     private int id;
+
+    @SerializedName("name")
     private String name;
-    private boolean isActive;
+
+    @SerializedName("name_en")
+    private String name_en;
+
+    @SerializedName("image")
+    private String image;
 
     public Category(String name){
         this.name = name;
@@ -17,11 +26,8 @@ public class Category implements Parcelable {
     public Category (Parcel data){
         this.id = data.readInt();
         this.name = data.readString();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            this.isActive = data.readBoolean();
-        } else {
-            this.isActive = true;
-        }
+        this.name_en = data.readString();
+        this.image = data.readString();
     }
 
     public int getId() {
@@ -40,12 +46,20 @@ public class Category implements Parcelable {
         this.name = name;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public String getNameEn() {
+        return name_en;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setNameEn(String name_en) {
+        this.name_en = name_en;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
@@ -57,10 +71,8 @@ public class Category implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
         parcel.writeString(name);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            parcel.writeBoolean(isActive);
-        }
+        parcel.writeString(name_en);
+        parcel.writeString(image);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

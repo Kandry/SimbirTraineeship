@@ -7,6 +7,7 @@ import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.application.HelpingApplication;
 import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
 import com.kozyrev.simbirtraineeship.model.Event;
+import com.kozyrev.simbirtraineeship.network.NetHelper;
 import com.kozyrev.simbirtraineeship.utils.Constants;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
 import com.kozyrev.simbirtraineeship.utils.async_tasks.EventsTask;
@@ -22,24 +23,28 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 public class DetailEventModel implements Model {
 
     private EventsBroadcastReceiver eventsBroadcastReceiver = new EventsBroadcastReceiver();
 
     @Override
     public void getEventDetails(OnFinishedListenerEvents onFinishedListener) {
-        List<Event> events = JSONHelper.getEvents();
-        onFinishedListener.onFinished(events);
+        //onFinishedListener.onFinished(JSONHelper.getEvents());
+        //getEventDetailsAsyncTask(onFinishedListener);
+        //getEventDetailsExecutor(onFinishedListener);
+        //getEventDetailsIntentService(onFinishedListener);
+        getNetEventDetails(onFinishedListener);
     }
 
-    @Override
-    public void getEventDetailsAsyncTask(OnFinishedListenerEvents onFinishedListener) {
+    private void getEventDetailsAsyncTask(OnFinishedListenerEvents onFinishedListener) {
         EventsTask eventsTask = new EventsTask(onFinishedListener);
         eventsTask.execute();
     }
 
-    @Override
-    public void getEventDetailsExecutor(OnFinishedListenerEvents onFinishedListener) {
+    private void getEventDetailsExecutor(OnFinishedListenerEvents onFinishedListener) {
         EventBus.getDefault().register(this);
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
@@ -59,8 +64,7 @@ public class DetailEventModel implements Model {
         executorEventsResult.finish();
     }
 
-    @Override
-    public void getEventDetailsIntentService(OnFinishedListenerEvents onFinishedListener) {
+    private void getEventDetailsIntentService(OnFinishedListenerEvents onFinishedListener) {
         Context context = HelpingApplication.getAppContext();
         Intent intent = new Intent(context, EventsIntentService.class);
         intent.putExtra(Constants.EXTRA_KEY_IN, context.getString(R.string.events_filename));
@@ -72,8 +76,29 @@ public class DetailEventModel implements Model {
         context.registerReceiver(eventsBroadcastReceiver, intentFilter);
     }
 
-    @Override
-    public void updateEvent(Event event) {
+    private void getNetEventDetails(OnFinishedListenerEvents onFinishedListener){
+        NetHelper
+                .getEvents()
+                .subscribe(new Observer<List<Event>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(List<Event> events) {
+                        onFinishedListener.onFinished(events);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getEventDetailsExecutor(onFinishedListener);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

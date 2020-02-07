@@ -2,6 +2,7 @@ package com.kozyrev.simbirtraineeship.filters_fragment;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,16 +26,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.adapter.CategoriesAdapter;
 import com.kozyrev.simbirtraineeship.model.Category;
+import com.kozyrev.simbirtraineeship.utils.SparseBooleanArrayParcelable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import static com.kozyrev.simbirtraineeship.news_fragment.NewsFragmentView.KEY_SBA;
 
 public class FiltersFragmentView extends Fragment implements com.kozyrev.simbirtraineeship.filters_fragment.View {
 
     private static final String TAG = "FiltersFragmentView";
     private static final String KEY = "FiltersFragmentView";
+    private static final String KEY_LOCAL_SBA = "FiltersFragmentView_SBA";
 
-    private List<Category> categories;
+    private HashMap<Category, Boolean> categoriesHM = new HashMap<>();
+    private SparseBooleanArray categoriesBool = null;
 
     private Toolbar toolbar;
     private CategoriesAdapter categoriesAdapter;
@@ -60,9 +68,15 @@ public class FiltersFragmentView extends Fragment implements com.kozyrev.simbirt
 
         filtersFragmentPresenter = new FiltersFragmentPresenter(this);
 
+        if (getArguments() != null) {
+            categoriesBool = getArguments().getParcelable(KEY_SBA);
+            filtersFragmentPresenter.setSparseBooleanArray(categoriesBool);
+        }
+
         if (savedInstanceState != null) {
-            categories = savedInstanceState.getParcelableArrayList(KEY);
-            setDataToRecyclerView(categories);
+            categoriesBool = savedInstanceState.getParcelable(KEY_LOCAL_SBA);
+            categoriesHM = (HashMap<Category, Boolean>) savedInstanceState.getSerializable(KEY);
+            setDataToRecyclerView(categoriesHM);
         } else {
             filtersFragmentPresenter.requestDataFromFile();
         }
@@ -71,7 +85,8 @@ public class FiltersFragmentView extends Fragment implements com.kozyrev.simbirt
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList(KEY, (ArrayList<Category>) categories);
+        outState.putParcelable(KEY_LOCAL_SBA, new SparseBooleanArrayParcelable(categoriesBool));
+        outState.putSerializable(KEY, categoriesHM);
     }
 
     @Override
@@ -84,9 +99,18 @@ public class FiltersFragmentView extends Fragment implements com.kozyrev.simbirt
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_filters_ok:
-                toolbar.setNavigationIcon(null);
-                filtersFragmentPresenter.setDataToFile(categoriesAdapter.getCategories());
-                getActivity().onBackPressed();
+                Bundle bundle = new Bundle();
+
+                categoriesHM = categoriesAdapter.getCategories();
+                List<Category> categoryList = new ArrayList<>(categoriesHM.size());
+                categoryList.addAll(categoriesHM.keySet());
+
+                for (Category category: categoryList) {
+                    categoriesBool.put(category.getId(), categoriesHM.get(category));
+                }
+
+                bundle.putParcelable(KEY_SBA, new SparseBooleanArrayParcelable(categoriesBool));
+                Navigation.findNavController(getView()).navigate(R.id.action_filtersFragment_to_navigation_news, bundle);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -109,8 +133,6 @@ public class FiltersFragmentView extends Fragment implements com.kozyrev.simbirt
         pbLoading = view.findViewById(R.id.pb_loading_filters);
         clFiltersContent = view.findViewById(R.id.cl_filters_content);
 
-        categories = new ArrayList<>();
-
         RecyclerView rvFilters = view.findViewById(R.id.rv_filters);
         rvFilters.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvFilters.setHasFixedSize(false);
@@ -118,15 +140,15 @@ public class FiltersFragmentView extends Fragment implements com.kozyrev.simbirt
         horizontalDecorator.setDrawable(getResources().getDrawable(R.drawable.horizontal_divider));
         rvFilters.addItemDecoration(horizontalDecorator);
 
-        categoriesAdapter = new CategoriesAdapter(categories);
+        categoriesAdapter = new CategoriesAdapter(categoriesHM);
         rvFilters.setAdapter(categoriesAdapter);
     }
 
     @Override
-    public void setDataToRecyclerView(List<Category> categories) {
-        if (categories != null) {
-            this.categories = categories;
-            categoriesAdapter.dataSetChanged(this.categories);
+    public void setDataToRecyclerView(HashMap<Category, Boolean> categoriesHM) {
+        if (categoriesHM != null) {
+            this.categoriesHM = categoriesHM;
+            categoriesAdapter.dataSetChanged(this.categoriesHM);
         }
     }
 
@@ -154,11 +176,5 @@ public class FiltersFragmentView extends Fragment implements com.kozyrev.simbirt
     public void onResponseFailure(Throwable throwable) {
         Log.e(TAG, throwable.getMessage());
         Toast.makeText(getActivity(), getString(R.string.communication_error), Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onStop() {
-        filtersFragmentPresenter.setDataToFile(categoriesAdapter.getCategories());
-        super.onStop();
     }
 }

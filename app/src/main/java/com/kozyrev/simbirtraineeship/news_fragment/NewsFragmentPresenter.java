@@ -1,16 +1,23 @@
 package com.kozyrev.simbirtraineeship.news_fragment;
 
+import android.util.SparseBooleanArray;
+
 import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
+import com.kozyrev.simbirtraineeship.network.NetHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class NewsFragmentPresenter implements Presenter, OnFinishedListenerEvents {
 
     private View newsFragmentView;
     private Model newsFragmentModel;
+    private SparseBooleanArray categories = null;
 
     NewsFragmentPresenter(View newsFragmentView){
         this.newsFragmentView = newsFragmentView;
@@ -23,23 +30,21 @@ public class NewsFragmentPresenter implements Presenter, OnFinishedListenerEvent
             newsFragmentView.showEmptyView();
             newsFragmentView.showProgress();
         }
-        //newsFragmentModel.getEvents(this);
-        //newsFragmentModel.getEventsAsyncTask(this);
-        //newsFragmentModel.getEventsExecutors(this);
-        newsFragmentModel.getEventsIntentService(this);
+        newsFragmentModel.getEvents(this);
     }
 
-    private List<Event> filterNews(List<Event> events) {
+    public void setCategories(List<Category> getCategories){
+        categories = new SparseBooleanArray();
+        for (Category category: getCategories) {
+            categories.put(category.getId(), true);
+        }
+    }
+
+    List<Event> filterNews(List<Event> events, SparseBooleanArray categories) {
         List<Event> news = new ArrayList<>();
 
-        List<Category> categories = newsFragmentModel.getCategories();
         for (Event event: events) {
-            List<Integer> categoriesID = event.getCategoriesID();
-            boolean inNews = false;
-
-            for (Category category: categories) {
-                if ((categoriesID.contains(category.getId())) && (category.isActive())) inNews = true;
-            }
+            boolean inNews = categories.get(event.getCategory());
 
             if (!inNews && news.contains(event)){
                 news.remove(event);
@@ -54,16 +59,40 @@ public class NewsFragmentPresenter implements Presenter, OnFinishedListenerEvent
     }
 
     @Override
-    public void clearCategories() {
-        newsFragmentModel.clearCategories();
+    public void onFinished(List<Event> events) {
+        if (categories == null) getListCategories(events);
+        else dataFinishProgress(events);
     }
 
-    @Override
-    public void onFinished(List<Event> events) {
-        if (newsFragmentView != null){
+    private void getListCategories(List<Event> events){
+        NetHelper
+                .getCategories()
+                .subscribe(new Observer<List<Category>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onNext(List<Category> categories) {
+                        setCategories(categories);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        setCategories(newsFragmentModel.getCategories());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        dataFinishProgress(events);
+                    }
+                });
+    }
+
+    private void dataFinishProgress(List<Event> events){
+        if (newsFragmentView != null) {
             newsFragmentView.hideProgress();
             newsFragmentView.hideEmptyView();
-            newsFragmentView.setDataToRecyclerView(filterNews(events));
+            newsFragmentView.setDataToRecyclerView(filterNews(events, categories));
         }
     }
 
@@ -79,5 +108,13 @@ public class NewsFragmentPresenter implements Presenter, OnFinishedListenerEvent
     @Override
     public void onDestroy() {
         this.newsFragmentView = null;
+    }
+
+    public SparseBooleanArray getCategories() {
+        return categories;
+    }
+
+    public void setCategories(SparseBooleanArray categories) {
+        this.categories = categories;
     }
 }

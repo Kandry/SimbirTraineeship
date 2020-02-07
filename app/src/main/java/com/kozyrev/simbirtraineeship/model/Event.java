@@ -3,24 +3,52 @@ package com.kozyrev.simbirtraineeship.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class Event implements Parcelable {
 
+    @SerializedName("id")
     private int id;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("description")
     private String description;
-    private List<String> imagesUri;
-    private List<Integer> categoriesID;
+
+    @SerializedName("photos")
+    private List<String> photos;
+
+    @SerializedName("category")
+    private int category;
+
+    @SerializedName("startDate")
     private long startDate;
+
+    @SerializedName("endDate")
     private long endDate = -1;
 
-    private String organizer;
+    @SerializedName("createAt")
+    private long createAt;
+
+    @SerializedName("organization")
+    private String organisation;
+
+    @SerializedName("address")
     private String address;
-    private List<String> phoneNumbers;
+
+    @SerializedName("phone")
+    private String phone;
+
+    @SerializedName("email")
     private String email;
+
+    @SerializedName("site")
     private String site;
-    private List<Integer> participantsID;
 
     public Event (){}
 
@@ -28,21 +56,21 @@ public class Event implements Parcelable {
         this.name = name;
     }
 
-    public Event (Parcel data) {
+    public Event (@NotNull Parcel data) {
         this.id = data.readInt();
         this.name = data.readString();
         this.description = data.readString();
-        this.imagesUri = data.readArrayList( String.class.getClassLoader());
-        this.categoriesID = data.readArrayList(Integer.class.getClassLoader());
+        this.photos = data.readArrayList( String.class.getClassLoader());
+        this.category = data.readInt();
         this.startDate = data.readLong();
         this.endDate = data.readLong();
+        this.createAt = data.readLong();
 
-        this.organizer = data.readString();
+        this.organisation = data.readString();
         this.address = data.readString();
-        this.phoneNumbers = data.readArrayList(String.class.getClassLoader());
+        this.phone = data.readString();
         this.email = data.readString();
         this.site = data.readString();
-        this.participantsID = data.readArrayList(Integer.class.getClassLoader());
     }
 
     public int getId() {
@@ -69,20 +97,20 @@ public class Event implements Parcelable {
         this.description = description;
     }
 
-    public List<String> getImagesUri() {
-        return imagesUri;
+    public List<String> getPhotos() {
+        return photos;
     }
 
-    public void setImagesUri(List<String> imagesUri) {
-        this.imagesUri = imagesUri;
+    public void setPhotos(List<String> photos) {
+        this.photos = photos;
     }
 
-    public List<Integer> getCategoriesID() {
-        return categoriesID;
+    public int getCategory() {
+        return category;
     }
 
-    public void setCategoriesID(List<Integer> categoriesID) {
-        this.categoriesID = categoriesID;
+    public void setCategory(int category) {
+        this.category = category;
     }
 
     public long getStartDate() {
@@ -101,12 +129,12 @@ public class Event implements Parcelable {
         this.endDate = endDate;
     }
 
-    public String getOrganizer() {
-        return organizer;
+    public String getOrganisation() {
+        return organisation;
     }
 
-    public void setOrganizer(String organizer) {
-        this.organizer = organizer;
+    public void setOrganisation(String organisation) {
+        this.organisation = organisation;
     }
 
     public String getAddress() {
@@ -117,12 +145,12 @@ public class Event implements Parcelable {
         this.address = address;
     }
 
-    public List<String> getPhoneNumbers() {
-        return phoneNumbers;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumbers(List<String> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -141,12 +169,12 @@ public class Event implements Parcelable {
         this.site = site;
     }
 
-    public List<Integer> getParticipantsID() {
-        return participantsID;
+    public long getCreateAt() {
+        return createAt;
     }
 
-    public void setParticipantsID(List<Integer> participantsID) {
-        this.participantsID = participantsID;
+    public void setCreateAt(long createAt) {
+        this.createAt = createAt;
     }
 
     @Override
@@ -159,17 +187,17 @@ public class Event implements Parcelable {
         parcel.writeInt(id);
         parcel.writeString(name);
         parcel.writeString(description);
-        parcel.writeList(imagesUri);
-        parcel.writeList(categoriesID);
+        parcel.writeList(photos);
+        parcel.writeInt(category);
         parcel.writeLong(startDate);
         parcel.writeLong(endDate);
+        parcel.writeLong(createAt);
 
-        parcel.writeString(organizer);
+        parcel.writeString(organisation);
         parcel.writeString(address);
-        parcel.writeList(phoneNumbers);
+        parcel.writeString(phone);
         parcel.writeString(email);
         parcel.writeString(site);
-        parcel.writeList(participantsID);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

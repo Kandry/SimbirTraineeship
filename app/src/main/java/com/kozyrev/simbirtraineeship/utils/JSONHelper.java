@@ -43,7 +43,7 @@ public class JSONHelper {
         Type type = new TypeToken<List<Category>>() {}.getType();
         return new Gson().fromJson(json, type);
     }
-
+/*
     public static void setCategories(List<Category> categories) {
         Context context =  HelpingApplication.getAppContext();
         StringBuilder json = new StringBuilder();
@@ -65,7 +65,7 @@ public class JSONHelper {
         SharedPreferences.Editor editor = prefs.edit();
         editor.clear();
         editor.apply();
-    }
+    }*/
 
     public static List<Event> getEvents() {
         Context context =  HelpingApplication.getAppContext();
