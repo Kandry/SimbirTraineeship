@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface Model {
 
-    void getEvents(OnFinishedListenerEvents onFinishedListener);
+    void getEvents(OnFinishedListenerNews onFinishedListener, int categoriesSize);
 
     //void getEventsAsyncTask(OnFinishedListenerEvents onFinishedListener);
 
@@ -15,7 +15,7 @@ public interface Model {
 
     //void getEventsIntentService(OnFinishedListenerEvents onFinishedListener);
 
-    List<Category> getCategories();
+   // List<Category> getCategories();
 
    // void clearCategories();
 }

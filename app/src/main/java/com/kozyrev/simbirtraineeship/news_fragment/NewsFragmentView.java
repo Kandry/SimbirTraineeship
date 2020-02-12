@@ -75,7 +75,7 @@ public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtrai
             news = savedInstanceState.getParcelableArrayList(KEY);
             setDataToRecyclerView(newsFragmentPresenter.filterNews(news, categories));
         } else {
-            newsFragmentPresenter.requestDataFromFile();
+            if (categories == null) newsFragmentPresenter.requestDataFromFile();
         }
     }
 
