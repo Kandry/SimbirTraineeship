@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.application.HelpingApplication;
 import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerCategories;
+import com.kozyrev.simbirtraineeship.db.DB;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.network.NetHelper;
 import com.kozyrev.simbirtraineeship.utils.Constants;
@@ -24,12 +25,15 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import io.reactivex.Observer;
+import io.reactivex.MaybeObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class FiltersFragmentModel implements Model {
 
     private CategoriesBroadcastReceiver categoriesBroadcastReceiver = new CategoriesBroadcastReceiver();
+    private DB db = DB.getDB();
 
     @Override
     public void getFilters(OnFinishedListenerCategories onFinishedListener) {
@@ -37,7 +41,30 @@ public class FiltersFragmentModel implements Model {
         //getFiltersAsyncTask(onFinishedListener);
         //getFiltersExecutors();
         //getFiltersIntentService(onFinishedListener);
-        getNetFilters(onFinishedListener);
+        //getNetFilters(onFinishedListener);
+
+        db.getCategoryDAO()
+                .getCategories()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new MaybeObserver<List<Category>>(){
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onSuccess(List<Category> categories) {
+                        if (categories.size() > 0) onFinishedListener.onFinished(categories);
+                        else getNetFilters(onFinishedListener);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {}
+
+                    @Override
+                    public void onComplete() {
+                        getNetFilters(onFinishedListener);
+                    }
+                });
     }
 
     private void getFiltersAsyncTask(OnFinishedListenerCategories onFinishedListener) {
@@ -74,27 +101,13 @@ public class FiltersFragmentModel implements Model {
     private void getNetFilters(OnFinishedListenerCategories onFinishedListener){
         NetHelper
                 .getCategories()
-                .subscribe(new Observer<List<Category>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(List<Category> categories) {
-                        onFinishedListener.onFinished(categories);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        getFiltersIntentService(onFinishedListener);
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+                .subscribe(
+                        categories ->
+                        {
+                            db.getCategoryDAO().addAll(categories);
+                            onFinishedListener.onFinished(categories);
+                        },
+                        e -> getFiltersIntentService(onFinishedListener));
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

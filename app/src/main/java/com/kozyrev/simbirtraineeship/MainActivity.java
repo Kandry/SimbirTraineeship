@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kozyrev.simbirtraineeship.db.DB;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,5 +44,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        DB.destroyInstance();
+        super.onDestroy();
     }
 }

@@ -48,7 +48,6 @@ public class NewsFragmentPresenter implements Presenter, OnFinishedListenerNews 
                 news.add(event);
             }
         }
-
         return news;
     }
 

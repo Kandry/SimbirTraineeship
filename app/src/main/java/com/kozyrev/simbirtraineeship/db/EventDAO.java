@@ -3,6 +3,7 @@ package com.kozyrev.simbirtraineeship.db;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -10,7 +11,6 @@ import com.kozyrev.simbirtraineeship.model.Event;
 
 import java.util.List;
 
-import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 
 @Dao
@@ -19,7 +19,7 @@ public interface EventDAO {
     @Insert
     void add(Event event);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addAll(List<Event> events);
 
     @Update

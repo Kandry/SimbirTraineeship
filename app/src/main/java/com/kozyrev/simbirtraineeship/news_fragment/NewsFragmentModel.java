@@ -3,13 +3,9 @@ package com.kozyrev.simbirtraineeship.news_fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.util.Log;
-
-import androidx.room.Room;
 
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.application.HelpingApplication;
-import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
 import com.kozyrev.simbirtraineeship.db.DB;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.model.Event;
@@ -24,8 +20,6 @@ import com.kozyrev.simbirtraineeship.utils.intent_service.EventsIntentService;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -44,42 +38,37 @@ public class NewsFragmentModel implements Model {
 
     @Override
     public void getEvents(OnFinishedListenerNews onFinishedListener, int categoriesSize) {
+
         //onFinishedListener.onFinished(JSONHelper.getEvents());
         //getEventsAsyncTask(this);
         //getEventsExecutors(this);
         //getEventsIntentService(onFinishedListener);
-      /*  db
-                .getEventDAO()
+        //getNetEvents(onFinishedListener, categoriesSize);
+
+        db.getEventDAO()
                 .getEvents()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new MaybeObserver<List<Event>>(){
                     @Override
                     public void onSubscribe(Disposable d) {
-                        Log.i("NewsFragmentModelRx", "Subscribe");
                     }
 
                     @Override
                     public void onSuccess(List<Event> events) {
-                        Log.i("NewsFragmentModelRx", "Next");
-                        if (events.size() > 0) onFinishedListener.onFinished(events);
-                        else getNetEvents(onFinishedListener);
+                        if ((events.size() > 0) && (categoriesSize > 0)) onFinishedListener.onFinished(events);
+                        else getNetEvents(onFinishedListener, categoriesSize);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.i("NewsFragmentModelRx", "Error");
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.i("NewsFragmentModelRx", "Complete");
-                        getNetEvents(onFinishedListener);
+                        getNetEvents(onFinishedListener, categoriesSize);
                     }
-                });*/
-      getNetEvents(onFinishedListener, categoriesSize);
-
-      //else
+                });
     }
 
     private void getEventsAsyncTask(OnFinishedListenerNews onFinishedListener) {
@@ -92,11 +81,6 @@ public class NewsFragmentModel implements Model {
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
             List<Event> news = JSONHelper.getEvents();
-          /*  try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
             EventBus.getDefault().post(new ExecutorEventsResult(onFinishedListener, news, categoriesSize));
         });
     }
@@ -122,39 +106,34 @@ public class NewsFragmentModel implements Model {
 
                     @Override
                     public void onNext(List<Event> events) {
-                        //NetHelper.getCategories().subscribe(categories -> {
-                          //  db.getCategoryDAO().addAll(categories);
-                          //  db.getEventDAO().addAll(events);
                         if (categoriesSize > 0) {
-                            Log.d("NewsFragmentModel1", "events");
                             onFinishedListener.onFinished(events);
                         }
                         else {
-                            Log.d("NewsFragmentModel1", "events+");
                             NetHelper.getCategories().subscribe(
-                                categories -> {onFinishedListener.onFinished(events, categories);},
-                                e -> {onFinishedListener.onFinished(events, JSONHelper.getCategories());});
+                                categories -> {
+                                    db.getCategoryDAO().addAll(categories);
+                                    db.getEventDAO().addAll(events);
+                                    onFinishedListener.onFinished(events, categories);
+                                },
+                                e -> {
+                                    List<Category> categories = JSONHelper.getCategories();
+                                    db.getCategoryDAO().addAll(categories);
+                                    db.getEventDAO().addAll(events);
+                                    onFinishedListener.onFinished(events, categories);
+                                });
                         }
-                       // });
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        //Log.d("NewsFragmentModel1", e.getMessage());
-                        //NetHelper.getCategories().subscribe(categories -> {
-                         //   db.getCategoryDAO().addAll(categories);
                         getEventsExecutors(onFinishedListener, categoriesSize);
-                       // });
                     }
 
                     @Override
                     public void onComplete() {}
                 });
     }
-/*
-    public List<Category> getCategories() {
-        return JSONHelper.getCategories();
-    }*/
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void executorDone(ExecutorEventsResult executorEventsResult){

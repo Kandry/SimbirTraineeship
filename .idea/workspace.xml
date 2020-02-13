@@ -6,53 +6,37 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="NewsFragmentModel1" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="HelpingApplication1" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8861f42-67e0-433d-9e0d-8be8274ccf1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_common_2_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_common_2_2_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_runtime_2_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_runtime_2_2_3_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_rxjava2_2_2_3_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_2_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_2_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_framework_2_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_framework_2_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/CategoryDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/EventDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/OnFinishedListenerNews.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/OnFinishedListenerDetailEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/adapter/NewsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/adapter/NewsAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/DB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/application/HelpingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/application/HelpingApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/EventDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/filters_fragment/FiltersFragmentModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/filters_fragment/FiltersFragmentModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Presenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/broadcast_receivers/EventsBroadcastReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/broadcast_receivers/EventsBroadcastReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/SearchEventsFragmentModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/SearchEventsFragmentModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/broadcast_receivers/CategoriesBroadcastReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/broadcast_receivers/CategoriesBroadcastReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/executors/ExecutorEventsResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/executors/ExecutorEventsResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/intent_service/EventsIntentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/intent_service/EventsIntentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/intent_service/CategoriesIntentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/intent_service/CategoriesIntentService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,11 +68,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="277">
+              <caret line="148" column="58" lean-forward="true" selection-start-line="148" selection-start-column="58" selection-end-line="148" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5672#5673#0" expanded="true" />
+                <element signature="e#5770#5771#0" expanded="true" />
+                <element signature="e#5866#5867#0" expanded="true" />
+                <element signature="e#5965#5966#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/EventDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/CategoryDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -96,49 +105,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="-238">
+              <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1813#1814#0" expanded="true" />
-                <element signature="e#1856#1857#0" expanded="true" />
-                <element signature="e#3530#3531#0" expanded="true" />
-                <element signature="e#3574#3575#0" expanded="true" />
+                <element signature="e#1611#1612#0" expanded="true" />
+                <element signature="e#1653#1654#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/broadcast_receivers/CategoriesBroadcastReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="161" selection-start-line="161" selection-end-line="161" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/executors/ExecutorEventsResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="23" column="45" lean-forward="true" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/filters_fragment/FiltersFragmentModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2770#2817#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="408">
+              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -146,28 +128,56 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+            <state relative-caret-position="51">
+              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/base/finished_listeners/OnFinishedListenerEvents.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/OnFinishedListenerNews.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="413">
+              <caret line="105" column="17" lean-forward="true" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2447#2448#0" expanded="true" />
+                <element signature="e#2531#2532#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="7" column="73" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/OnFinishedListenerDetailEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/filters_fragment/FiltersFragmentModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="48" column="58" lean-forward="true" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2705#2706#0" expanded="true" />
+                <element signature="e#2786#2787#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -190,7 +200,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chain</find>
       <find>onViewCreated</find>
       <find>nav_detail_event_fragment</find>
       <find>getEvents</find>
@@ -220,6 +229,7 @@
       <find>onFinished</find>
       <find>setCategories</find>
       <find>finish</find>
+      <find>getNetEvents</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -235,11 +245,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/SearchFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/EventsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/EventsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/Model.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/Presenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/View.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/EventsFragmentModel.java" />
@@ -263,16 +268,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/filters_fragment/FiltersFragmentPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/events.json" />
         <option value="$PROJECT_DIR$/app/src/main/assets/categories.json" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/filters_fragment/FiltersFragmentModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/Model.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/SearchEventsFragmentModel.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Photo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Category.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/intent_service/EventsIntentService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/EventDAO.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/CategoryDAO.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/adapter/NewsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/DB.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/PhotoDAO.java" />
@@ -280,12 +279,23 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Presenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/OnFinishedListenerNews.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/broadcast_receivers/EventsBroadcastReceiver.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Model.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Model.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/SearchEventsFragmentModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/executors/ExecutorEventsResult.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/intent_service/CategoriesIntentService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/broadcast_receivers/CategoriesBroadcastReceiver.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/filters_fragment/FiltersFragmentModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/OnFinishedListenerDetailEvent.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/Model.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/application/HelpingApplication.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/EventDAO.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/CategoryDAO.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventModel.java" />
       </list>
     </option>
   </component>
@@ -300,6 +310,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -323,15 +336,7 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="simbirtraineeship" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimbirTraineeship" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="simbirtraineeship" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="finished_listeners" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SimbirTraineeship" type="1abcf292:AndroidViewProjectNode" />
@@ -345,14 +350,7 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="simbirtraineeship" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="filters_fragment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimbirTraineeship" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="simbirtraineeship" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="detail_event_activity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SimbirTraineeship" type="1abcf292:AndroidViewProjectNode" />
@@ -386,23 +384,12 @@
             </path>
             <path>
               <item name="SimbirTraineeship" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="simbirtraineeship" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="intent_service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimbirTraineeship" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -957,7 +944,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581064399466</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Наработки по Room + доработки модели новостей для категорий">
+      <created>1581505168265</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1581505168265</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1006,7 +1000,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.5016251" side_tool="true" weight="0.19349681" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49837488" visible="true" weight="0.1924307" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49837488" visible="true" weight="0.1924307" />
       <window_info id="Structure" order="2" sideWeight="0.5016251" side_tool="true" weight="0.19349681" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -1075,7 +1069,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ветка фрагментов" />
     <MESSAGE value="Диалог выбора фото + экран Помочь (альфа)" />
     <MESSAGE value="Навигация (Помощь + Профиль)" />
     <MESSAGE value="Наработки экрана поиска" />
@@ -1100,7 +1093,8 @@
     <MESSAGE value="Init ветки networking&#10;Доработана модель JSON для событий и категорий в соответсвии с JSON из сети&#10;Доработана обработка обновленных JSON файлов" />
     <MESSAGE value="Получение данных с сервера в виде Observable" />
     <MESSAGE value="Init ветки data_base" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init ветки data_base" />
+    <MESSAGE value="Наработки по Room + доработки модели новостей для категорий" />
+    <option name="LAST_COMMIT_MESSAGE" value="Наработки по Room + доработки модели новостей для категорий" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1137,238 +1131,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java</url>
-          <line>56</line>
+          <line>55</line>
           <properties />
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java</url>
-          <line>61</line>
-          <properties />
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java</url>
-          <line>62</line>
-          <properties />
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>79</line>
-          <properties />
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java</url>
-          <line>27</line>
-          <properties />
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java</url>
-          <line>72</line>
-          <properties />
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java</url>
-          <line>67</line>
-          <properties />
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java</url>
-          <line>92</line>
-          <properties />
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java</url>
-          <line>69</line>
-          <properties />
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java</url>
-          <line>66</line>
-          <properties />
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>116</line>
-          <properties />
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>117</line>
-          <properties />
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>118</line>
-          <properties />
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>145</line>
-          <properties />
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java</url>
-          <line>77</line>
-          <properties />
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>129</line>
-          <properties />
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>134</line>
-          <properties />
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>135</line>
-          <properties />
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>90</line>
-          <properties />
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>91</line>
-          <properties />
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>92</line>
-          <properties />
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>93</line>
-          <properties />
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>99</line>
-          <properties />
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>161</line>
-          <properties />
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java</url>
-          <line>160</line>
-          <properties />
-          <option name="timeStamp" value="84" />
+          <option name="timeStamp" value="104" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/categories.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="5" lean-forward="true" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/events.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/SearchEventsFragmentPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="45" column="66" lean-forward="true" selection-start-line="45" selection-start-column="66" selection-end-line="45" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/SearchEventsFragmentView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/SearchEventsFragmentModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="29" column="82" lean-forward="true" selection-start-line="29" selection-start-column="82" selection-end-line="29" selection-end-column="82" />
-          <folding>
-            <element signature="e#2311#2312#0" expanded="true" />
-            <element signature="e#2397#2398#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex.rxjava2/rxjava/2.2.10/9d22e03b9f0a300edff23ccf219d406d12c3378f/rxjava-2.2.10-sources.jar!/io/reactivex/Observer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
           <caret line="98" column="9" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/intent_service/CategoriesIntentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1447,12 +1221,12 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash_screen.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1476,55 +1250,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/DB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#876#877#0" expanded="true" />
-            <element signature="e#907#908#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/CategoryDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/PhotoDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Photo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/EventDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="49" lean-forward="true" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/PhotoDAO.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Photo.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/model/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2542">
@@ -1549,23 +1276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/base/finished_listeners/OnFinishedListenerEvents.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/OnFinishedListenerNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/intent_service/EventsIntentService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="623">
@@ -1586,65 +1296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="16" column="66" lean-forward="true" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/filters_fragment/FiltersFragmentModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2770#2817#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1813#1814#0" expanded="true" />
-            <element signature="e#1856#1857#0" expanded="true" />
-            <element signature="e#3530#3531#0" expanded="true" />
-            <element signature="e#3574#3575#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="161" selection-start-line="161" selection-end-line="161" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.greenrobot/eventbus/3.1.1/29acbdd4c7d904e414d33955e367b9561b13079f/eventbus-3.1.1-sources.jar!/org/greenrobot/eventbus/EventBus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1652,10 +1303,203 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/search_fragment/search_events_fragment/SearchEventsFragmentModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="24" column="72" lean-forward="true" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/base/finished_listeners/OnFinishedListenerEvents.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/DB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/intent_service/CategoriesIntentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="37" column="2" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/OnFinishedListenerNews.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/Presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/application/HelpingApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1143#1144#0" expanded="true" />
+            <element signature="e#1192#1193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2704#2705#0" expanded="true" />
+            <element signature="e#2801#2802#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/executors/ExecutorEventsResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="45" lean-forward="true" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+        <state relative-caret-position="396">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="40" column="81" lean-forward="true" selection-start-line="40" selection-start-column="81" selection-end-line="41" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/EventDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/db/CategoryDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1611#1612#0" expanded="true" />
+            <element signature="e#1653#1654#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/utils/broadcast_receivers/CategoriesBroadcastReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/filters_fragment/FiltersFragmentModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="48" column="58" lean-forward="true" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2705#2706#0" expanded="true" />
+            <element signature="e#2786#2787#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/NewsFragmentView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="148" column="58" lean-forward="true" selection-start-line="148" selection-start-column="58" selection-end-line="148" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5672#5673#0" expanded="true" />
+            <element signature="e#5770#5771#0" expanded="true" />
+            <element signature="e#5866#5867#0" expanded="true" />
+            <element signature="e#5965#5966#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/OnFinishedListenerDetailEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="73" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/news_fragment/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kozyrev/simbirtraineeship/detail_event_activity/DetailEventModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="105" column="17" lean-forward="true" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2447#2448#0" expanded="true" />
+            <element signature="e#2531#2532#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

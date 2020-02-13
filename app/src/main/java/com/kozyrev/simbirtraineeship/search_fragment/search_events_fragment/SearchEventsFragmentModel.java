@@ -31,8 +31,11 @@ public class SearchEventsFragmentModel implements Model {
         EventBus.getDefault().register(this);
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
-            List<Event> news = JSONHelper.getEvents();
-            EventBus.getDefault().post(new ExecutorEventsResult(onFinishedListener, news));
+            NetHelper
+                    .getEvents()
+                    .subscribe(
+                            events -> EventBus.getDefault().post(new ExecutorEventsResult(onFinishedListener, events)),
+                            e -> EventBus.getDefault().post(new ExecutorEventsResult(onFinishedListener, JSONHelper.getEvents())));
         });
     }
 
@@ -45,26 +48,8 @@ public class SearchEventsFragmentModel implements Model {
     private void getNetEvents(OnFinishedListenerEvents onFinishedListener){
         NetHelper
                 .getEvents()
-                .subscribe(new Observer<List<Event>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(List<Event> events) {
-                        onFinishedListener.onFinished(events);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        getEventsExecutors(onFinishedListener);
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+                .subscribe(
+                        events -> onFinishedListener.onFinished(events),
+                        e -> getEventsExecutors(onFinishedListener));
     }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.kozyrev.simbirtraineeship.application.HelpingApplication;
 import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerCategories;
+import com.kozyrev.simbirtraineeship.db.DB;
 import com.kozyrev.simbirtraineeship.model.Category;
 import com.kozyrev.simbirtraineeship.utils.Constants;
 
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriesBroadcastReceiver extends BroadcastReceiver {
+
+    private DB db = DB.getDB();
 
     private OnFinishedListenerCategories onFinishedListener;
 
@@ -28,6 +31,7 @@ public class CategoriesBroadcastReceiver extends BroadcastReceiver {
 
     private void finishedReceiver(OnFinishedListenerCategories onFinishedListener, List<Category> categories){
         HelpingApplication.getAppContext().unregisterReceiver(this);
+        db.getCategoryDAO().addAll(categories);
         onFinishedListener.onFinished(categories);
     }
 }
