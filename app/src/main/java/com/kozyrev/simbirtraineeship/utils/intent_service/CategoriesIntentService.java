@@ -35,12 +35,12 @@ public class CategoriesIntentService extends IntentService {
         responseIntent.setAction(Constants.ACTION_CATEGORIES);
         responseIntent.addCategory(Intent.CATEGORY_DEFAULT);
         responseIntent.putParcelableArrayListExtra(Constants.EXTRA_KEY_OUT, (ArrayList<Category>) categories);
-
+/*
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
         sendBroadcast(responseIntent);
     }

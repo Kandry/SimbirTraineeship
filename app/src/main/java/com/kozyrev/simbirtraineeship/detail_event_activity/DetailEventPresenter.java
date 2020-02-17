@@ -6,7 +6,7 @@ import com.kozyrev.simbirtraineeship.model.Event;
 import java.io.IOException;
 import java.util.List;
 
-public class DetailEventPresenter implements Presenter, OnFinishedListenerEvents {
+public class DetailEventPresenter implements Presenter, OnFinishedListenerDetailEvent {
 
     private View detailEventView;
     private Model detailEventModel;
@@ -27,7 +27,7 @@ public class DetailEventPresenter implements Presenter, OnFinishedListenerEvents
         }
         this.id = id;
 
-        detailEventModel.getEventDetails(this);
+        detailEventModel.getEventDetails(this, id);
         //detailEventModel.getEventDetailsAsyncTask(this);
         //detailEventModel.getEventDetailsExecutor(this);
         //detailEventModel.getEventDetailsIntentService(this);
@@ -40,6 +40,15 @@ public class DetailEventPresenter implements Presenter, OnFinishedListenerEvents
             detailEventView.hideProgress();
             detailEventView.hideEmptyView();
             detailEventView.setDataToViews(finalEvent);
+        }
+    }
+
+    @Override
+    public void onFinished(Event event) {
+        if (detailEventView != null && event != null){
+            detailEventView.hideProgress();
+            detailEventView.hideEmptyView();
+            detailEventView.setDataToViews(event);
         }
     }
 

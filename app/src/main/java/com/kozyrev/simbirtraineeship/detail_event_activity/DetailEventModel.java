@@ -3,9 +3,11 @@ package com.kozyrev.simbirtraineeship.detail_event_activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+
 import com.kozyrev.simbirtraineeship.R;
 import com.kozyrev.simbirtraineeship.application.HelpingApplication;
 import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
+import com.kozyrev.simbirtraineeship.db.DB;
 import com.kozyrev.simbirtraineeship.model.Event;
 import com.kozyrev.simbirtraineeship.network.NetHelper;
 import com.kozyrev.simbirtraineeship.utils.Constants;
@@ -23,20 +25,45 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import io.reactivex.MaybeObserver;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class DetailEventModel implements Model {
 
     private EventsBroadcastReceiver eventsBroadcastReceiver = new EventsBroadcastReceiver();
+    private DB db = DB.getDB();
 
     @Override
-    public void getEventDetails(OnFinishedListenerEvents onFinishedListener) {
+    public void getEventDetails(OnFinishedListenerDetailEvent onFinishedListener, int id) {
         //onFinishedListener.onFinished(JSONHelper.getEvents());
         //getEventDetailsAsyncTask(onFinishedListener);
         //getEventDetailsExecutor(onFinishedListener);
         //getEventDetailsIntentService(onFinishedListener);
-        getNetEventDetails(onFinishedListener);
+        //getNetEventDetails(onFinishedListener);
+        db.getEventDAO()
+                .getEventByID(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new MaybeObserver<Event>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {}
+
+                    @Override
+                    public void onSuccess(Event event) {
+                        onFinishedListener.onFinished(event);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {}
+
+                    @Override
+                    public void onComplete() {
+                        getNetEventDetails(onFinishedListener);
+                    }
+                });
     }
 
     private void getEventDetailsAsyncTask(OnFinishedListenerEvents onFinishedListener) {
@@ -49,12 +76,7 @@ public class DetailEventModel implements Model {
         ExecutorService service = Executors.newCachedThreadPool();
         service.execute(() -> {
             List<Event> events = JSONHelper.getEvents();
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            EventBus.getDefault().post(new ExecutorEventsResult(onFinishedListener, events));
+                EventBus.getDefault().post(new ExecutorEventsResult(onFinishedListener, events));
         });
     }
 
@@ -81,13 +103,11 @@ public class DetailEventModel implements Model {
                 .getEvents()
                 .subscribe(new Observer<List<Event>>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
+                    public void onSubscribe(Disposable d) {}
 
                     @Override
                     public void onNext(List<Event> events) {
-                        onFinishedListener.onFinished(events);
+                            onFinishedListener.onFinished(events);
                     }
 
                     @Override
@@ -96,9 +116,7 @@ public class DetailEventModel implements Model {
                     }
 
                     @Override
-                    public void onComplete() {
-
-                    }
+                    public void onComplete() {}
                 });
     }
 }

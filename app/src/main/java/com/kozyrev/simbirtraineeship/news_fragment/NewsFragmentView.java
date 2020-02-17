@@ -64,10 +64,13 @@ public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtrai
 
         newsFragmentPresenter = new NewsFragmentPresenter(this);
 
-        if (getArguments() != null) categories = getArguments().getParcelable(KEY_SBA);
-        if (categories != null){
-            newsFragmentPresenter.setCategories(categories);
-            newsFragmentPresenter.requestDataFromFile();
+        if (getArguments() != null) {
+            categories = getArguments().getParcelable(KEY_SBA);
+
+            if (categories != null){
+                newsFragmentPresenter.setCategories(categories);
+                newsFragmentPresenter.requestDataFromFile();
+            }
         }
 
         if (savedInstanceState != null) {
@@ -75,7 +78,7 @@ public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtrai
             news = savedInstanceState.getParcelableArrayList(KEY);
             setDataToRecyclerView(newsFragmentPresenter.filterNews(news, categories));
         } else {
-            newsFragmentPresenter.requestDataFromFile();
+            if (categories == null) newsFragmentPresenter.requestDataFromFile();
         }
     }
 
@@ -166,12 +169,6 @@ public class NewsFragmentView extends Fragment implements com.kozyrev.simbirtrai
     public void hideEmptyView() {
         rvNews.setVisibility(View.VISIBLE);
     }
-/*
-    @Override
-    public void onStop() {
-        newsFragmentPresenter.clearCategories();
-        super.onStop();
-    }*/
 
     @Override
     public void onResponseFailure(Throwable throwable) {

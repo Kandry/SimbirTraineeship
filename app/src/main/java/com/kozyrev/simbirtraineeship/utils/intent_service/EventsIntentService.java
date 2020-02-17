@@ -4,9 +4,12 @@ import android.app.IntentService;
 import android.content.Intent;
 
 import androidx.annotation.Nullable;
+import androidx.room.Room;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.kozyrev.simbirtraineeship.application.HelpingApplication;
+import com.kozyrev.simbirtraineeship.db.DB;
 import com.kozyrev.simbirtraineeship.model.Event;
 import com.kozyrev.simbirtraineeship.utils.Constants;
 import com.kozyrev.simbirtraineeship.utils.JSONHelper;
@@ -35,12 +38,12 @@ public class EventsIntentService extends IntentService {
         responseIntent.setAction(Constants.ACTION_EVENTS);
         responseIntent.addCategory(Intent.CATEGORY_DEFAULT);
         responseIntent.putParcelableArrayListExtra(Constants.EXTRA_KEY_OUT, (ArrayList<Event>) events);
-
+/*
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
         sendBroadcast(responseIntent);
     }

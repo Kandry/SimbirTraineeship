@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.kozyrev.simbirtraineeship.application.HelpingApplication;
 import com.kozyrev.simbirtraineeship.base.finished_listeners.OnFinishedListenerEvents;
+import com.kozyrev.simbirtraineeship.db.DB;
 import com.kozyrev.simbirtraineeship.model.Event;
 import com.kozyrev.simbirtraineeship.utils.Constants;
 
@@ -27,6 +28,9 @@ public class EventsBroadcastReceiver extends BroadcastReceiver {
 
     private void finishedReceiver(OnFinishedListenerEvents onFinishedListener, List<Event> events){
         HelpingApplication.getAppContext().unregisterReceiver(this);
+       /* DB.getDB()
+                .getEventDAO()
+                .addAll(events);*/
         onFinishedListener.onFinished(events);
     }
 }

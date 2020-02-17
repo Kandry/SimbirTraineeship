@@ -3,15 +3,27 @@ package com.kozyrev.simbirtraineeship.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Date;
 import java.util.List;
 
+@Entity(tableName = "events", foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "id", childColumns = "category"))
 public class Event implements Parcelable {
 
     @SerializedName("id")
+    @PrimaryKey
     private int id;
 
     @SerializedName("name")
@@ -21,6 +33,7 @@ public class Event implements Parcelable {
     private String description;
 
     @SerializedName("photos")
+    @TypeConverters(StringListToGsonConverter.class)
     private List<String> photos;
 
     @SerializedName("category")
@@ -50,12 +63,15 @@ public class Event implements Parcelable {
     @SerializedName("site")
     private String site;
 
+    @Ignore
     public Event (){}
 
+    @Ignore
     public Event (String name){
         this.name = name;
     }
 
+    @Ignore
     public Event (@NotNull Parcel data) {
         this.id = data.readInt();
         this.name = data.readString();
@@ -71,6 +87,22 @@ public class Event implements Parcelable {
         this.phone = data.readString();
         this.email = data.readString();
         this.site = data.readString();
+    }
+
+    public Event (int id, String name, String description, List<String> photos, int category, long startDate, long endDate, long createAt, String organisation, String address, String phone, String email, String site){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.photos = photos;
+        this.category = category;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.createAt = createAt;
+        this.organisation = organisation;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.site = site;
     }
 
     public int getId() {
@@ -211,4 +243,26 @@ public class Event implements Parcelable {
             return new Event[size];
         }
     };
+
+    public static class StringListToGsonConverter{
+        @TypeConverter
+        public static List<String> restoreList(String listOfString){
+            return new Gson().fromJson(listOfString, new TypeToken<List<String>>() {}.getType());
+        }
+
+        @TypeConverter
+        public static String saveListOfString(List<String> listOfString){
+            return new Gson().toJson(listOfString);
+        }
+/*
+        @TypeConverter
+        public static Date fromTimestamp(Long value) {
+            return value == null ? null : new Date(value);
+        }
+
+        @TypeConverter
+        public static Long dateToTimestamp(Date date) {
+            return date == null ? null : date.getTime();
+        }*/
+    }
 }
